@@ -233,7 +233,7 @@ header {
 
 	.hero-yellow {
 		flex: 1;
-		background-color: var(--yellow);
+		background-color: #4c7069;
 		border-radius: 30px;
 		padding: 0px 30px;
 		display: flex;

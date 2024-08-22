@@ -94,7 +94,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-yellow">
-            <img src="./imgs/hero-image.png" alt="Adrian Twarog" width="100%" />
+            <img src="./imgs/khusroo-hero-image.png" alt="Adrian Twarog" width="100%" />
           </div>
         </section>
         <section className="logos container">
