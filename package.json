@@ -1,48 +1,17 @@
 {
-  "name": "rt-portfolio",
-  "version": "1.0.0",
-  "description": "portfolio",
-  "main": "index.js",
+  "name": "portfolio-website-azure-ai",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production",
-    "sass": "node-sass -w scss/ -o src/css/ --recursive",
-    "build-css": "node-sass --include-path scss scss/main.scss   src/css/index.css",
-    "deploy": "gh-pages -d dist"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/khusroohayat/rt-portfolio.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/khusroohayat/rt-portfolio/issues"
-  },
-  "homepage": "https://khusroohayat.github.io/rt-portfolio/",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
-    "@fortawesome/free-brands-svg-icons": "^5.1.0-11",
-    "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
-    "@fortawesome/react-fontawesome": "0.1.0-11",
-    "gh-pages": "^1.2.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-router-dom": "^4.3.1"
-  },
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "css-loader": "^1.0.0",
-    "file-loader": "^1.1.11",
-    "html-webpack-plugin": "^3.2.0",
-    "node-sass": "^4.9.2",
-    "style-loader": "^0.21.0",
-    "url-loader": "^1.0.1",
-    "webpack": "^4.16.2",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
+    "@azure/openai": "^1.0.0-beta.11",
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18"
   }
 }
