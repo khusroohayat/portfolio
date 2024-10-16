@@ -167,7 +167,7 @@ export default function Home() {
             <article>
               <figure>
                 <div>
-                  <img src="./imgs/workplace-1.jpg" alt="Workplace 1 - YouTube Creator" width="100%" />
+                  <img src="./imgs/consultant.jpg" alt="Workplace 1 - YouTube Creator" width="100%" />
                   <figcaption>
                     Workplace - 1 YouTube Creator
                   </figcaption>
@@ -180,7 +180,7 @@ export default function Home() {
             <article>
               <figure>
                 <div>
-                  <img src="./imgs/workplace-2.jpg" alt="Workplace 2 - Moshi Moshi Marketing" width="100%" />
+                  <img src="./imgs/redcastletech.png" alt="Workplace 2 - Moshi Moshi Marketing" width="100%" />
                   <figcaption>
                     Workplace - Moshi Moshi Marketing
                   </figcaption>
@@ -193,7 +193,7 @@ export default function Home() {
             <article>
               <figure>
                 <div>
-                  <img src="./imgs/workplace-3.jpg" alt="Workplace 3 - Chamber of Commerce" width="100%" />
+                  <img src="./imgs/tenpearls.png" alt="Workplace 3 - Chamber of Commerce" width="100%" />
                   <figcaption>
                     Workplace - Chamber of Commerce
                   </figcaption>
@@ -215,10 +215,10 @@ export default function Home() {
           </h2>
           <div className="bento-grid">
             <a href="#" className="bento-item">
-              <img src="./imgs/bento-1.jpg" alt="BGCCI" width="100%" />
+              <img src="./imgs/prj-image-2.png" alt="BGCCI" width="100%" />
             </a>
             <a href="#" className="bento-item">
-              <img src="./imgs/bento-2.jpg" alt="Churhview" width="100%" />
+              <img src="./imgs/prj-image-1.png" alt="Churhview" width="100%" />
             </a>
             <a href="#" className="bento-item">
               <img src="./imgs/bento-3.jpg" alt="Harley" width="100%" />
@@ -227,10 +227,10 @@ export default function Home() {
               <img src="./imgs/bento-5.jpg" alt="Bunbury" width="100%" />
             </a>
             <a href="#" className="bento-item">
-              <img src="./imgs/bento-6.jpg" alt="Running" width="100%" />
+              <img src="./imgs/prj-image-6.png" alt="Running" width="100%" />
             </a>
             <a href="#" className="bento-item">
-              <img src="./imgs/bento-7.jpg" alt="School" width="100%" />
+              <img src="./imgs/prj-image-7.png" alt="School" width="100%" />
             </a>
           </div>
         </section>
