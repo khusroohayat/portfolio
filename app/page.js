@@ -10,7 +10,7 @@ export default function Home() {
   const [messages, setMessages] = useState([
 		{
 			role: 'assistant',
-			content: 'How can I help you learn more about Adrian and his Resume?'
+			content: 'How can I help you learn more about Khusroo and his Resume?'
 		}
   ]);
 
@@ -40,7 +40,7 @@ export default function Home() {
     <>
       <header>
         <a href="#" className="logo-holder">
-          <div className="logo">L</div>
+          <div className="logo">K</div>
           <div className="logo-text">Portfolio Website</div>
         </a>
         <nav>
@@ -55,7 +55,7 @@ export default function Home() {
               <a href="#projects">Projects</a>
             </li>
             <li>
-              <a href="mailto:hello@adriantwarog.com" className="button">Contact Me</a>
+              <a href="mailto:khusroo.hayat@gmail.com" className="button">Contact Me</a>
             </li>
           </ul>
           <a href="#" className="mobile-toggle" onClick={toggleMobileMenu}>
@@ -69,32 +69,32 @@ export default function Home() {
         <section className="hero container">
           <div className="hero-blue">
             <div>
-              <h1><small>Hi I'm</small>
-                Adrian Twarog
+              <h1><small>Hi I'm </small>
+              Syed Khusroo Hayat
               </h1>
               <p>
-                Design and Developer in Australia who creates educational ontent on YouTube to teach others about HTML, CSS and Javascript. <span>I'm interested in AI topics which is why I also add things like ChatGPT into my projects these days.</span>
+              <span>a Full Stack Developer from Pakistan with over 10 years of experience in designing and developing robust web applications. I specialize in ASP.NET, Blazor, React, and Vue.js while leveraging cloud platforms like Microsoft Azure. I'm passionate about AI and have integrated tools like OpenAI into my recent projects, automating tasks and creating innovative solutions for various industries. I also enjoy sharing knowledge and collaborating on technologies like C#, JavaScript, and PHP to help others build modern web applications.</span>
               </p>
               <div className="call-to-action">
-                <a href="./Sample_Resume_Template.pdf" className="button black">
+                <a href="./Khusroo-Hayat-CV.pdf" className="button black">
                   View Resume
                 </a>
-                <a href="mailto:hello@adriantwarog.com" className="button white">
+                <a href="mailto:khusroo.hayat@gmail.com" className="button white">
                   Contact Me
                 </a>
               </div>
               <div className="social-links">
-                <a href="#">
+                <a href="https://github.com/khusroohayat/">
                   <img src="./imgs/github.png" alt="GitHub" width="48" />
                 </a>
-                <a href="#">
+                <a href="https://www.linkedin.com/in/khusroosyed/">
                   <img src="./imgs/linkedin.png" alt="LinkedIn" width="48" />
                 </a>
               </div>
             </div>
           </div>
           <div className="hero-yellow">
-            <img src="./imgs/khusroo-hero-image.png" alt="Adrian Twarog" width="100%" />
+            <img src="./imgs/khusroo-hero-image.png" alt="Khusroo Hayat" width="100%" />
           </div>
         </section>
         <section className="logos container">
@@ -128,34 +128,59 @@ export default function Home() {
           </h2>
           <div className="holder-blue">
             <div className="left-column">
-              <h3>Frontend</h3>
+            <h3>Frontend</h3>
               <ul>
-                <li>HTML</li>
-                <li>CSS</li>
+                <li>Vue.js</li>
+                <li>Angular.js</li>
+                <li>Blazor</li>
+                <li>React (Next.js)</li>
                 <li>JavaScript</li>
-                <li>React</li>
-                <li>Angular</li>
-                <li>Vue</li>
+                <li>WordPress</li>
               </ul>
+
               <h3>Backend</h3>
               <ul>
+                <li>C#</li>
+                <li>ASP.NET (Core MVC, Web API, Razor Pages)</li>
                 <li>Node.js</li>
-                <li>Express</li>
-                <li>Python</li>
-                <li>Java</li>
                 <li>PHP</li>
-                <li>Ruby</li>
               </ul>
+              <h3>Databases</h3>
+              <ul>
+                <li>Microsoft SQL Server</li>
+                <li>MySQL</li>
+              </ul>
+              
             </div>
             <div className="right-column">
-              <h3>A bit about me</h3>
-              <p>
-                Hi I'm Adrian Twarog, a designer and developer who creates educational content on YouTube to teach others about HTML, CSS and JavaScript.  I'm interested in AI topics which is why I also add things like ChatGPT into my projects these days!
-              </p>
-              <p>
-                I'm currently working on a project that uses Azure AI to create a chatbot that can help answer questions about web development.  I'm also working on a project that uses React and Next.js to create a portfolio website design that looks good.
-              </p>
+            <h3>Tools/Technologies</h3>
+              <ul>
+                <li>Git</li>
+                <li>Azure DevOps</li>
+                <li>Microsoft Azure</li>
+                <li>OpenAI</li>
+                <li>Microsoft Dynamics CRM</li>
+                <li>IIS</li>
+                <li>Xamarin</li>
+                <li>Entity Framework</li>
+                <li>CSS/Bootstrap</li>
+              </ul>
+              <h3>Project Management</h3>
+              <ul>
+                <li>SCRUM</li>
+                <li>Docker</li>
+                <li>Agile methodologies</li>
+              </ul>
             </div>
+            <div className="additional-content">
+            <h3>A bit about me</h3>
+              <p>
+              Hi, I'm Syed Khusroo Hayat, a Full Stack Developer with over 10 years of experience building web and mobile applications. I specialize in ASP.NET, Blazor, React, and Vue.js, and have a strong interest in integrating AI technologies, such as OpenAI, into my projects.
+              </p>
+              <p>
+              Currently, I’m working on a project using Microsoft Azure AI to create a chatbot that automates eCommerce tasks and enhances user interaction. I’m also developing a portfolio website with React (Next.js) to deliver a modern and responsive design.
+              </p> 
+        </div>
           </div>
         </section>
         <section className="work-experience container">
@@ -169,39 +194,39 @@ export default function Home() {
                 <div>
                   <img src="./imgs/consultant.jpg" alt="Workplace 1 - YouTube Creator" width="100%" />
                   <figcaption>
-                    Workplace - 1 YouTube Creator
+                  Consultant
                   </figcaption>
                 </div>
               </figure>
-              <h3>YouTube Content Creator</h3>
-              <div>2020-current</div>
-              <p>Content creation online teaching people about how to code using HTML, CSS, JS.</p>
+              <h3>Consultant</h3>
+              <div>2017-current</div>
+              <p>Developing innovative solutions to automate eCommerce tasks, designing project management apps, and leading development in technologies like Blazor, React, and Azure for various clients.</p>
             </article>
             <article>
               <figure>
                 <div>
                   <img src="./imgs/tenpearls.png" alt="Workplace 2 - Moshi Moshi Marketing" width="100%" />
                   <figcaption>
-                    Workplace - Moshi Moshi Marketing
+                  10Pearls
                   </figcaption>
                 </div>
               </figure>
-              <h3>Moshi Moshi Marketing</h3>
-              <div>20018-2020</div>
-              <p>Marketing agency building websites and programming them from the ground up. </p>
+              <h3>Software Developer</h3>
+              <div>2015-2017</div>
+              <p>Worked on Microsoft Dynamics CRM, developed APIs, and contributed to telehealth and internal systems, implementing innovative backend and automation solutions.</p>
             </article>
             <article>
               <figure>
                 <div>
                   <img src="./imgs/shinersoft.png" alt="Workplace 3 - Chamber of Commerce" width="100%" />
                   <figcaption>
-                    Workplace - Chamber of Commerce
+                  Shiner Soft
                   </figcaption>
                 </div>
               </figure>
-              <h3>Chamber of Commerce</h3>
-              <div>2013-2018</div>
-              <p>A small to large business organisation that helps facilitate advice and support.</p>
+              <h3>Software Engineer</h3>
+              <div>2013-2014</div>
+      <p>Developed healthcare portals and Android applications using Xamarin and ASP.NET, managing both technical and client-facing aspects of the project.</p>
             </article>
             
           </div>
@@ -260,7 +285,7 @@ export default function Home() {
                 </ul>
               </div>
               <form onSubmit={submitForm} className="chat-message">
-                <input type="text" placeholder="Hey Adrian, what skills are you best at?" value={messageInput} onChange={e => setMessageInput(e.target.value)} />
+                <input type="text" placeholder="Hey Khusroo, what skills are you best at?" value={messageInput} onChange={e => setMessageInput(e.target.value)} />
                 <button className="button black">Send</button>
               </form>
             </div>

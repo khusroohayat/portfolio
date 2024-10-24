@@ -306,46 +306,66 @@ h2 {
 }
 
 .skills {
-	.holder-blue {
-		background-color: var(--blue-100);
-		border-radius: 30px;
-		padding: 30px;
-		display: flex;
-
-		@media(max-width:1024px) {
-			flex-direction: column;
-		}
-
-		.left-column {
-			flex: 1;
-
+    .holder-blue {
+        background-color: var(--blue-100);
+        border-radius: 30px;
+        padding: 30px;
+        display: flex;
+        flex-wrap: wrap; /* Allow wrapping for responsive layout */
+        gap: 20px; /* Add gap between columns */
+        
+        .left-column, .right-column {
+            flex: 1; /* Make both columns take equal width */
+            min-width: 300px; /* Prevent shrinking too much */
 			ul {
-				display: flex;
-				flex-wrap: wrap;
-				list-style-type: none;
-				gap: 10px;
-				margin-right: 100px;
-				margin-bottom: 20px;
+                display: flex;
+                flex-wrap: wrap; /* Allow list items to wrap */
+                list-style-type: none; /* Remove default bullets */
+                gap: 10px; /* Space between list items */
+                padding: 0; /* Remove default padding */
+                margin: 0 0 20px 0; /* Adjust margin around list */
+            }
 
-				li {
-					display: inline-block;
-					background-color: var(--blue-400);
-					padding: 10px 20px;
-					border-radius: 15px;
-					margin-bottom: 10px;
-				}
-			}
-		}
+            li {
+                background-color: var(--blue-400);
+                padding: 10px 20px;
+                border-radius: 15px;
+                margin-bottom: 10px;
+            }
+        }
 
-		.right-column {
-			flex: 1;
 
-			p {
-				margin-bottom: 20px;
-			}
-		}
-	}
+        .additional-content {
+            flex-basis: 100%; /* Full width below columns */
+            background-color: var(--blue-200);
+            padding-left: 2rem;
+			padding-right: 2rem;
+            border-radius: 15px;
+            margin-top: 20px; /* Space between the columns and new content */
+
+            h3 {
+                margin-bottom: 15px;
+            }
+
+            p {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media(max-width:1024px) {
+            flex-direction: column; /* Stack columns and additional content vertically */
+
+            .left-column, .right-column {
+                margin-bottom: 20px; /* Space between columns in mobile view */
+            }
+        }
+    }
 }
+
+
+
+
+
 
 .work-experience {
 	.jobs {
