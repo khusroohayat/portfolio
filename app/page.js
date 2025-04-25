@@ -1,11 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 export default function Home() {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [ messageInput, setMessageInput ] = useState('');
+  const chatLogRef = useRef(null);
 
   const [messages, setMessages] = useState([
 		{
@@ -13,6 +14,12 @@ export default function Home() {
 			content: 'How can I help you learn more about Khusroo and his Resume?'
 		}
   ]);
+
+  useEffect(() => {
+    if (chatLogRef.current) {
+      chatLogRef.current.scrollTop = chatLogRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -178,7 +185,7 @@ export default function Home() {
               Hi, I'm Syed Khusroo Hayat, a Full Stack Developer with over 10 years of experience building web and mobile applications. I specialize in ASP.NET, Blazor, React, and Vue.js, and have a strong interest in integrating AI technologies, such as OpenAI, into my projects.
               </p>
               <p>
-              Currently, I’m working on a project using Microsoft Azure AI to create a chatbot that automates eCommerce tasks and enhances user interaction. I’m also developing a portfolio website with React (Next.js) to deliver a modern and responsive design.
+              Currently, I'm working on a project using Microsoft Azure AI to create a chatbot that automates eCommerce tasks and enhances user interaction. I'm also developing a portfolio website with React (Next.js) to deliver a modern and responsive design.
               </p> 
         </div>
           </div>
@@ -274,7 +281,7 @@ export default function Home() {
               <a href="./Sample_Resume_Template.pdf" className="button black">Download Resume</a>
             </div>
             <div className="chat-box">
-              <div className="scroll-area">
+              <div className="scroll-area" ref={chatLogRef}>
                 <ul id="chat-log">
                   {messages.map((message, index) => (
                     <li key={index} className={`${message.role}`}>
