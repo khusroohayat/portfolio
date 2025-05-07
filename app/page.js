@@ -92,39 +92,39 @@ export default function Home() {
               </div>
               <div className="social-links">
                 <a href="https://github.com/khusroohayat/">
-                  <img src="./imgs/github.png" alt="GitHub" width="48" />
+                  <img src="./imgs/github.png" alt="GitHub" width="48" title="GitHub" />
                 </a>
                 <a href="https://www.linkedin.com/in/khusroosyed/">
-                  <img src="./imgs/linkedin.png" alt="LinkedIn" width="48" />
+                  <img src="./imgs/linkedin.png" alt="LinkedIn" width="48" title="LinkedIn" />
                 </a>
               </div>
             </div>
           </div>
           <div className="hero-yellow">
-            <img src="./imgs/khusroo-hero-image.png" alt="Khusroo Hayat" width="100%" />
+            <img src="./imgs/khusroo-hero-image.png" alt="Khusroo Hayat" width="100%" title="Khusroo Hayat" />
           </div>
         </section>
         <section className="logos container">
           <div className="marquee">
             <div className="track">
-              <img src="./imgs/html.png" alt="HTML" width="128" />
-              <img src="./imgs/css.png" alt="CSS" width="128" />
-              <img src="./imgs/javascript.png" alt="JS" width="128" />
-              <img src="./imgs/sass.png" width="128" alt="Sass" />
-              <img src="./imgs/react.png" width="128" alt="React" />
-              <img src="./imgs/nextjs.png" width="128" alt="Next JS" />
-              <img src="./imgs/azure.png" width="128" alt="Azure" />
-              <img src="./imgs/vscode.png" width="128" alt="VS Code" />
-              <img src="./imgs/python.png" width="128" alt="Python" />
-              <img src="./imgs/html.png" alt="HTML" width="128" />
-              <img src="./imgs/css.png" alt="CSS" width="128" />
-              <img src="./imgs/javascript.png" alt="JS" width="128" />
-              <img src="./imgs/sass.png" width="128" alt="Sass" />
-              <img src="./imgs/react.png" width="128" alt="React" />
-              <img src="./imgs/nextjs.png" width="128" alt="Next JS" />
-              <img src="./imgs/azure.png" width="128" alt="Azure" />
-              <img src="./imgs/vscode.png" width="128" alt="VS Code" />
-              <img src="./imgs/python.png" width="128" alt="Python" />
+              <img src="./imgs/html.png" alt="HTML" width="128" title="HTML" />
+              <img src="./imgs/css.png" alt="CSS" width="128" title="CSS" />
+              <img src="./imgs/javascript.png" alt="JS" width="128" title="JavaScript" />
+              <img src="./imgs/sass.png" width="128" alt="Sass" title="Sass" />
+              <img src="./imgs/react.png" width="128" alt="React" title="React" />
+              <img src="./imgs/nextjs.png" width="128" alt="Next JS" title="Next.js" />
+              <img src="./imgs/azure.png" width="128" alt="Azure" title="Azure" />
+              <img src="./imgs/vscode.png" width="128" alt="VS Code" title="VS Code" />
+              <img src="./imgs/python.png" width="128" alt="Python" title="Python" />
+              <img src="./imgs/html.png" alt="HTML" width="128" title="HTML" />
+              <img src="./imgs/css.png" alt="CSS" width="128" title="CSS" />
+              <img src="./imgs/javascript.png" alt="JS" width="128" title="JavaScript" />
+              <img src="./imgs/sass.png" width="128" alt="Sass" title="Sass" />
+              <img src="./imgs/react.png" width="128" alt="React" title="React" />
+              <img src="./imgs/nextjs.png" width="128" alt="Next JS" title="Next.js" />
+              <img src="./imgs/azure.png" width="128" alt="Azure" title="Azure" />
+              <img src="./imgs/vscode.png" width="128" alt="VS Code" title="VS Code" />
+              <img src="./imgs/python.png" width="128" alt="Python" title="Python" />
             </div>
           </div>
         </section>
@@ -199,7 +199,7 @@ export default function Home() {
             <article>
               <figure>
                 <div>
-                  <img src="./imgs/consultant.jpg" alt="Workplace 1 - YouTube Creator" width="100%" />
+                  <img src="./imgs/consultant.jpg" alt="Workplace 1 - YouTube Creator" width="100%" title="Consultant" />
                   <figcaption>
                   Consultant
                   </figcaption>
@@ -212,7 +212,7 @@ export default function Home() {
             <article>
               <figure>
                 <div>
-                  <img src="./imgs/tenpearls.png" alt="Workplace 2 - Moshi Moshi Marketing" width="100%" />
+                  <img src="./imgs/tenpearls.png" alt="Workplace 2 - Moshi Moshi Marketing" width="100%" title="10Pearls" />
                   <figcaption>
                   10Pearls
                   </figcaption>
@@ -225,7 +225,7 @@ export default function Home() {
             <article>
               <figure>
                 <div>
-                  <img src="./imgs/shinersoft.png" alt="Workplace 3 - Chamber of Commerce" width="100%" />
+                  <img src="./imgs/shinersoft.png" alt="Workplace 3 - Chamber of Commerce" width="100%" title="Shiner Soft" />
                   <figcaption>
                   Shiner Soft
                   </figcaption>
@@ -247,22 +247,22 @@ export default function Home() {
           </h2>
           <div className="bento-grid">
             <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-2.png" alt="BGCCI" width="100%" />
+              <img src="./imgs/prj-image-2.png" alt="BGCCI" width="100%" title="BGCCI" />
             </a>
             <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-1.png" alt="Churhview" width="100%" />
+              <img src="./imgs/prj-image-1.png" alt="Churhview" width="100%" title="Churhview" />
             </a>
             <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-3.png" alt="Harley" width="100%" />
+              <img src="./imgs/prj-image-3.png" alt="Harley" width="100%" title="Harley" />
             </a>
             <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-5.png" alt="Bunbury" width="100%" />
+              <img src="./imgs/prj-image-5.png" alt="Bunbury" width="100%" title="Bunbury" />
             </a>
             <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-6.png" alt="Running" width="100%" />
+              <img src="./imgs/prj-image-6.png" alt="Running" width="100%" title="Running" />
             </a>
             <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-7.png" alt="School" width="100%" />
+              <img src="./imgs/prj-image-7.png" alt="School" width="100%" title="School" />
             </a>
           </div>
         </section>
