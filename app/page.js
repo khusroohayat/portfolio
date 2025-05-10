@@ -292,8 +292,16 @@ export default function Home() {
                 </ul>
               </div>
               <form onSubmit={submitForm} className="chat-message">
-                <input type="text" placeholder="Hey Khusroo, what skills are you best at?" value={messageInput} onChange={e => setMessageInput(e.target.value)} />
-                <button className="button black">Send</button>
+                <input
+                  type="text"
+                  placeholder="Hey Khusroo, what skills are you best at?"
+                  value={messageInput}
+                  onChange={e => setMessageInput(e.target.value)}
+                  required
+                />
+                <button className="button black" type="submit" disabled={!messageInput.trim()}>
+                  Send
+                </button>
               </form>
             </div>
           </div>
