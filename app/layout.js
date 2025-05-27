@@ -16,6 +16,7 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="styles.css" />
         <link rel="icon" type="image/jpeg" href="./imgs/favicon.jpg" />
         <link rel="canonical" href="https://khusroohayat-portfolio.netlify.app/" />
+        <meta name="google-site-verification" content="dx-iQzb3wfDa9BKsU1_E1GglJ5opHeo3gPpb-cmroQw" />
       </Head>
       <body>
         {children}
