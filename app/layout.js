@@ -4,6 +4,15 @@ import "./globals.css";
 export const metadata = {
   title: "Top-Rated Full Stack Web Developer | Custom Web Solutions & Professional Services",
   description: "Expert full stack web developer offering custom web solutions. Build scalable apps with React, Node.js, and more. Competitive rates, fast turnaround. Let’s create your next project!",
+  icons: {
+    icon: "/imgs/favicon.jpg",
+  },
+  verification: {
+    google: "dx-iQzb3wfDa9BKsU1_E1GglJ5opHeo3gPpb-cmroQw",
+  },
+  alternates: {
+    canonical: "https://khusroohayat-portfolio.netlify.app/",
+  },
 };
 
 export default function RootLayout({ children }) {
