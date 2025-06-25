@@ -239,23 +239,47 @@ export default function Home() {
             Completed Projects
           </h2>
           <div className="bento-grid">
-            <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-2.png" alt="BGCCI" width="100%" />
+            <a href="https://github.com/khusroohayat" className="bento-item">
+              <img src="./imgs/prj-image-2.png" alt="E-commerce Platform" width="100%" />
+              <div className="project-info">
+                <h3>E-commerce Platform</h3>
+                <p>Full-stack e-commerce solution built with ASP.NET Core and React</p>
+              </div>
             </a>
-            <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-1.png" alt="Churhview" width="100%" />
+            <a href="https://github.com/khusroohayat" className="bento-item">
+              <img src="./imgs/prj-image-1.png" alt="Healthcare Portal" width="100%" />
+              <div className="project-info">
+                <h3>Healthcare Portal</h3>
+                <p>Patient management system using Blazor and Azure services</p>
+              </div>
             </a>
-            <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-3.png" alt="Harley" width="100%" />
+            <a href="https://github.com/khusroohayat" className="bento-item">
+              <img src="./imgs/prj-image-3.png" alt="AI Chatbot" width="100%" />
+              <div className="project-info">
+                <h3>AI Chatbot</h3>
+                <p>OpenAI-powered customer service bot with Next.js frontend</p>
+              </div>
             </a>
-            <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-5.png" alt="Bunbury" width="100%" />
+            <a href="https://github.com/khusroohayat" className="bento-item">
+              <img src="./imgs/prj-image-5.png" alt="CRM Dashboard" width="100%" />
+              <div className="project-info">
+                <h3>CRM Dashboard</h3>
+                <p>Microsoft Dynamics CRM customization and integration</p>
+              </div>
             </a>
-            <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-6.png" alt="Running" width="100%" />
+            <a href="https://github.com/khusroohayat" className="bento-item">
+              <img src="./imgs/prj-image-6.png" alt="Mobile App" width="100%" />
+              <div className="project-info">
+                <h3>Mobile App</h3>
+                <p>Cross-platform mobile application built with Xamarin</p>
+              </div>
             </a>
-            <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-7.png" alt="School" width="100%" />
+            <a href="https://github.com/khusroohayat" className="bento-item">
+              <img src="./imgs/prj-image-7.png" alt="School Management" width="100%" />
+              <div className="project-info">
+                <h3>School Management</h3>
+                <p>Educational institution management system with Vue.js</p>
+              </div>
             </a>
           </div>
         </section>

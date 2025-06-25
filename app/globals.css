@@ -463,6 +463,42 @@ h2 {
 			border-radius:15px;
 			position:relative;
 			overflow:hidden;
+			transition: transform 0.3s ease;
+
+			&:hover {
+				transform: translateY(-5px);
+			}
+
+			.project-info {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background: rgba(0, 0, 0, 0.7);
+				color: white;
+				padding: 20px;
+				min-height: 80px;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+
+				h3 {
+					font-size: 1.2rem;
+					margin-bottom: 8px;
+					color: var(--yellow);
+				}
+
+				p {
+					font-size: 0.9rem;
+					opacity: 0.9;
+					margin: 0;
+				}
+			}
+
+			&:hover .project-info {
+				transform: translateY(0);
+			}
+
 			img {
 				position:absolute;
 				top:0;
