@@ -1,11 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 export default function Home() {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [ messageInput, setMessageInput ] = useState('');
+  const chatLogRef = useRef(null);
 
   const [messages, setMessages] = useState([
 		{
@@ -13,6 +14,12 @@ export default function Home() {
 			content: 'How can I help you learn more about Khusroo and his Resume?'
 		}
   ]);
+
+  useEffect(() => {
+    if (chatLogRef.current) {
+      chatLogRef.current.scrollTop = chatLogRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -85,39 +92,39 @@ export default function Home() {
               </div>
               <div className="social-links">
                 <a href="https://github.com/khusroohayat/">
-                  <img src="./imgs/github.png" alt="GitHub" width="48" />
+                  <img src="./imgs/github.png" alt="GitHub" width="48" title="GitHub" />
                 </a>
                 <a href="https://www.linkedin.com/in/khusroosyed/">
-                  <img src="./imgs/linkedin.png" alt="LinkedIn" width="48" />
+                  <img src="./imgs/linkedin.png" alt="LinkedIn" width="48" title="LinkedIn" />
                 </a>
               </div>
             </div>
           </div>
           <div className="hero-yellow">
-            <img src="./imgs/khusroo-hero-image.png" alt="Khusroo Hayat" width="100%" />
+            <img src="./imgs/khusroo-hero-image.png" alt="Khusroo Hayat" width="100%" title="Khusroo Hayat" />
           </div>
         </section>
         <section className="logos container">
           <div className="marquee">
             <div className="track">
-              <img src="./imgs/html.png" alt="HTML" width="128" />
-              <img src="./imgs/css.png" alt="CSS" width="128" />
-              <img src="./imgs/javascript.png" alt="JS" width="128" />
-              <img src="./imgs/sass.png" width="128" alt="Sass" />
-              <img src="./imgs/react.png" width="128" alt="React" />
-              <img src="./imgs/nextjs.png" width="128" alt="Next JS" />
-              <img src="./imgs/azure.png" width="128" alt="Azure" />
-              <img src="./imgs/vscode.png" width="128" alt="VS Code" />
-              <img src="./imgs/python.png" width="128" alt="Python" />
-              <img src="./imgs/html.png" alt="HTML" width="128" />
-              <img src="./imgs/css.png" alt="CSS" width="128" />
-              <img src="./imgs/javascript.png" alt="JS" width="128" />
-              <img src="./imgs/sass.png" width="128" alt="Sass" />
-              <img src="./imgs/react.png" width="128" alt="React" />
-              <img src="./imgs/nextjs.png" width="128" alt="Next JS" />
-              <img src="./imgs/azure.png" width="128" alt="Azure" />
-              <img src="./imgs/vscode.png" width="128" alt="VS Code" />
-              <img src="./imgs/python.png" width="128" alt="Python" />
+              <img src="./imgs/html.png" alt="HTML" width="128" title="HTML" />
+              <img src="./imgs/css.png" alt="CSS" width="128" title="CSS" />
+              <img src="./imgs/javascript.png" alt="JS" width="128" title="JavaScript" />
+              <img src="./imgs/sass.png" width="128" alt="Sass" title="Sass" />
+              <img src="./imgs/react.png" width="128" alt="React" title="React" />
+              <img src="./imgs/nextjs.png" width="128" alt="Next JS" title="Next.js" />
+              <img src="./imgs/azure.png" width="128" alt="Azure" title="Azure" />
+              <img src="./imgs/vscode.png" width="128" alt="VS Code" title="VS Code" />
+              <img src="./imgs/python.png" width="128" alt="Python" title="Python" />
+              <img src="./imgs/html.png" alt="HTML" width="128" title="HTML" />
+              <img src="./imgs/css.png" alt="CSS" width="128" title="CSS" />
+              <img src="./imgs/javascript.png" alt="JS" width="128" title="JavaScript" />
+              <img src="./imgs/sass.png" width="128" alt="Sass" title="Sass" />
+              <img src="./imgs/react.png" width="128" alt="React" title="React" />
+              <img src="./imgs/nextjs.png" width="128" alt="Next JS" title="Next.js" />
+              <img src="./imgs/azure.png" width="128" alt="Azure" title="Azure" />
+              <img src="./imgs/vscode.png" width="128" alt="VS Code" title="VS Code" />
+              <img src="./imgs/python.png" width="128" alt="Python" title="Python" />
             </div>
           </div>
         </section>
@@ -178,7 +185,7 @@ export default function Home() {
               Hi, I'm Syed Khusroo Hayat, a Full Stack Developer with over 10 years of experience building web and mobile applications. I specialize in ASP.NET, Blazor, React, and Vue.js, and have a strong interest in integrating AI technologies, such as OpenAI, into my projects.
               </p>
               <p>
-              Currently, I’m working on a project using Microsoft Azure AI to create a chatbot that automates eCommerce tasks and enhances user interaction. I’m also developing a portfolio website with React (Next.js) to deliver a modern and responsive design.
+              Currently, I'm working on a project using Microsoft Azure AI to create a chatbot that automates eCommerce tasks and enhances user interaction. I'm also developing a portfolio website with React (Next.js) to deliver a modern and responsive design.
               </p> 
         </div>
           </div>
@@ -192,7 +199,7 @@ export default function Home() {
             <article>
               <figure>
                 <div>
-                  <img src="./imgs/consultant.jpg" alt="Workplace 1 - YouTube Creator" width="100%" />
+                  <img src="./imgs/consultant.jpg" alt="Workplace 1 - YouTube Creator" width="100%" title="Consultant" />
                   <figcaption>
                   Consultant
                   </figcaption>
@@ -205,7 +212,7 @@ export default function Home() {
             <article>
               <figure>
                 <div>
-                  <img src="./imgs/tenpearls.png" alt="Workplace 2 - Moshi Moshi Marketing" width="100%" />
+                  <img src="./imgs/tenpearls.png" alt="Workplace 2 - Moshi Moshi Marketing" width="100%" title="10Pearls" />
                   <figcaption>
                   10Pearls
                   </figcaption>
@@ -218,7 +225,7 @@ export default function Home() {
             <article>
               <figure>
                 <div>
-                  <img src="./imgs/shinersoft.png" alt="Workplace 3 - Chamber of Commerce" width="100%" />
+                  <img src="./imgs/shinersoft.png" alt="Workplace 3 - Chamber of Commerce" width="100%" title="Shiner Soft" />
                   <figcaption>
                   Shiner Soft
                   </figcaption>
@@ -298,7 +305,7 @@ export default function Home() {
               <a href="./Sample_Resume_Template.pdf" className="button black">Download Resume</a>
             </div>
             <div className="chat-box">
-              <div className="scroll-area">
+              <div className="scroll-area" ref={chatLogRef}>
                 <ul id="chat-log">
                   {messages.map((message, index) => (
                     <li key={index} className={`${message.role}`}>
@@ -309,8 +316,16 @@ export default function Home() {
                 </ul>
               </div>
               <form onSubmit={submitForm} className="chat-message">
-                <input type="text" placeholder="Hey Khusroo, what skills are you best at?" value={messageInput} onChange={e => setMessageInput(e.target.value)} />
-                <button className="button black">Send</button>
+                <input
+                  type="text"
+                  placeholder="Hey Khusroo, what skills are you best at?"
+                  value={messageInput}
+                  onChange={e => setMessageInput(e.target.value)}
+                  required
+                />
+                <button className="button black" type="submit" disabled={!messageInput.trim()}>
+                  Send
+                </button>
               </form>
             </div>
           </div>
