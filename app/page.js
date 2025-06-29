@@ -67,7 +67,7 @@ export default function Home() {
           </ul>
           <a href="#" className="mobile-toggle" onClick={toggleMobileMenu}>
             <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10"/>
+              <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M5 7h14M5 12h14M5 17h10"/>
             </svg>
           </a>
         </nav>
@@ -80,8 +80,8 @@ export default function Home() {
               Syed Khusroo Hayat
               </h1>
               <p>
-              <span>a Full Stack Developer from Pakistan with over 10 years of experience in designing and developing robust web applications. I specialize in ASP.NET, Blazor, React, and Vue.js while leveraging cloud platforms like Microsoft Azure. I'm passionate about AI and have integrated tools like OpenAI into my recent projects, automating tasks and creating innovative solutions for various industries. I also enjoy sharing knowledge and collaborating on technologies like C#, JavaScript, and PHP to help others build modern web applications.</span>
-              </p>
+        <span>a full stack developer specializing in cloud-native applications with AI integration. I leverage LLMs, modern frameworks, and vibe coding practices to build scalable solutions that solve real business problems across multiple industries</span>
+      </p>
               <div className="call-to-action">
                 <a href="./Khusroo-Hayat-CV.pdf" className="button black">
                   View Resume
