@@ -134,61 +134,81 @@ export default function Home() {
             Skills
           </h2>
           <div className="holder-blue">
-            <div className="left-column">
-            <h3>Frontend</h3>
-              <ul>
-                <li>Vue.js</li>
-                <li>Angular.js</li>
-                <li>Blazor</li>
-                <li>React (Next.js)</li>
-                <li>JavaScript</li>
-                <li>WordPress</li>
-              </ul>
+  <div className="left-column">
+    <h3>Frontend Excellence</h3>
+    <ul>
+      <li>React (Next.js)</li> {/* Highlighted Next.js */}
+      <li>Blazor (Fluent UI)</li> {/* Added Fluent UI */}
+      <li>Vue.js</li>
+      <li>React Native</li> {/* New key skill */}
+      <li>Tailwind UI</li> {/* New key skill */}
+      <li>JavaScript</li>
+      <li>CSS</li> {/* Simplified from CSS/Bootstrap */}
+      {/* Removed: Angular.js, WordPress (unless it's a major focus for you now) */}
+    </ul>
 
-              <h3>Backend</h3>
-              <ul>
-                <li>C#</li>
-                <li>ASP.NET (Core MVC, Web API, Razor Pages)</li>
-                <li>Node.js</li>
-                <li>PHP</li>
-              </ul>
-              <h3>Databases</h3>
-              <ul>
-                <li>Microsoft SQL Server</li>
-                <li>MySQL</li>
-              </ul>
-              
-            </div>
-            <div className="right-column">
-            <h3>Tools/Technologies</h3>
-              <ul>
-                <li>Git</li>
-                <li>Azure DevOps</li>
-                <li>Microsoft Azure</li>
-                <li>OpenAI</li>
-                <li>Microsoft Dynamics CRM</li>
-                <li>IIS</li>
-                <li>Xamarin</li>
-                <li>Entity Framework</li>
-                <li>CSS/Bootstrap</li>
-              </ul>
-              <h3>Project Management</h3>
-              <ul>
-                <li>SCRUM</li>
-                <li>Docker</li>
-                <li>Agile methodologies</li>
-              </ul>
-            </div>
-            <div className="additional-content">
-            <h3>A bit about me</h3>
-              <p>
-              Hi, I'm Syed Khusroo Hayat, a Full Stack Developer with over 10 years of experience building web and mobile applications. I specialize in ASP.NET, Blazor, React, and Vue.js, and have a strong interest in integrating AI technologies, such as OpenAI, into my projects.
-              </p>
-              <p>
-              Currently, I'm working on a project using Microsoft Azure AI to create a chatbot that automates eCommerce tasks and enhances user interaction. I'm also developing a portfolio website with React (Next.js) to deliver a modern and responsive design.
-              </p> 
-        </div>
-          </div>
+    <h3>Backend & Cloud Services</h3>
+    <ul>
+      <li>C#</li>
+      <li>ASP.NET Core (MVC, Web API, Razor Pages)</li>
+      <li>Node.js</li>
+      <li>PHP</li> {/* Keep if still relevant to projects */}
+      <li>Microsoft Azure</li> {/* Moved to its own logical grouping */}
+      <li>Vercel</li> {/* New key skill */}
+      <li>Firebase (Auth, Studio)</li> {/* Grouped Firebase services */}
+      <li>Supabase</li> {/* New key skill */}
+      <li>Appwrite</li> {/* New key skill */}
+      <li>Entra ID (for Blazor)</li> {/* Specific integration skill */}
+      {/* Removed: IIS (less relevant for modern cloud deployment emphasis) */}
+    </ul>
+  </div>
+
+  <div className="right-column">
+    <h3>AI Tools</h3> {/* New dedicated category */}
+    <ul>
+      <li>Vibe Coding</li>
+      <li>Firebase Studio</li>
+      <li>Cursor</li>
+      <li>Lovable</li>
+      <li>OpenAI</li>
+      <li>Generative AI (Gen AI)</li> {/* Explicitly add this if you use it */}
+      <li>LLMs</li> {/* Key new keyword */}
+      {/* Placeholder for future AI tech if needed */}
+    </ul>
+
+    <h3>Databases & Integration</h3> {/* Streamlined and focused */}
+    <ul>
+      <li>MongoDB</li> {/* Highlighted Bookstore App */}
+      <li>Microsoft SQL Server</li>
+      <li>Dataverse</li> {/* New key skill */}
+      <li>Microsoft Dynamics CRM</li>
+      {/* Removed: MySQL (unless it's a major focus, keep if so) */}
+    </ul>
+
+    <h3>Developer Tools & Methodologies</h3> {/* Combined and focused */}
+    <ul>
+      <li>Git</li>
+      <li>Azure DevOps</li>
+      <li>Docker</li>
+      <li>Entity Framework</li>
+      <li>SCRUM</li>
+      <li>Agile Methodologies</li>
+    </ul>
+  </div>
+
+  <div className="additional-content">
+    {/* Replaced "A bit about me" with a more dynamic intro,
+        tying into your UVP and newer skills */}
+    <h3>Your Partner in AI Development</h3>
+    <p>
+      Hi, I'm Syed Khusroo Hayat, an AI-Augmented Cloud-Native Full Stack Architect with over a decade of experience.I specialize in building innovative web and mobile applications using modern technologies like React (Next.js), Blazor, and React Native, seamlessly integrating AI, LLMs, and Cloud services (Azure, Firebase, Supabase, Appwrite).
+    </p>
+    <p>
+      My 'Vibe Coding' approach ensures clean, efficient, and scalable solutions that drive tangible business results. Let's build something intelligent together.
+    </p>
+  </div>
+</div>
+
         </section>
         <section className="work-experience container">
           <h2>
