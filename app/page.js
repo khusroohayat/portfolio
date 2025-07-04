@@ -266,46 +266,39 @@ export default function Home() {
             Completed Projects
           </h2>
           <div className="bento-grid">
-            <a href="https://github.com/khusroohayat" className="bento-item">
+            <a href="https://ai.commercegenie.com/" className="bento-item">
               <img src="./imgs/prj-image-2.png" alt="E-commerce Platform" width="100%" />
               <div className="project-info">
-                <h3>E-commerce Platform</h3>
-                <p>Full-stack e-commerce solution built with ASP.NET Core and React</p>
+                <h3>Commerce Genie</h3>
+                <p>AI‑Powered Ecommerce Content & Automation Platform</p>
               </div>
             </a>
-            <a href="https://github.com/khusroohayat" className="bento-item">
+            <a href="https://kind-glacier-02d030503.azurestaticapps.net/" className="bento-item">
               <img src="./imgs/prj-image-1.png" alt="Healthcare Portal" width="100%" />
               <div className="project-info">
-                <h3>Healthcare Portal</h3>
-                <p>Patient management system using Blazor and Azure services</p>
+                <h3>WorkForce Kit</h3>
+                <p>Empowering Industries with Streamlined Workforce Management</p>
               </div>
             </a>
-            <a href="https://github.com/khusroohayat" className="bento-item">
-              <img src="./imgs/prj-image-3.png" alt="AI Chatbot" width="100%" />
+            <a href="https://www.radixtech.org/" className="bento-item">
+              <img src="./imgs/prj-image-3.jpg" alt="AI Chatbot" width="100%" />
               <div className="project-info">
-                <h3>AI Chatbot</h3>
-                <p>OpenAI-powered customer service bot with Next.js frontend</p>
+                <h3>RadixTech</h3>
+                <p>Built by and for Humanitarian Aid Workers</p>
               </div>
             </a>
-            <a href="https://github.com/khusroohayat" className="bento-item">
+            <a href="https://www.northerncrescent.ca/" className="bento-item">
               <img src="./imgs/prj-image-5.png" alt="CRM Dashboard" width="100%" />
               <div className="project-info">
-                <h3>CRM Dashboard</h3>
-                <p>Microsoft Dynamics CRM customization and integration</p>
+                <h3>Northern Crescent</h3>
+                <p>Customized ERP for Northern Crescent</p>
               </div>
             </a>
             <a href="https://github.com/khusroohayat" className="bento-item">
               <img src="./imgs/prj-image-6.png" alt="Mobile App" width="100%" />
               <div className="project-info">
-                <h3>Mobile App</h3>
-                <p>Cross-platform mobile application built with Xamarin</p>
-              </div>
-            </a>
-            <a href="https://github.com/khusroohayat" className="bento-item">
-              <img src="./imgs/prj-image-7.png" alt="School Management" width="100%" />
-              <div className="project-info">
-                <h3>School Management</h3>
-                <p>Educational institution management system with Vue.js</p>
+                <h3>Avertly</h3>
+                <p>Maximize asset performance and minimize downtime with Avertly</p>
               </div>
             </a>
           </div>
@@ -319,7 +312,7 @@ export default function Home() {
           </h2>
           <div className="chatbot-blue">
             <div className="chat-info">
-              <h3>Azure AI Chatbot</h3>
+              <h3>AI Chatbot</h3>
               <p>I've put together a chatbot here which knows all my skills, work experience and has a copy of my CV/Resume. You can use it to ask questions about me to get a better idea of who I am and what I've done.</p>
               <p>You can also download my resume here if you want to take a look at it.  I'm currently looking for new opportunities so if you have a project you think I'd be a good fit for, please get in touch!</p>
               <a href="./Sample_Resume_Template.pdf" className="button black">Download Resume</a>
