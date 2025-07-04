@@ -67,7 +67,7 @@ export default function Home() {
           </ul>
           <a href="#" className="mobile-toggle" onClick={toggleMobileMenu}>
             <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10"/>
+              <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M5 7h14M5 12h14M5 17h10"/>
             </svg>
           </a>
         </nav>
@@ -80,8 +80,8 @@ export default function Home() {
               Syed Khusroo Hayat
               </h1>
               <p>
-              <span>a Full Stack Developer from Pakistan with over 10 years of experience in designing and developing robust web applications. I specialize in ASP.NET, Blazor, React, and Vue.js while leveraging cloud platforms like Microsoft Azure. I'm passionate about AI and have integrated tools like OpenAI into my recent projects, automating tasks and creating innovative solutions for various industries. I also enjoy sharing knowledge and collaborating on technologies like C#, JavaScript, and PHP to help others build modern web applications.</span>
-              </p>
+        <span>a full stack developer specializing in cloud-native applications with AI integration. I leverage LLMs, modern frameworks, and vibe coding practices to build scalable solutions that solve real business problems across multiple industries</span>
+      </p>
               <div className="call-to-action">
                 <a href="./Khusroo-Hayat-CV.pdf" className="button black">
                   View Resume
@@ -134,61 +134,81 @@ export default function Home() {
             Skills
           </h2>
           <div className="holder-blue">
-            <div className="left-column">
-            <h3>Frontend</h3>
-              <ul>
-                <li>Vue.js</li>
-                <li>Angular.js</li>
-                <li>Blazor</li>
-                <li>React (Next.js)</li>
-                <li>JavaScript</li>
-                <li>WordPress</li>
-              </ul>
+  <div className="left-column">
+    <h3>Frontend Excellence</h3>
+    <ul>
+      <li>React (Next.js)</li> {/* Highlighted Next.js */}
+      <li>Blazor (Fluent UI)</li> {/* Added Fluent UI */}
+      <li>Vue.js</li>
+      <li>React Native</li> {/* New key skill */}
+      <li>Tailwind UI</li> {/* New key skill */}
+      <li>JavaScript</li>
+      <li>CSS</li> {/* Simplified from CSS/Bootstrap */}
+      {/* Removed: Angular.js, WordPress (unless it's a major focus for you now) */}
+    </ul>
 
-              <h3>Backend</h3>
-              <ul>
-                <li>C#</li>
-                <li>ASP.NET (Core MVC, Web API, Razor Pages)</li>
-                <li>Node.js</li>
-                <li>PHP</li>
-              </ul>
-              <h3>Databases</h3>
-              <ul>
-                <li>Microsoft SQL Server</li>
-                <li>MySQL</li>
-              </ul>
-              
-            </div>
-            <div className="right-column">
-            <h3>Tools/Technologies</h3>
-              <ul>
-                <li>Git</li>
-                <li>Azure DevOps</li>
-                <li>Microsoft Azure</li>
-                <li>OpenAI</li>
-                <li>Microsoft Dynamics CRM</li>
-                <li>IIS</li>
-                <li>Xamarin</li>
-                <li>Entity Framework</li>
-                <li>CSS/Bootstrap</li>
-              </ul>
-              <h3>Project Management</h3>
-              <ul>
-                <li>SCRUM</li>
-                <li>Docker</li>
-                <li>Agile methodologies</li>
-              </ul>
-            </div>
-            <div className="additional-content">
-            <h3>A bit about me</h3>
-              <p>
-              Hi, I'm Syed Khusroo Hayat, a Full Stack Developer with over 10 years of experience building web and mobile applications. I specialize in ASP.NET, Blazor, React, and Vue.js, and have a strong interest in integrating AI technologies, such as OpenAI, into my projects.
-              </p>
-              <p>
-              Currently, I'm working on a project using Microsoft Azure AI to create a chatbot that automates eCommerce tasks and enhances user interaction. I'm also developing a portfolio website with React (Next.js) to deliver a modern and responsive design.
-              </p> 
-        </div>
-          </div>
+    <h3>Backend & Cloud Services</h3>
+    <ul>
+      <li>C#</li>
+      <li>ASP.NET Core (MVC, Web API, Razor Pages)</li>
+      <li>Node.js</li>
+      <li>PHP</li> {/* Keep if still relevant to projects */}
+      <li>Microsoft Azure</li> {/* Moved to its own logical grouping */}
+      <li>Vercel</li> {/* New key skill */}
+      <li>Firebase (Auth, Studio)</li> {/* Grouped Firebase services */}
+      <li>Supabase</li> {/* New key skill */}
+      <li>Appwrite</li> {/* New key skill */}
+      <li>Entra ID (for Blazor)</li> {/* Specific integration skill */}
+      {/* Removed: IIS (less relevant for modern cloud deployment emphasis) */}
+    </ul>
+  </div>
+
+  <div className="right-column">
+    <h3>AI Tools</h3> {/* New dedicated category */}
+    <ul>
+      <li>Vibe Coding</li>
+      <li>Firebase Studio</li>
+      <li>Cursor</li>
+      <li>Lovable</li>
+      <li>OpenAI</li>
+      <li>Generative AI (Gen AI)</li> {/* Explicitly add this if you use it */}
+      <li>LLMs</li> {/* Key new keyword */}
+      {/* Placeholder for future AI tech if needed */}
+    </ul>
+
+    <h3>Databases & Integration</h3> {/* Streamlined and focused */}
+    <ul>
+      <li>MongoDB</li> {/* Highlighted Bookstore App */}
+      <li>Microsoft SQL Server</li>
+      <li>Dataverse</li> {/* New key skill */}
+      <li>Microsoft Dynamics CRM</li>
+      {/* Removed: MySQL (unless it's a major focus, keep if so) */}
+    </ul>
+
+    <h3>Developer Tools & Methodologies</h3> {/* Combined and focused */}
+    <ul>
+      <li>Git</li>
+      <li>Azure DevOps</li>
+      <li>Docker</li>
+      <li>Entity Framework</li>
+      <li>SCRUM</li>
+      <li>Agile Methodologies</li>
+    </ul>
+  </div>
+
+  <div className="additional-content">
+    {/* Replaced "A bit about me" with a more dynamic intro,
+        tying into your UVP and newer skills */}
+    <h3>Your Partner in AI Development</h3>
+    <p>
+      Hi, I'm Syed Khusroo Hayat, an AI-Augmented Cloud-Native Full Stack Architect with over a decade of experience.I specialize in building innovative web and mobile applications using modern technologies like React (Next.js), Blazor, and React Native, seamlessly integrating AI, LLMs, and Cloud services (Azure, Firebase, Supabase, Appwrite).
+    </p>
+    <p>
+      My 'Vibe Coding' approach ensures clean, efficient, and scalable solutions that drive tangible business results. Let's build something intelligent together.
+    </p>
+  </div>
+</div>
+
         </section>
         <section className="work-experience container">
           <h2>
@@ -246,23 +266,40 @@ export default function Home() {
             Completed Projects
           </h2>
           <div className="bento-grid">
-            <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-2.png" alt="BGCCI" width="100%" title="BGCCI" />
+            <a href="https://ai.commercegenie.com/" className="bento-item">
+              <img src="./imgs/prj-image-2.png" alt="E-commerce Platform" width="100%" />
+              <div className="project-info">
+                <h3>Commerce Genie</h3>
+                <p>AI‑Powered Ecommerce Content & Automation Platform</p>
+              </div>
             </a>
-            <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-1.png" alt="Churhview" width="100%" title="Churhview" />
+            <a href="https://kind-glacier-02d030503.azurestaticapps.net/" className="bento-item">
+              <img src="./imgs/prj-image-1.png" alt="Healthcare Portal" width="100%" />
+              <div className="project-info">
+                <h3>WorkForce Kit</h3>
+                <p>Empowering Industries with Streamlined Workforce Management</p>
+              </div>
             </a>
-            <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-3.png" alt="Harley" width="100%" title="Harley" />
+            <a href="https://www.radixtech.org/" className="bento-item">
+              <img src="./imgs/prj-image-3.jpg" alt="AI Chatbot" width="100%" />
+              <div className="project-info">
+                <h3>RadixTech</h3>
+                <p>Built by and for Humanitarian Aid Workers</p>
+              </div>
             </a>
-            <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-5.png" alt="Bunbury" width="100%" title="Bunbury" />
+            <a href="https://www.northerncrescent.ca/" className="bento-item">
+              <img src="./imgs/prj-image-5.png" alt="CRM Dashboard" width="100%" />
+              <div className="project-info">
+                <h3>Northern Crescent</h3>
+                <p>Customized ERP for Northern Crescent</p>
+              </div>
             </a>
-            <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-6.png" alt="Running" width="100%" title="Running" />
-            </a>
-            <a href="#" className="bento-item">
-              <img src="./imgs/prj-image-7.png" alt="School" width="100%" title="School" />
+            <a href="https://github.com/khusroohayat" className="bento-item">
+              <img src="./imgs/prj-image-6.png" alt="Mobile App" width="100%" />
+              <div className="project-info">
+                <h3>Avertly</h3>
+                <p>Maximize asset performance and minimize downtime with Avertly</p>
+              </div>
             </a>
           </div>
         </section>
@@ -275,7 +312,7 @@ export default function Home() {
           </h2>
           <div className="chatbot-blue">
             <div className="chat-info">
-              <h3>Azure AI Chatbot</h3>
+              <h3>AI Chatbot</h3>
               <p>I've put together a chatbot here which knows all my skills, work experience and has a copy of my CV/Resume. You can use it to ask questions about me to get a better idea of who I am and what I've done.</p>
               <p>You can also download my resume here if you want to take a look at it.  I'm currently looking for new opportunities so if you have a project you think I'd be a good fit for, please get in touch!</p>
               <a href="./Sample_Resume_Template.pdf" className="button black">Download Resume</a>
