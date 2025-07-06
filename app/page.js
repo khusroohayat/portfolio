@@ -280,13 +280,6 @@ export default function Home() {
                 <p>Empowering Industries with Streamlined Workforce Management</p>
               </div>
             </a>
-            <a href="https://www.radixtech.org/" className="bento-item">
-              <img src="./imgs/prj-image-3.jpg" alt="AI Chatbot" width="100%" />
-              <div className="project-info">
-                <h3>RadixTech</h3>
-                <p>Built by and for Humanitarian Aid Workers</p>
-              </div>
-            </a>
             <a href="https://www.northerncrescent.ca/" className="bento-item">
               <img src="./imgs/prj-image-5.png" alt="CRM Dashboard" width="100%" />
               <div className="project-info">
@@ -299,6 +292,20 @@ export default function Home() {
               <div className="project-info">
                 <h3>Avertly</h3>
                 <p>Maximize asset performance and minimize downtime with Avertly</p>
+              </div>
+            </a>
+            <a href="https://studio-gray-ten.vercel.app/" className="bento-item">
+              <img src="./imgs/prj-image-7.png" alt="School" width="100%" title="School" />
+              <div className="project-info">
+                <h3>Pixel Prgress</h3>
+                <p>A gamified habit-tracker that turns daily productivity into a game.</p>
+              </div>
+            </a>
+            <a href="https://www.radixtech.org/" className="bento-item">
+              <img src="./imgs/prj-image-3.jpg" alt="AI Chatbot" width="100%" />
+              <div className="project-info">
+                <h3>RadixTech</h3>
+                <p>Built by and for Humanitarian Aid Workers</p>
               </div>
             </a>
           </div>
