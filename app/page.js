@@ -266,25 +266,18 @@ export default function Home() {
             Completed Projects
           </h2>
           <div className="bento-grid">
+            <a href="https://kind-glacier-02d030503.azurestaticapps.net/" className="bento-item">
+              <img src="./imgs/prj-image-1.png" alt="E-commerce Platform" width="100%" />
+              <div className="project-info">
+              <h3>WorkForce Kit</h3>
+              <p>Empowering Industries with Streamlined Workforce Manag1ement</p>
+              </div>
+            </a>
             <a href="https://ai.commercegenie.com/" className="bento-item">
-              <img src="./imgs/prj-image-2.png" alt="E-commerce Platform" width="100%" />
+              <img src="./imgs/prj-image-2.png" alt="Healthcare Portal" width="100%" />
               <div className="project-info">
                 <h3>Commerce Genie</h3>
                 <p>AI‑Powered Ecommerce Content & Automation Platform</p>
-              </div>
-            </a>
-            <a href="https://kind-glacier-02d030503.azurestaticapps.net/" className="bento-item">
-              <img src="./imgs/prj-image-1.png" alt="Healthcare Portal" width="100%" />
-              <div className="project-info">
-                <h3>WorkForce Kit</h3>
-                <p>Empowering Industries with Streamlined Workforce Management</p>
-              </div>
-            </a>
-            <a href="https://www.northerncrescent.ca/" className="bento-item">
-              <img src="./imgs/prj-image-5.png" alt="CRM Dashboard" width="100%" />
-              <div className="project-info">
-                <h3>Northern Crescent</h3>
-                <p>Customized ERP for Northern Crescent</p>
               </div>
             </a>
             <a href="https://github.com/khusroohayat" className="bento-item">
@@ -301,11 +294,18 @@ export default function Home() {
                 <p>A gamified habit-tracker that turns daily productivity into a game.</p>
               </div>
             </a>
-            <a href="https://www.radixtech.org/" className="bento-item">
-              <img src="./imgs/prj-image-3.jpg" alt="AI Chatbot" width="100%" />
+            <a href="https://rad-muffin-a7f6a7.netlify.app/" className="bento-item">
+              <img src="./imgs/prj-image-3.png" alt="AI Chatbot" width="100%" />
               <div className="project-info">
-                <h3>RadixTech</h3>
-                <p>Built by and for Humanitarian Aid Workers</p>
+                <h3>PAW.AI</h3>
+                <p>Where AI Meets Paw-sitivity</p>
+              </div>
+            </a>
+            <a href="https://www.northerncrescent.ca/" className="bento-item">
+              <img src="./imgs/prj-image-5.png" alt="CRM Dashboard" width="100%" />
+              <div className="project-info">
+                <h3>Northern Crescent</h3>
+                <p>Customized ERP for Northern Crescent</p>
               </div>
             </a>
           </div>
