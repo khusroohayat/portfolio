@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import ServicesSection from "./ServicesSection"; // <-- Added
 
 export default function Home() {
 
@@ -310,6 +311,9 @@ export default function Home() {
             </a>
           </div>
         </section>
+        {/* --- Services Section --- */}
+        <ServicesSection />
+        {/* --- End Services Section --- */}
         <section className="chatbot container">
           <h2>
             <small>
