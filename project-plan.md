@@ -1,175 +1,171 @@
-# Portfolio Project Plan
+<!-- Project Plan — PRD-aligned: full rewrite -->
+# Project Plan — Khusroo Hayat Portfolio (PRD-aligned)
 
-## Project Goals
-- Create a professional, modern, and responsive portfolio website
-- Showcase skills, projects, and experience effectively
-- Implement best practices in web development and design
-- Ensure optimal performance and accessibility
-- Build a maintainable and scalable codebase
+Version: 1.0
+Date: August 17, 2025
 
-## Timeline
-### Phase 1: Planning and Setup (Week 1)
-- Project requirements gathering
-- Technology stack selection
-- Design system and wireframing
-- Development environment setup
+This project plan maps directly to the Product Requirements Document (`PRD.md`). It translates the PRD into an actionable, timeboxed plan with milestones, deliverables, success criteria, verification steps, and a current progress checklist based on the repository.
 
-### Phase 2: Core Development (Weeks 2-3)
-- Basic project structure implementation
-- Core components development
-- Responsive layout implementation
-- Basic animations and transitions
+## Goals (from PRD)
+- Create a professional, modern, responsive portfolio that showcases Khusroo's skills, projects, and experience.
+- Demonstrate expertise in React/Next.js and modern web practices.
+- Generate professional leads via contact & chatbot flows.
+- Achieve high performance, accessibility, and SEO metrics.
 
-### Phase 3: Features and Content (Weeks 4-5)
-- Project showcase implementation
-- About section development
-- Skills and experience sections
-- Contact form and integration
+## Scope (v1.0)
+Included
+- Home page (Hero, Featured Projects, Skills summary, About blurb)
+- Projects gallery and external/demo links
+- Dedicated project detail pages (dynamic) — planned for v1.0
+- About / Experience / Skills sections
+- Contact options: mailto link, contact form (front-end), and AI Chatbot (client + serverless backend)
+- Resume PDF download
+- SEO metadata, sitemap, and basic verification
 
-### Phase 4: Testing and Optimization (Week 6)
-- Performance optimization
-- Cross-browser testing
-- Accessibility testing
-- SEO optimization
+Out of scope (v1.0)
+- Full CMS or blog
+- Multi-language support
+- Large-scale backend (only serverless endpoints where needed)
+- Complex WebGL experiences
 
-### Phase 5: Deployment and Documentation (Week 7)
-- Deployment setup
-- Documentation completion
-- Final testing
-- Launch preparation
+---
+
+## Timeline & Milestones (7 weeks)
+Week 1 — Planning & Setup
+- Finalize PRD (done)
+- Project plan (this document)
+- Dev environment, repo hygiene, and branch strategy
+- Choose libraries (analytics, monitoring, a11y)
+
+Week 2 — Core UI
+- Implement responsive layout and global styles
+- Navigation, Hero, and Footer
+- Projects grid (static data)
+
+Week 3 — Content & Components
+- Skills, About, Work Experience sections
+- Services section and contact CTA
+- Placeholders for project detail pages and project manifest
+
+Week 4 — Interactivity
+- Chatbot client + serverless route (secure + limited)
+- Project detail pages (dynamic routes using projects manifest)
+- Project filtering UI (by tech/category)
+
+Week 5 — QA & Optimization
+- Lighthouse audit and performance fixes
+- Accessibility (a11y) audit and fixes
+- Image optimization, lazy loading, and critical CSS tuning
+
+Week 6 — CI/CD & Tests
+- Add linting, basic unit tests, and accessibility checks to CI
+- Configure deployments (Netlify/Vercel) and environment variables
+
+Week 7 — Finalize & Launch
+- Final content polish and proofreading
+- Run final performance & SEO checks
+- Deploy to production and verify monitoring/analytics
+
+---
 
 ## Deliverables
-1. Fully responsive portfolio website
-2. Source code repository
-3. Documentation
-   - Setup instructions
-   - Component documentation
-   - Deployment guide
-4. Performance metrics report
-5. Accessibility compliance report
+1. Production-ready portfolio site hosted on Netlify/Vercel.
+2. Dynamic project pages sourced from a `data/projects.json` (or MDX) manifest.
+3. Chatbot with a secure serverless API route and CV-aware responses.
+4. CI pipeline with linting, tests, and accessibility checks.
+5. Documentation: README, deployment notes, and content editing guide.
+6. Performance & accessibility report (Lighthouse key scores and remediation list).
 
-## Key Modules
+---
 
-### 1. Core Infrastructure
-- Project setup and configuration
-- Build system
-- Development environment
-- Testing framework
-- CI/CD pipeline
+## Technical Approach
+Stack
+- Next.js (app router)
+- React
+- CSS Modules or Tailwind (choose one; repository currently uses global CSS)
+- Serverless functions via Next.js API routes (or Netlify/Vercel functions)
+- Optional: TypeScript conversion (recommended but optional for v1)
 
-### 2. UI Components
-- Navigation system
-- Hero section
-- Project cards
-- Skills showcase
-- Contact form
-- Footer
+Data & Content
+- Use a single `data/projects.json` manifest for all projects (title, description, tech tags, images, demoUrl, repoUrl, slug).
+- Dynamic project pages created with file-based routing (Next.js dynamic routes) reading the manifest.
 
-### 3. Content Management
-- Project data structure
-- Content organization
-- Media handling
-- SEO optimization
+Chatbot
+- Client UI implemented; serverless endpoint should call Azure/OpenAI (keys in env variables).
+- Implement input validation, request rate-limiting, and response sanitization.
 
-### 4. Performance & Optimization
-- Image optimization
-- Code splitting
-- Caching strategy
-- Performance monitoring
+SEO & Performance
+- Add meta tags per page, sitemap, and robots file.
+- Optimize images (responsive srcsets, WebP where possible).
+- Lazy-load offscreen images and use `next/image` where practical.
 
-## Feature Recommendations
+Testing & CI
+- Add ESLint + Prettier
+- Add simple Jest tests for utilities / data parsing
+- Add axe-core or pa11y for automated accessibility checks in CI
 
-### Essential Features
-1. **Responsive Design**
-   - Mobile-first approach
-   - Breakpoint optimization
-   - Touch-friendly interactions
+Monitoring & Analytics
+- Minimal analytics (Plausible or GA4) and error tracking (Sentry) configured for production only.
 
-2. **Project Showcase**
-   - Filterable project grid
-   - Detailed project pages
-   - Live demo links
-   - GitHub integration
+Security
+- Do not commit secrets. Use `.env.local` and CI secrets. Ensure serverless endpoints validate inputs and throttle requests.
 
-3. **Skills & Experience**
-   - Interactive skills visualization
-   - Timeline-based experience
-   - Downloadable resume
-   - Professional certifications
+---
 
-4. **Contact & Social**
-   - Contact form with validation
-   - Social media integration
-   - Professional networking links
-   - Email integration
+## Success Criteria (aligned to PRD KPIs)
+- Lead Generation: measurable increase in contact messages (track via form submissions or email link clicks).
+- Performance: Lighthouse score >= 90 (desktop & mobile target).
+- Accessibility: WCAG 2.1 AA compliance for core pages.
+- SEO: site indexable, with correct meta tags and sitemap; rank for name search.
+- Launch: site deployed and reachable via chosen domain.
 
-### Advanced Features
-1. **Interactive Elements**
-   - Smooth scroll animations
-   - Parallax effects
-   - Interactive project demos
-   - Custom cursor effects
+---
 
-2. **Performance Optimizations**
-   - Lazy loading
-   - Image optimization
-   - Code splitting
-   - Service worker implementation
+## Progress Checklist (current repo snapshot)
+Source inspected: `PRD.md`, `package.json`, `app/page.js`, `app/layout.js`, `public/` assets.
 
-3. **Accessibility Features**
-   - ARIA labels
-   - Keyboard navigation
-   - Screen reader optimization
-   - High contrast mode
+Done (already in repo)
+- Next.js app scaffold using the `app` router.
+- `app/page.js` implements Hero, Skills, Projects grid, Work Experience, ServicesSection, and Chatbot UI.
+- `app/layout.js` contains SEO metadata, google verification, and fonts.
+- Resume PDF exists in `public/` and download links are wired.
+- Images are present in `public/imgs/` and referenced in pages.
+- `package.json` contains Next.js and `@azure/openai` dependency and basic scripts.
+- Netlify and Next config files exist (`netlify.toml`, `next.config.mjs`).
 
-4. **Analytics & Monitoring**
-   - Visitor analytics
-   - Performance monitoring
-   - Error tracking
-   - User behavior analysis
+Needs verification / immediate tasks
+- Confirm `app/api/route.js` exists and securely handles chatbot requests (server-side code not inspected yet).
+- Create `data/projects.json` and implement dynamic project detail pages and filtering.
+- Add `next/image` usage or responsive image optimization.
+- Add CI (lint/tests/a11y) and deployment checks.
 
-## Technology Stack Recommendations
+Planned / backlog
+- Run Lighthouse and a11y audits; fix top issues.
+- Add analytics and monitoring.
+- Harden chatbot serverless route (rate limiting, secret management).
+- Add project manifest and dynamic pages.
 
-### Frontend
-- Next.js/React for the framework
-- Tailwind CSS for styling
-- Framer Motion for animations
-- TypeScript for type safety
+---
 
-### Backend (if needed)
-- Node.js/Express
-- MongoDB/PostgreSQL
-- RESTful API design
+## Risks & Mitigations
+1. API keys exposure — store keys in CI environment and use server-side routes to proxy calls.
+2. Performance regressions from large images — implement image optimization and lazy loading.
+3. Accessibility gaps — run automated checks early and fix critical issues during Week 5.
 
-### Development Tools
-- Git for version control
-- ESLint/Prettier for code quality
-- Jest for testing
-- GitHub Actions for CI/CD
+---
 
-### Deployment
-- Vercel/Netlify for hosting
-- Cloudflare for CDN
-- AWS S3 for static assets
+## Acceptance & Verification Plan
+- QA checklist per page (Content, Links, Images, SEO tags, Accessibility, Performance).
+- Run Lighthouse and produce a remediation list; fix top 5 before launch.
+- Manual accessibility spot-checks and automated a11y CI.
+- Smoke test the contact/chat flows and verify messages are delivered or proxied correctly.
 
-## Success Metrics
-1. Performance
-   - Lighthouse score > 90
-   - First Contentful Paint < 1.5s
-   - Time to Interactive < 3.5s
+---
 
-2. Accessibility
-   - WCAG 2.1 AA compliance
-   - 100% keyboard navigation
-   - Screen reader compatibility
+## Next concrete actions I can take now (pick one)
+1. Verify or implement the chatbot server route (`app/api/route.js`) and test a secure end-to-end chat flow.
+2. Create `data/projects.json` and implement dynamic project pages + client-side filtering.
+3. Run a Lighthouse/a11y audit locally and produce the top-5 remediation list.
+4. Add CI workflow (GitHub Actions) to run lint and basic accessibility checks on PRs.
 
-3. SEO
-   - Meta tags optimization
-   - Sitemap implementation
-   - Schema markup
-
-4. User Experience
-   - Mobile responsiveness
-   - Cross-browser compatibility
-   - Smooth animations
-   - Intuitive navigation 
+Tell me which to start and I will implement it and report progress.
