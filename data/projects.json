@@ -1,0 +1,56 @@
+[
+  {
+    "slug": "workforce-kit",
+    "title": "WorkForce Kit",
+    "description": "Empowering Industries with Streamlined Workforce Management.",
+    "image": "/imgs/prj-image-1.png",
+    "demoUrl": "https://kind-glacier-02d030503.azurestaticapps.net/",
+    "repoUrl": null,
+    "tech": ["Azure", "React", "Blazor"]
+  },
+  {
+    "slug": "commerce-genie",
+    "title": "Commerce Genie",
+    "description": "AI-Powered Ecommerce Content & Automation Platform.",
+    "image": "/imgs/prj-image-2.png",
+    "demoUrl": "https://ai.commercegenie.com/",
+    "repoUrl": null,
+    "tech": ["AI", "Next.js", "Azure"]
+  },
+  {
+    "slug": "avertly",
+    "title": "Avertly",
+    "description": "Maximize asset performance and minimize downtime with Avertly.",
+    "image": "/imgs/prj-image-6.png",
+    "demoUrl": "https://github.com/khusroohayat",
+    "repoUrl": "https://github.com/khusroohayat",
+    "tech": ["React", "Node.js"]
+  },
+  {
+    "slug": "pixel-progress",
+    "title": "Pixel Progress",
+    "description": "A gamified habit-tracker that turns daily productivity into a game.",
+    "image": "/imgs/prj-image-7.png",
+    "demoUrl": "https://studio-gray-ten.vercel.app/",
+    "repoUrl": null,
+    "tech": ["Next.js", "Vercel"]
+  },
+  {
+    "slug": "paw-ai",
+    "title": "PAW.AI",
+    "description": "Where AI Meets Paw-sitivity.",
+    "image": "/imgs/prj-image-3.png",
+    "demoUrl": "https://rad-muffin-a7f6a7.netlify.app/",
+    "repoUrl": null,
+    "tech": ["AI", "React", "Netlify"]
+  },
+  {
+    "slug": "northern-crescent",
+    "title": "Northern Crescent",
+    "description": "Customized ERP for Northern Crescent.",
+    "image": "/imgs/prj-image-5.png",
+    "demoUrl": "https://www.northerncrescent.ca/",
+    "repoUrl": null,
+    "tech": ["ERP", "React"]
+  }
+]
