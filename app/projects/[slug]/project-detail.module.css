@@ -1,0 +1,31 @@
+.projectDetailWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 900px) {
+  .projectDetailWrapper {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.projectImageSection {
+  flex: 1 1 400px;
+  min-width: 0;
+}
+
+.projectInfoSection {
+  flex: 2 1 500px;
+  min-width: 0;
+}
+
+/* Maintain spacing and visual consistency */
+.projectImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+}
