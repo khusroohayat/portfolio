@@ -67,9 +67,9 @@ export default function HomeProjectsFilter() {
             <div>
               <Image src={project.image} alt={project.title} width={600} height={340} style={{ width: '100%', height: 'auto', borderRadius: 12, objectFit: 'cover' }} />
               <div className="project-info" style={{ padding: '1.1rem 0 0.5rem 0' }}>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, margin: 0 }}>{project.title}</h3>
-                <p style={{ margin: '0.3rem 0 0.7rem 0', color: '#444', fontSize: '1rem', minHeight: 40 }}>{project.description}</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, margin: '0.3rem 0px 0.7rem 0.7rem' }}>{project.title}</h3>
+                <p style={{ margin: '0.3rem 0 0.7rem 0.7rem', color: '#fff', fontSize: '1rem' }}>{project.description}</p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', margin: '0.3rem 0 0.7rem 0.7rem' }}>
                   {project.tech.map(t => <span key={t} style={{ background: '#e3f2fd', borderRadius: 999, padding: '0.3em 1em', fontSize: '0.98rem', fontWeight: 600, color: '#1565c0' }}>{t}</span>)}
                 </div>
               </div>
