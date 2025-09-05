@@ -2,21 +2,49 @@
 import projects from '../data/projects.json';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function HomeProjectsFilter() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [techFilter, setTechFilter] = useState('');
   const allTechs = Array.from(new Set(projects.flatMap(p => p.tech))).sort();
+  
+  // Initialize tech filter from URL query string on component mount
+  useEffect(() => {
+    const techParam = searchParams.get('tech');
+    if (techParam && allTechs.includes(techParam)) {
+      setTechFilter(techParam);
+    }
+  }, [searchParams, allTechs]);
+
   const filteredProjects = techFilter
     ? projects.filter(project => project.tech.includes(techFilter))
     : projects;
+
+  // Handle tech filter change and update URL
+  const handleTechFilterChange = (tech) => {
+    setTechFilter(tech);
+    
+    // Update URL with query string
+    const params = new URLSearchParams(searchParams);
+    if (tech) {
+      params.set('tech', tech);
+    } else {
+      params.delete('tech');
+    }
+    
+    const newUrl = params.toString() ? `?${params.toString()}` : window.location.pathname;
+    router.push(newUrl, { scroll: false });
+  };
 
   return (
     <>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.7rem', marginBottom: '2.2rem' }}>
         <button
           type="button"
-          onClick={() => setTechFilter('')}
+          onClick={() => handleTechFilterChange('')}
           aria-pressed={techFilter === ''}
           style={{
             background: techFilter === '' ? '#1565c0' : '#e3f2fd',
@@ -38,7 +66,7 @@ export default function HomeProjectsFilter() {
           <button
             key={tech}
             type="button"
-            onClick={() => setTechFilter(tech)}
+            onClick={() => handleTechFilterChange(tech)}
             aria-pressed={techFilter === tech}
             style={{
               background: techFilter === tech ? '#1565c0' : '#e3f2fd',
