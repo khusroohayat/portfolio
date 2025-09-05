@@ -4,6 +4,7 @@ import projects from "../data/projects.json";
 import Image from "next/image";
 
 import ServicesSection from "./ServicesSection";
+import { Suspense } from "react";
 import HomeProjectsFilter from "./HomeProjectsFilter";
 
 export default function Home() {
@@ -266,7 +267,9 @@ export default function Home() {
             <small>Previous</small>
             Completed Projects
           </h2>
-          <HomeProjectsFilter />
+          <Suspense>
+            <HomeProjectsFilter />
+          </Suspense>
         </section>
         {/* --- Services Section --- */}
         <ServicesSection />
