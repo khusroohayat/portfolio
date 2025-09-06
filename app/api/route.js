@@ -28,9 +28,62 @@ export async function GET(req, res) {
     return NextResponse.json({ message });
 }
 
+
+// Simple in-memory rate limiter (per IP)
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const RATE_LIMIT_MAX_REQUESTS = 10;
+const rateLimitMap = new Map();
+
+function getClientIp(req) {
+    // Next.js edge/serverless: try x-forwarded-for, fallback to remote address
+    const xff = req.headers.get('x-forwarded-for');
+    if (xff) return xff.split(',')[0].trim();
+    return req.ip || 'unknown';
+}
+
+function isRateLimited(ip) {
+    const now = Date.now();
+    let entry = rateLimitMap.get(ip);
+    if (!entry) {
+        entry = { count: 1, start: now };
+        rateLimitMap.set(ip, entry);
+        return false;
+    }
+    if (now - entry.start > RATE_LIMIT_WINDOW_MS) {
+        // Reset window
+        entry.count = 1;
+        entry.start = now;
+        return false;
+    }
+    entry.count++;
+    if (entry.count > RATE_LIMIT_MAX_REQUESTS) return true;
+    return false;
+}
+
 export async function POST(req) {
     try {
-        const { messages: clientMessages } = await req.json();
+        // Rate limiting
+        const ip = getClientIp(req);
+        if (isRateLimited(ip)) {
+            return NextResponse.json({ message: 'Rate limit exceeded. Please try again later.' }, { status: 429 });
+        }
+
+        // Input validation
+        let jsonBody;
+        try {
+            jsonBody = await req.json();
+        } catch (e) {
+            return NextResponse.json({ message: 'Invalid JSON in request body.' }, { status: 400 });
+        }
+        const clientMessages = jsonBody?.messages;
+        if (!Array.isArray(clientMessages) || clientMessages.length === 0) {
+            return NextResponse.json({ message: 'Missing or invalid messages array.' }, { status: 400 });
+        }
+        for (const m of clientMessages) {
+            if (!m || typeof m !== 'object' || typeof m.content !== 'string' || !m.content.trim() || typeof m.role !== 'string') {
+                return NextResponse.json({ message: 'Each message must be an object with non-empty string content and role.' }, { status: 400 });
+            }
+        }
 
         // --- Refined Message Processing ---
         const systemInstructionContent = `You are PortfolioGPT. Your **sole purpose** is to answer questions based **strictly and only** on the resume text provided below. Do **not** use any external knowledge or information beyond this resume. If the answer cannot be found in the resume, say "That information is not available in the provided resume."\n\n--- RESUME START ---\n${DATA_RESUME}\n--- RESUME END ---`;

@@ -33,7 +33,7 @@ Out of scope (v1.0)
 ## Timeline & Milestones (7 weeks)
 Week 1 — Planning & Setup
 - Finalize PRD (done)
-- Project plan (this document)
+- Project plan (done)
 - Dev environment, repo hygiene, and branch strategy
 - Choose libraries (analytics, monitoring, a11y)
 

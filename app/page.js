@@ -1,7 +1,11 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import projects from "../data/projects.json";
 import Image from "next/image";
-import ServicesSection from "./ServicesSection"; // <-- Added
+
+import ServicesSection from "./ServicesSection";
+import { Suspense } from "react";
+import HomeProjectsFilter from "./HomeProjectsFilter";
 
 export default function Home() {
 
@@ -22,27 +26,25 @@ export default function Home() {
     }
   }, [messages]);
 
+
   const submitForm = async (e) => {
     e.preventDefault();
-    let newMessages = [...messages, { role: 'user', content: messageInput }]
+    let newMessages = [...messages, { role: 'user', content: messageInput }];
     setMessages(newMessages);
     setMessageInput('');
-    const apiMessage = await fetch(
-      '/api',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ messages: newMessages })
-      }
-    ).then(res => res.json());
-    setMessages([...newMessages, { role: 'assistant', content: apiMessage.message }]);
-  }
+    const apiMessage = await fetch('/api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ messages: newMessages })
+    });
+    const data = await apiMessage.json();
+    setMessages([...newMessages, { role: 'assistant', content: data.message }]);
+  };
 
-  const toggleMobileMenu = () => {
-    setMenuOpen(!menuOpen);
-  }
+  // Add toggleMobileMenu handler if needed
+  const toggleMobileMenu = () => setMenuOpen((open) => !open);
 
   return (
     <>
@@ -81,10 +83,10 @@ export default function Home() {
               Syed Khusroo Hayat
               </h1>
               <p>
-        <span>a full stack developer specializing in cloud-native applications with AI integration. I leverage LLMs, modern frameworks, and vibe coding practices to build scalable solutions that solve real business problems across multiple industries</span>
-      </p>
+                <span>a full stack developer specializing in cloud-native applications with AI integration. I leverage LLMs, modern frameworks, and vibe coding practices to build scalable solutions that solve real business problems across multiple industries</span>
+              </p>
               <div className="call-to-action">
-                <a href="./Khusroo-Hayat-CV.pdf" className="button black">
+                                <a href="./Khusroo-Hayat-CV.pdf" className="button black">
                   View Resume
                 </a>
                 <a href="mailto:khusroo.hayat@gmail.com" className="button white">
@@ -98,6 +100,7 @@ export default function Home() {
                 <a href="https://www.linkedin.com/in/khusroosyed/">
                   <img src="./imgs/linkedin.png" alt="LinkedIn" width="48" title="LinkedIn" />
                 </a>
+                {/* Add your call-to-action buttons or content here if needed */}
               </div>
             </div>
           </div>
@@ -105,7 +108,7 @@ export default function Home() {
             <img src="./imgs/khusroo-hero-image.png" alt="Khusroo Hayat" width="100%" title="Khusroo Hayat" />
           </div>
         </section>
-        <section className="logos container">
+                <section className="logos container">
           <div className="marquee">
             <div className="track">
               <img src="./imgs/html.png" alt="HTML" width="128" title="HTML" />
@@ -261,55 +264,12 @@ export default function Home() {
         </section>
         <section id="projects" className="bento container">
           <h2>
-            <small>
-              Previous
-            </small>
+            <small>Previous</small>
             Completed Projects
           </h2>
-          <div className="bento-grid">
-            <a href="https://kind-glacier-02d030503.azurestaticapps.net/" className="bento-item">
-              <img src="./imgs/prj-image-1.png" alt="E-commerce Platform" width="100%" />
-              <div className="project-info">
-              <h3>WorkForce Kit</h3>
-              <p>Empowering Industries with Streamlined Workforce Manag1ement</p>
-              </div>
-            </a>
-            <a href="https://ai.commercegenie.com/" className="bento-item">
-              <img src="./imgs/prj-image-2.png" alt="Healthcare Portal" width="100%" />
-              <div className="project-info">
-                <h3>Commerce Genie</h3>
-                <p>AI‑Powered Ecommerce Content & Automation Platform</p>
-              </div>
-            </a>
-            <a href="https://github.com/khusroohayat" className="bento-item">
-              <img src="./imgs/prj-image-6.png" alt="Mobile App" width="100%" />
-              <div className="project-info">
-                <h3>Avertly</h3>
-                <p>Maximize asset performance and minimize downtime with Avertly</p>
-              </div>
-            </a>
-            <a href="https://studio-gray-ten.vercel.app/" className="bento-item">
-              <img src="./imgs/prj-image-7.png" alt="School" width="100%" title="School" />
-              <div className="project-info">
-                <h3>Pixel Prgress</h3>
-                <p>A gamified habit-tracker that turns daily productivity into a game.</p>
-              </div>
-            </a>
-            <a href="https://rad-muffin-a7f6a7.netlify.app/" className="bento-item">
-              <img src="./imgs/prj-image-3.png" alt="AI Chatbot" width="100%" />
-              <div className="project-info">
-                <h3>PAW.AI</h3>
-                <p>Where AI Meets Paw-sitivity</p>
-              </div>
-            </a>
-            <a href="https://www.northerncrescent.ca/" className="bento-item">
-              <img src="./imgs/prj-image-5.png" alt="CRM Dashboard" width="100%" />
-              <div className="project-info">
-                <h3>Northern Crescent</h3>
-                <p>Customized ERP for Northern Crescent</p>
-              </div>
-            </a>
-          </div>
+          <Suspense>
+            <HomeProjectsFilter />
+          </Suspense>
         </section>
         {/* --- Services Section --- */}
         <ServicesSection />

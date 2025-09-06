@@ -1,0 +1,57 @@
+[
+  {
+    "slug": "workforce-kit",
+    "title": "WorkForce Kit",
+    "description": "I led the end-to-end development of a mission-critical SaaS application designed to eliminate HR administrative chaos and empower businesses to manage their workforce with clarity and efficiency.",
+    "image": "/imgs/prj-image-1.png",
+    "demoUrl": "https://kind-glacier-02d030503.azurestaticapps.net/",
+    "repoUrl": null,
+    "tech": ["ASP.NET Core (Web API)", "Vuejs", "Azure", "Git", "Azure DevOps", "Bootstrap", "SQL Server"]
+  },
+  {
+    "slug": "commerce-genie",
+    "title": "Commerce Genie",
+    "description": "I architected and developed the core AI functionality for a SaaS platform that empowers eCommerce merchants to automate their entire content marketing strategy, turning a major business bottleneck into a competitive advantage.",
+    "image": "/imgs/prj-image-2.png",
+    "demoUrl": "https://ai.commercegenie.com/",
+    "repoUrl": null,
+    "tech": ["Open AI", "Asp.net", "Azure","Vue.js", "Chatbot"]
+  },
+  {
+    "slug": "northern-crescent",
+    "title": "Northern Crescent",
+    "description": "I engineered the core infrastructure for a custom ERP system, breaking down data silos between critical business units to create a single, unified operational backbone for the entire company.",
+    "image": "/imgs/prj-image-5.png",
+    "demoUrl": "https://www.northerncrescent.ca/",
+    "repoUrl": null,
+    "tech": ["ERP", "Azure", "MongoDb", "Blazor", "Entra ID"]
+  },
+  {
+    "slug": "pixel-progress",
+    "title": "Pixel Progress",
+    "description": "A gamified habit-tracker that turns daily productivity into a game.",
+    "image": "/imgs/prj-image-7.png",
+    "demoUrl": "https://studio-gray-ten.vercel.app/",
+    "repoUrl": null,
+    "tech": ["Next.js", "Vercel", "Firebase Studio"]
+  },
+  {
+    "slug": "avertly",
+    "title": "Avertly",
+    "description": "I led the full-stack development of a sophisticated CMMS platform that empowers businesses to move from expensive, reactive repairs to a cost-effective, predictive maintenance model, maximizing asset lifespan and operational uptime.",
+    "image": "/imgs/prj-image-6.png",
+    "demoUrl": "https://github.com/khusroohayat",
+    "repoUrl": "https://github.com/khusroohayat",
+    "tech": ["ASP.NET Core (Web API)", "Vue.js", "Microsoft SQL Server", "Azure"]
+  },
+  {
+    "slug": "paw-ai",
+    "title": "PAW.AI",
+    "description": "I developed a dynamic web application that leverages multiple AI APIs to create, manage, and showcase a world of entirely virtual pet influencers, demonstrating a modern approach to automated content creation and user engagement.",
+    "image": "/imgs/prj-image-3.png",
+    "demoUrl": "https://rad-muffin-a7f6a7.netlify.app/",
+    "repoUrl": null,
+    "tech": ["AI", "Next.js", "Netlify", "Strapi"]
+  }
+  
+]
