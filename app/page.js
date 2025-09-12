@@ -1,7 +1,5 @@
-'use client';
+ 'use client';
 import { useState, useEffect, useRef } from 'react';
-import projects from '../data/projects.json';
-import Image from 'next/image';
 
 import ServicesSection from './ServicesSection';
 import { Suspense } from 'react';
@@ -93,7 +91,7 @@ export default function Home() {
           <div className="hero-blue">
             <div>
               <h1>
-                <small>Hi I'm </small>
+                <small>Hi I&apos;m </small>
                 Syed Khusroo Hayat
               </h1>
               <p>
@@ -124,16 +122,16 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-yellow">
-            <img
-              src="./imgs/khusroo-hero-image.png"
-              alt="Khusroo Hayat"
-              width="100%"
-              title="Khusroo Hayat"
-            />
-          </div>
-        </section>
-        <section className="logos container">
-          <div className="marquee">
+              <p>
+                I&apos;ve put together a chatbot here which knows all my skills, work experience and has
+                a copy of my CV/Resume. You can use it to ask questions about me to get a better
+                idea of who I am and what I&apos;ve done.
+              </p>
+              <p>
+                You can also download my resume here if you want to take a look at it. I&apos;m currently
+                looking for new opportunities so if you have a project you think I&apos;d be a good fit
+                for, please get in touch!
+              </p>
             <div className="track">
               <img src="./imgs/html.png" alt="HTML" width="128" title="HTML" />
               <img src="./imgs/css.png" alt="CSS" width="128" title="CSS" />
