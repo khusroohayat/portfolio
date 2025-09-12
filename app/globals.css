@@ -264,9 +264,19 @@ header {
     justify-content: center;
     align-items: flex-end;
 
-    img {
+    /* Ensure decorative/track images have fixed dimensions to preserve layout
+       and to work with next/image which renders an inline wrapper element. */
+    /* Target plain img, img inside picture, and img inside common Next.js wrapper elements */
+    img,
+    picture img,
+    /* Images rendered by next/image often live inside a span wrapper; include broad matches */
+    span[class*="next"] img,
+    span[class*="image"] img,
+    .next-image img {
       margin-top: -60px;
-      max-width: 420px;
+      width: 128px;
+      height: 128px;
+      object-fit: contain;
       margin-bottom: -10px;
     }
   }
