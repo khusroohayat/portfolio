@@ -1,5 +1,6 @@
  'use client';
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 import ServicesSection from './ServicesSection';
 import { Suspense } from 'react';
@@ -112,10 +113,10 @@ export default function Home() {
               </div>
               <div className="social-links">
                 <a href="https://github.com/khusroohayat/">
-                  <img src="./imgs/github.png" alt="GitHub" width="48" title="GitHub" />
+                  <Image src="/imgs/github.png" alt="GitHub" width={48} height={48} title="GitHub" />
                 </a>
                 <a href="https://www.linkedin.com/in/khusroosyed/">
-                  <img src="./imgs/linkedin.png" alt="LinkedIn" width="48" title="LinkedIn" />
+                  <Image src="/imgs/linkedin.png" alt="LinkedIn" width={48} height={48} title="LinkedIn" />
                 </a>
                 {/* Add your call-to-action buttons or content here if needed */}
               </div>
@@ -225,15 +226,15 @@ export default function Home() {
         tying into your UVP and newer skills */}
               <h3>Your Partner in AI Development</h3>
               <p>
-                Hi, I'm Syed Khusroo Hayat, an AI-Augmented Cloud-Native Full Stack Architect with
+                Hi, I&apos;m Syed Khusroo Hayat, an AI-Augmented Cloud-Native Full Stack Architect with
                 over a decade of experience.I specialize in building innovative web and mobile
                 applications using modern technologies like React (Next.js), Blazor, and React
                 Native, seamlessly integrating AI, LLMs, and Cloud services (Azure, Firebase,
                 Supabase, Appwrite).
               </p>
               <p>
-                My 'Vibe Coding' approach ensures clean, efficient, and scalable solutions that
-                drive tangible business results. Let's build something intelligent together.
+                My &apos;Vibe Coding&apos; approach ensures clean, efficient, and scalable solutions that
+                drive tangible business results. Let&apos;s build something intelligent together.
               </p>
             </div>
           </div>
@@ -247,10 +248,12 @@ export default function Home() {
             <article>
               <figure>
                 <div>
-                  <img
-                    src="./imgs/consultant.jpg"
+                  <Image
+                    src="/imgs/consultant.jpg"
                     alt="Workplace 1 - YouTube Creator"
-                    width="100%"
+                    width={800}
+                    height={400}
+                    style={{ width: '100%', height: 'auto' }}
                     title="Consultant"
                   />
                   <figcaption>Consultant</figcaption>
@@ -267,10 +270,12 @@ export default function Home() {
             <article>
               <figure>
                 <div>
-                  <img
-                    src="./imgs/tenpearls.png"
+                  <Image
+                    src="/imgs/tenpearls.png"
                     alt="Workplace 2 - Moshi Moshi Marketing"
-                    width="100%"
+                    width={800}
+                    height={400}
+                    style={{ width: '100%', height: 'auto' }}
                     title="10Pearls"
                   />
                   <figcaption>10Pearls</figcaption>
@@ -286,10 +291,12 @@ export default function Home() {
             <article>
               <figure>
                 <div>
-                  <img
-                    src="./imgs/shinersoft.png"
+                  <Image
+                    src="/imgs/shinersoft.png"
                     alt="Workplace 3 - Chamber of Commerce"
-                    width="100%"
+                    width={800}
+                    height={400}
+                    style={{ width: '100%', height: 'auto' }}
                     title="Shiner Soft"
                   />
                   <figcaption>Shiner Soft</figcaption>
@@ -325,13 +332,13 @@ export default function Home() {
             <div className="chat-info">
               <h3>AI Chatbot</h3>
               <p>
-                I've put together a chatbot here which knows all my skills, work experience and has
+                I&apos;ve put together a chatbot here which knows all my skills, work experience and has
                 a copy of my CV/Resume. You can use it to ask questions about me to get a better
-                idea of who I am and what I've done.
+                idea of who I am and what I&apos;ve done.
               </p>
               <p>
-                You can also download my resume here if you want to take a look at it. I'm currently
-                looking for new opportunities so if you have a project you think I'd be a good fit
+                You can also download my resume here if you want to take a look at it. I&apos;m currently
+                looking for new opportunities so if you have a project you think I&apos;d be a good fit
                 for, please get in touch!
               </p>
               <a href="./Sample_Resume_Template.pdf" className="button black">
