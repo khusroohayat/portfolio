@@ -66,7 +66,7 @@ describe('HomeProjectsFilter', () => {
   it('initializes filter from URL query string', () => {
     const searchParamsWithTech = new URLSearchParams('tech=React');
     useSearchParams.mockReturnValue(searchParamsWithTech);
-    
+
     render(<HomeProjectsFilter />);
     expect(screen.getByText('Project A')).toBeInTheDocument();
     expect(screen.queryByText('Project B')).not.toBeInTheDocument();
@@ -75,24 +75,24 @@ describe('HomeProjectsFilter', () => {
   it('updates URL when tech filter changes', () => {
     render(<HomeProjectsFilter />);
     fireEvent.click(screen.getByRole('button', { name: 'React' }));
-    
+
     expect(mockPush).toHaveBeenCalledWith('?tech=React', { scroll: false });
   });
 
   it('removes tech parameter when All is clicked', () => {
     const searchParamsWithTech = new URLSearchParams('tech=React');
     useSearchParams.mockReturnValue(searchParamsWithTech);
-    
+
     render(<HomeProjectsFilter />);
     fireEvent.click(screen.getByRole('button', { name: 'All' }));
-    
+
     expect(mockPush).toHaveBeenCalledWith('/', { scroll: false });
   });
 
   it('ignores invalid tech parameter from URL', () => {
     const searchParamsWithInvalidTech = new URLSearchParams('tech=InvalidTech');
     useSearchParams.mockReturnValue(searchParamsWithInvalidTech);
-    
+
     render(<HomeProjectsFilter />);
     expect(screen.getByText('Project A')).toBeInTheDocument();
     expect(screen.getByText('Project B')).toBeInTheDocument();

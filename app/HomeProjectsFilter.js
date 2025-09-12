@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import projects from '../data/projects.json';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -9,8 +9,8 @@ export default function HomeProjectsFilter() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [techFilter, setTechFilter] = useState('');
-  const allTechs = Array.from(new Set(projects.flatMap(p => p.tech))).sort();
-  
+  const allTechs = [...new Set(projects.flatMap((project) => project.tech))].sort();
+
   // Initialize tech filter from URL query string on component mount
   useEffect(() => {
     const techParam = searchParams.get('tech');
@@ -20,13 +20,13 @@ export default function HomeProjectsFilter() {
   }, [searchParams, allTechs]);
 
   const filteredProjects = techFilter
-    ? projects.filter(project => project.tech.includes(techFilter))
+    ? projects.filter((project) => project.tech.includes(techFilter))
     : projects;
 
   // Handle tech filter change and update URL
   const handleTechFilterChange = (tech) => {
     setTechFilter(tech);
-    
+
     // Update URL with query string
     const params = new URLSearchParams(searchParams);
     if (tech) {
@@ -34,7 +34,7 @@ export default function HomeProjectsFilter() {
     } else {
       params.delete('tech');
     }
-    
+
     const newUrl = params.toString() ? `?${params.toString()}` : window.location.pathname;
     router.push(newUrl, { scroll: false });
   };
@@ -62,7 +62,7 @@ export default function HomeProjectsFilter() {
         >
           All
         </button>
-        {allTechs.map(tech => (
+        {allTechs.map((tech) => (
           <button
             key={tech}
             type="button"
@@ -88,17 +88,63 @@ export default function HomeProjectsFilter() {
       </div>
       <div className="bento-grid">
         {filteredProjects.length === 0 && (
-          <div style={{ gridColumn: '1/-1', textAlign: 'center', color: '#888', fontSize: '1.1rem' }}>No projects found.</div>
+          <div
+            style={{ gridColumn: '1/-1', textAlign: 'center', color: '#888', fontSize: '1.1rem' }}
+          >
+            No projects found.
+          </div>
         )}
         {filteredProjects.map((project) => (
-          <Link href={`/projects/${project.slug}`} key={project.slug} className="bento-item" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Link
+            href={`/projects/${project.slug}`}
+            key={project.slug}
+            className="bento-item"
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
             <div>
-              <Image src={project.image} alt={project.title} width={600} height={340} style={{ width: '100%', height: 'auto', borderRadius: 12, objectFit: 'cover' }} />
+              <Image
+                src={project.image}
+                alt={project.title}
+                width={600}
+                height={340}
+                style={{ width: '100%', height: 'auto', borderRadius: 12, objectFit: 'cover' }}
+              />
               <div className="project-info" style={{ padding: '1.1rem 0 0.5rem 0' }}>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, margin: '0.3rem 0px 0.7rem 0.7rem' }}>{project.title}</h3>
-                <p style={{ margin: '0.3rem 0 0.7rem 0.7rem', color: '#fff', fontSize: '1rem' }}>{project.description}</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', margin: '0.3rem 0 0.7rem 0.7rem' }}>
-                  {project.tech.map(t => <span key={t} style={{ background: '#e3f2fd', borderRadius: 999, padding: '0.3em 1em', fontSize: '0.98rem', fontWeight: 600, color: '#1565c0' }}>{t}</span>)}
+                <h3
+                  style={{
+                    fontSize: '1.3rem',
+                    fontWeight: 700,
+                    margin: '0.3rem 0px 0.7rem 0.7rem',
+                  }}
+                >
+                  {project.title}
+                </h3>
+                <p style={{ margin: '0.3rem 0 0.7rem 0.7rem', color: '#fff', fontSize: '1rem' }}>
+                  {project.description}
+                </p>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '0.5rem',
+                    margin: '0.3rem 0 0.7rem 0.7rem',
+                  }}
+                >
+                  {project.tech.map((t) => (
+                    <span
+                      key={t}
+                      style={{
+                        background: '#e3f2fd',
+                        borderRadius: 999,
+                        padding: '0.3em 1em',
+                        fontSize: '0.98rem',
+                        fontWeight: 600,
+                        color: '#1565c0',
+                      }}
+                    >
+                      {t}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
