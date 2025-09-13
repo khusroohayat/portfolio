@@ -3,9 +3,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Home from '../page';
 
 // Mock next/image to render a normal img
-// Mock next/image with an accessible stub to avoid using a real <img> element in tests
-// eslint-disable-next-line react/display-name
-jest.mock('next/image', () => ({ __esModule: true, default: (props) => <div role="img" {...props} /> }));
+jest.mock('next/image', () => ({ __esModule: true, default: (props) => <img {...props} /> }));
 // Mock HomeProjectsFilter if needed
 jest.mock('../HomeProjectsFilter', () => () => (
   <div data-testid="home-projects-filter">[Project Filter]</div>
