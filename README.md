@@ -1,5 +1,27 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Code Quality: Linting & Formatting
+
+This project uses **ESLint** and **Prettier** to enforce code quality and consistent formatting.
+
+### Linting
+
+- Run `npm run lint` to check for linting errors using Next.js and ESLint.
+- Run `npm run lint:eslint` for direct ESLint checks.
+- Run `npm run lint:eslint:fix` to automatically fix lint errors where possible.
+- ESLint covers `.js`, `.jsx`, `.ts`, `.tsx` files and integrates with Prettier for formatting rules.
+
+### Formatting
+
+- Run `npm run format` to format code using Prettier.
+- Prettier covers `.js`, `.jsx`, `.ts`, `.tsx`, `.css`, `.md`, and `.json` files.
+- Configuration is in `.prettierrc` and `.eslintrc.js`.
+
+### Customization
+
+- You can adjust rules in `.eslintrc.js` and formatting options in `.prettierrc`.
+- For more details, see [ESLint documentation](https://eslint.org/) and [Prettier documentation](https://prettier.io/).
+
 ## Getting Started
 
 First, run the development server:
