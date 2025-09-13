@@ -134,25 +134,24 @@ export default function Home() {
                 for, please get in touch!
               </p>
             <div className="track">
-              {/* Use next/image with explicit dimensions to preserve track layout */}
-              <Image src="/imgs/html.png" alt="HTML" width={128} height={128} title="HTML" />
-              <Image src="/imgs/css.png" alt="CSS" width={128} height={128} title="CSS" />
-              <Image src="/imgs/javascript.png" alt="JS" width={128} height={128} title="JavaScript" />
-              <Image src="/imgs/sass.png" alt="Sass" width={128} height={128} title="Sass" />
-              <Image src="/imgs/react.png" alt="React" width={128} height={128} title="React" />
-              <Image src="/imgs/nextjs.png" alt="Next JS" width={128} height={128} title="Next.js" />
-              <Image src="/imgs/azure.png" alt="Azure" width={128} height={128} title="Azure" />
-              <Image src="/imgs/vscode.png" alt="VS Code" width={128} height={128} title="VS Code" />
-              <Image src="/imgs/python.png" alt="Python" width={128} height={128} title="Python" />
-              <Image src="/imgs/html.png" alt="HTML" width={128} height={128} title="HTML" />
-              <Image src="/imgs/css.png" alt="CSS" width={128} height={128} title="CSS" />
-              <Image src="/imgs/javascript.png" alt="JS" width={128} height={128} title="JavaScript" />
-              <Image src="/imgs/sass.png" alt="Sass" width={128} height={128} title="Sass" />
-              <Image src="/imgs/react.png" alt="React" width={128} height={128} title="React" />
-              <Image src="/imgs/nextjs.png" alt="Next JS" width={128} height={128} title="Next.js" />
-              <Image src="/imgs/azure.png" alt="Azure" width={128} height={128} title="Azure" />
-              <Image src="/imgs/vscode.png" alt="VS Code" width={128} height={128} title="VS Code" />
-              <Image src="/imgs/python.png" alt="Python" width={128} height={128} title="Python" />
+              <img src="./imgs/html.png" alt="HTML" width="128" title="HTML" />
+              <img src="./imgs/css.png" alt="CSS" width="128" title="CSS" />
+              <img src="./imgs/javascript.png" alt="JS" width="128" title="JavaScript" />
+              <img src="./imgs/sass.png" width="128" alt="Sass" title="Sass" />
+              <img src="./imgs/react.png" width="128" alt="React" title="React" />
+              <img src="./imgs/nextjs.png" width="128" alt="Next JS" title="Next.js" />
+              <img src="./imgs/azure.png" width="128" alt="Azure" title="Azure" />
+              <img src="./imgs/vscode.png" width="128" alt="VS Code" title="VS Code" />
+              <img src="./imgs/python.png" width="128" alt="Python" title="Python" />
+              <img src="./imgs/html.png" alt="HTML" width="128" title="HTML" />
+              <img src="./imgs/css.png" alt="CSS" width="128" title="CSS" />
+              <img src="./imgs/javascript.png" alt="JS" width="128" title="JavaScript" />
+              <img src="./imgs/sass.png" width="128" alt="Sass" title="Sass" />
+              <img src="./imgs/react.png" width="128" alt="React" title="React" />
+              <img src="./imgs/nextjs.png" width="128" alt="Next JS" title="Next.js" />
+              <img src="./imgs/azure.png" width="128" alt="Azure" title="Azure" />
+              <img src="./imgs/vscode.png" width="128" alt="VS Code" title="VS Code" />
+              <img src="./imgs/python.png" width="128" alt="Python" title="Python" />
             </div>
           </div>
         </section>
