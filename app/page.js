@@ -92,7 +92,7 @@ export default function Home() {
           <div className="hero-blue">
             <div>
               <h1>
-                  <small>Hi I&apos;m </small>
+                <small>Hi I&apos;m </small>
                 Syed Khusroo Hayat
               </h1>
               <p>
@@ -226,15 +226,16 @@ export default function Home() {
         tying into your UVP and newer skills */}
               <h3>Your Partner in AI Development</h3>
               <p>
-                  Hi, I&apos;m Syed Khusroo Hayat, an AI-Augmented Cloud-Native Full Stack Architect with
-                  over a decade of experience. I specialize in building innovative web and mobile
-                  applications using modern technologies like React (Next.js), Blazor, and React
-                  Native, seamlessly integrating AI, LLMs, and Cloud services (Azure, Firebase,
-                  Supabase, Appwrite).
+                Hi, I&apos;m Syed Khusroo Hayat, an AI-Augmented Cloud-Native Full Stack Architect
+                with over a decade of experience. I specialize in building innovative web and mobile
+                applications using modern technologies like React (Next.js), Blazor, and React
+                Native, seamlessly integrating AI, LLMs, and Cloud services (Azure, Firebase,
+                Supabase, Appwrite).
               </p>
               <p>
-                  My &apos;Vibe Coding&apos; approach ensures clean, efficient, and scalable solutions that
-                  drive tangible business results. Let&apos;s build something intelligent together.
+                My &apos;Vibe Coding&apos; approach ensures clean, efficient, and scalable solutions
+                that drive tangible business results. Let&apos;s build something intelligent
+                together.
               </p>
             </div>
           </div>
@@ -326,14 +327,14 @@ export default function Home() {
             <div className="chat-info">
               <h3>AI Chatbot</h3>
               <p>
-                  I&apos;ve put together a chatbot here which knows all my skills, work experience and has
-                  a copy of my CV/Resume. You can use it to ask questions about me to get a better
-                  idea of who I am and what I&apos;ve done.
+                I&apos;ve put together a chatbot here which knows all my skills, work experience and
+                has a copy of my CV/Resume. You can use it to ask questions about me to get a better
+                idea of who I am and what I&apos;ve done.
               </p>
               <p>
-                  You can also download my resume here if you want to take a look at it. I&apos;m currently
-                  looking for new opportunities so if you have a project you think I&apos;d be a good fit
-                  for, please get in touch!
+                You can also download my resume here if you want to take a look at it. I&apos;m
+                currently looking for new opportunities so if you have a project you think I&apos;d
+                be a good fit for, please get in touch!
               </p>
               <a href="./Sample_Resume_Template.pdf" className="button black">
                 Download Resume
