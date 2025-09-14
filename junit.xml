@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Portfolio Tests" tests="10" failures="0" errors="0" time="4.45">
+  <testsuite name="Accessibility Tests" errors="0" failures="0" skipped="0" timestamp="2025-09-14T10:09:59" time="3.223" tests="10">
+    <testcase classname="Accessibility Tests › Home Page" name="should not have accessibility violations" time="0.626">
+    </testcase>
+    <testcase classname="Accessibility Tests › Home Page" name="should have proper heading hierarchy" time="0.038">
+    </testcase>
+    <testcase classname="Accessibility Tests › Home Page" name="should have proper form labels and accessibility attributes" time="0.032">
+    </testcase>
+    <testcase classname="Accessibility Tests › Layout Component" name="should not have accessibility violations in header and navigation" time="0.149">
+    </testcase>
+    <testcase classname="Accessibility Tests › Layout Component" name="should have proper navigation structure" time="0.012">
+    </testcase>
+    <testcase classname="Accessibility Tests › Layout Component" name="should have proper landmark roles" time="0.006">
+    </testcase>
+    <testcase classname="Accessibility Tests › General Accessibility Checks" name="should have proper alt text for images" time="0.037">
+    </testcase>
+    <testcase classname="Accessibility Tests › General Accessibility Checks" name="should have proper button accessibility" time="0.023">
+    </testcase>
+    <testcase classname="Accessibility Tests › General Accessibility Checks" name="should have proper focus management" time="0.029">
+    </testcase>
+    <testcase classname="Accessibility Tests › General Accessibility Checks" name="should have proper color contrast considerations" time="0.037">
+    </testcase>
+  </testsuite>
+</testsuites>

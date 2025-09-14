@@ -67,7 +67,13 @@ export default function Home() {
               </a>
             </li>
           </ul>
-          <a href="#" className="mobile-toggle" onClick={toggleMobileMenu}>
+          <a
+            href="#"
+            className="mobile-toggle"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle mobile menu"
+            aria-expanded={menuOpen}
+          >
             <svg
               className="w-6 h-6 text-gray-800 dark:text-white"
               aria-hidden="true"
