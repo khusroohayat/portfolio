@@ -23,9 +23,9 @@ jest.mock('next/server', () => ({
     json: (data, options = {}) => ({
       json: async () => data,
       status: options.status || 200,
-      headers: new Map(Object.entries(options.headers || {}))
-    })
-  }
+      headers: new Map(Object.entries(options.headers || {})),
+    }),
+  },
 }));
 
 // Mock fetch
@@ -51,7 +51,7 @@ describe('Chatbot API Security Tests', () => {
   beforeEach(() => {
     fetch.mockClear();
     mockConsoleLog.mockClear();
-    
+
     // Clear rate limit map between tests
     const { POST } = require('../route');
     // Access the rate limit map and clear it
@@ -68,7 +68,7 @@ describe('Chatbot API Security Tests', () => {
       const request = new NextRequest('http://localhost:3000/api', {
         method: 'POST',
         body: JSON.stringify({ messages: 'invalid' }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       });
 
       const response = await POST(request);
@@ -82,15 +82,17 @@ describe('Chatbot API Security Tests', () => {
       const { POST } = require('../route');
       const { NextRequest } = require('next/server');
 
-      const messages = Array(11).fill().map((_, i) => ({
-        role: 'user',
-        content: `Message ${i + 1}`
-      }));
+      const messages = Array(11)
+        .fill()
+        .map((_, i) => ({
+          role: 'user',
+          content: `Message ${i + 1}`,
+        }));
 
       const request = new NextRequest('http://localhost:3000/api', {
         method: 'POST',
         body: JSON.stringify({ messages }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       });
 
       const response = await POST(request);
@@ -108,9 +110,9 @@ describe('Chatbot API Security Tests', () => {
       const request = new NextRequest('http://localhost:3000/api', {
         method: 'POST',
         body: JSON.stringify({
-          messages: [{ role: 'user', content: longContent }]
+          messages: [{ role: 'user', content: longContent }],
         }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       });
 
       const response = await POST(request);
@@ -127,9 +129,9 @@ describe('Chatbot API Security Tests', () => {
       const request = new NextRequest('http://localhost:3000/api', {
         method: 'POST',
         body: JSON.stringify({
-          messages: [{ role: 'invalid', content: 'Hello' }]
+          messages: [{ role: 'invalid', content: 'Hello' }],
         }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       });
 
       const response = await POST(request);
@@ -148,9 +150,9 @@ describe('Chatbot API Security Tests', () => {
       const request = new NextRequest('http://localhost:3000/api', {
         method: 'POST',
         body: JSON.stringify({
-          messages: [{ role: 'user', content: 'Hello' }]
+          messages: [{ role: 'user', content: 'Hello' }],
         }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       });
 
       // Make 11 requests (exceeding the limit of 10)
@@ -173,17 +175,18 @@ describe('Chatbot API Security Tests', () => {
 
       fetch.mockResolvedValueOnce({
         ok: true,
-        json: () => Promise.resolve({
-          candidates: [{ content: { parts: [{ text: 'Response' }] } }]
-        })
+        json: () =>
+          Promise.resolve({
+            candidates: [{ content: { parts: [{ text: 'Response' }] } }],
+          }),
       });
 
       const request = new NextRequest('http://localhost:3000/api', {
         method: 'POST',
         body: JSON.stringify({
-          messages: [{ role: 'user', content: 'Hello' }]
+          messages: [{ role: 'user', content: 'Hello' }],
         }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       });
 
       const response = await POST(request);
@@ -197,16 +200,16 @@ describe('Chatbot API Security Tests', () => {
   describe('Error Handling', () => {
     it('should handle missing API key gracefully', async () => {
       delete process.env.GOOGLE_GEMINI_API_KEY;
-      
+
       const { POST } = require('../route');
       const { NextRequest } = require('next/server');
 
       const request = new NextRequest('http://localhost:3000/api', {
         method: 'POST',
         body: JSON.stringify({
-          messages: [{ role: 'user', content: 'Hello' }]
+          messages: [{ role: 'user', content: 'Hello' }],
         }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       });
 
       const response = await POST(request);
@@ -224,17 +227,18 @@ describe('Chatbot API Security Tests', () => {
       fetch.mockResolvedValueOnce({
         ok: false,
         status: 400,
-        json: () => Promise.resolve({
-          error: { message: 'Invalid API key', code: 'INVALID_API_KEY' }
-        })
+        json: () =>
+          Promise.resolve({
+            error: { message: 'Invalid API key', code: 'INVALID_API_KEY' },
+          }),
       });
 
       const request = new NextRequest('http://localhost:3000/api', {
         method: 'POST',
         body: JSON.stringify({
-          messages: [{ role: 'user', content: 'Hello' }]
+          messages: [{ role: 'user', content: 'Hello' }],
         }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       });
 
       const response = await POST(request);
@@ -253,18 +257,19 @@ describe('Chatbot API Security Tests', () => {
 
       fetch.mockResolvedValueOnce({
         ok: true,
-        json: () => Promise.resolve({
-          candidates: [{ content: { parts: [{ text: 'Response' }] } }]
-        })
+        json: () =>
+          Promise.resolve({
+            candidates: [{ content: { parts: [{ text: 'Response' }] } }],
+          }),
       });
 
       const maliciousContent = 'Hello <script>alert("xss")</script> world';
       const request = new NextRequest('http://localhost:3000/api', {
         method: 'POST',
         body: JSON.stringify({
-          messages: [{ role: 'user', content: maliciousContent }]
+          messages: [{ role: 'user', content: maliciousContent }],
         }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       });
 
       const response = await POST(request);
@@ -274,7 +279,7 @@ describe('Chatbot API Security Tests', () => {
       const fetchCall = fetch.mock.calls[0];
       const requestBody = JSON.parse(fetchCall[1].body);
       const sanitizedContent = requestBody.contents[0].parts[0].text;
-      
+
       expect(sanitizedContent).not.toContain('<script>');
       expect(sanitizedContent).not.toContain('</script>');
     });
@@ -287,17 +292,20 @@ describe('Chatbot API Security Tests', () => {
 
       fetch.mockResolvedValueOnce({
         ok: true,
-        json: () => Promise.resolve({
-          candidates: [{ content: { parts: [{ text: 'Hello! I can help you learn about Khusroo.' }] } }]
-        })
+        json: () =>
+          Promise.resolve({
+            candidates: [
+              { content: { parts: [{ text: 'Hello! I can help you learn about Khusroo.' }] } },
+            ],
+          }),
       });
 
       const request = new NextRequest('http://localhost:3000/api', {
         method: 'POST',
         body: JSON.stringify({
-          messages: [{ role: 'user', content: 'Hello' }]
+          messages: [{ role: 'user', content: 'Hello' }],
         }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       });
 
       const response = await POST(request);
