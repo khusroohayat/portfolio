@@ -4,6 +4,13 @@ const GEMINI_API_KEY = process.env.GOOGLE_GEMINI_API_KEY;
 const MODEL_NAME = 'gemini-1.5-flash-latest';//'gemini-1.5-pro-latest'; // This is the standard alias
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent`;
 
+// Security constants
+const MAX_MESSAGE_LENGTH = 2000;
+const MAX_MESSAGES_PER_REQUEST = 10;
+const MAX_TOTAL_CONTENT_LENGTH = 10000;
+const ALLOWED_ROLES = ['user', 'assistant'];
+const CONTENT_SANITIZATION_REGEX = /[<>]/g;
+
 export async function GET(req, res) {
     const messages = [
         // { role: 'system', content: 'you are a helpful assistant' },
@@ -25,14 +32,32 @@ export async function GET(req, res) {
     });
     const data = await response.json();
     const message = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response';
-    return NextResponse.json({ message });
+    return NextResponse.json({ message }, { 
+        headers: getSecurityHeaders() 
+    });
 }
 
 
-// Simple in-memory rate limiter (per IP)
+// Enhanced rate limiter with cleanup
 const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
 const RATE_LIMIT_MAX_REQUESTS = 10;
+const CLEANUP_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
 const rateLimitMap = new Map();
+
+// Export for testing
+if (typeof global !== 'undefined') {
+  global.rateLimitMap = rateLimitMap;
+}
+
+// Cleanup old entries periodically
+setInterval(() => {
+    const now = Date.now();
+    for (const [ip, entry] of rateLimitMap.entries()) {
+        if (now - entry.start > RATE_LIMIT_WINDOW_MS) {
+            rateLimitMap.delete(ip);
+        }
+    }
+}, CLEANUP_INTERVAL_MS);
 
 function getClientIp(req) {
     // Next.js edge/serverless: try x-forwarded-for, fallback to remote address
@@ -60,29 +85,138 @@ function isRateLimited(ip) {
     return false;
 }
 
+// Enhanced input validation
+function validateAndSanitizeInput(messages) {
+    if (!Array.isArray(messages) || messages.length === 0) {
+        throw new Error('Missing or invalid messages array');
+    }
+    
+    if (messages.length > MAX_MESSAGES_PER_REQUEST) {
+        throw new Error(`Too many messages. Maximum ${MAX_MESSAGES_PER_REQUEST} allowed`);
+    }
+    
+    let totalContentLength = 0;
+    
+    for (const [index, message] of messages.entries()) {
+        if (!message || typeof message !== 'object') {
+            throw new Error(`Message ${index + 1} must be an object`);
+        }
+        
+        if (!message.content || typeof message.content !== 'string') {
+            throw new Error(`Message ${index + 1} must have non-empty string content`);
+        }
+        
+        if (!message.role || typeof message.role !== 'string') {
+            throw new Error(`Message ${index + 1} must have a valid role`);
+        }
+        
+        if (!ALLOWED_ROLES.includes(message.role)) {
+            throw new Error(`Message ${index + 1} has invalid role. Allowed: ${ALLOWED_ROLES.join(', ')}`);
+        }
+        
+        const content = message.content.trim();
+        if (content.length === 0) {
+            throw new Error(`Message ${index + 1} content cannot be empty`);
+        }
+        
+        if (content.length > MAX_MESSAGE_LENGTH) {
+            throw new Error(`Message ${index + 1} content too long. Maximum ${MAX_MESSAGE_LENGTH} characters`);
+        }
+        
+        // Sanitize content to prevent XSS
+        message.content = content.replace(CONTENT_SANITIZATION_REGEX, '');
+        totalContentLength += message.content.length;
+    }
+    
+    if (totalContentLength > MAX_TOTAL_CONTENT_LENGTH) {
+        throw new Error(`Total content length exceeds ${MAX_TOTAL_CONTENT_LENGTH} characters`);
+    }
+    
+    return messages;
+}
+
+// Secure logging function
+function secureLog(level, message, data = null) {
+    const timestamp = new Date().toISOString();
+    const logEntry = {
+        timestamp,
+        level,
+        message,
+        ...(data && { data: JSON.stringify(data) })
+    };
+    
+    // Remove sensitive information from logs
+    const sanitizedLog = JSON.stringify(logEntry)
+        .replace(/GOOGLE_GEMINI_API_KEY/g, '[REDACTED]')
+        .replace(/key=[^&"]+/g, 'key=[REDACTED]');
+    
+    console.log(sanitizedLog);
+}
+
+// Security headers for responses
+function getSecurityHeaders() {
+    return {
+        'X-Content-Type-Options': 'nosniff',
+        'X-Frame-Options': 'DENY',
+        'X-XSS-Protection': '1; mode=block',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'geolocation=(), microphone=(), camera=()',
+        'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://generativelanguage.googleapis.com;"
+    };
+}
+
 export async function POST(req) {
+    const startTime = Date.now();
+    let clientIp = 'unknown';
+    
     try {
         // Rate limiting
-        const ip = getClientIp(req);
-        if (isRateLimited(ip)) {
-            return NextResponse.json({ message: 'Rate limit exceeded. Please try again later.' }, { status: 429 });
+        clientIp = getClientIp(req);
+        if (isRateLimited(clientIp)) {
+            secureLog('warn', 'Rate limit exceeded', { ip: clientIp });
+            return NextResponse.json({ 
+                message: 'Rate limit exceeded. Please try again later.',
+                retryAfter: Math.ceil(RATE_LIMIT_WINDOW_MS / 1000)
+            }, { 
+                status: 429,
+                headers: {
+                    ...getSecurityHeaders(),
+                    'Retry-After': Math.ceil(RATE_LIMIT_WINDOW_MS / 1000).toString(),
+                    'X-RateLimit-Limit': RATE_LIMIT_MAX_REQUESTS.toString(),
+                    'X-RateLimit-Remaining': '0'
+                }
+            });
         }
 
-        // Input validation
+        // Enhanced input validation
         let jsonBody;
         try {
             jsonBody = await req.json();
         } catch (e) {
-            return NextResponse.json({ message: 'Invalid JSON in request body.' }, { status: 400 });
+            secureLog('error', 'Invalid JSON in request body', { ip: clientIp, error: e.message });
+            return NextResponse.json({ message: 'Invalid JSON in request body.' }, { 
+                status: 400, 
+                headers: getSecurityHeaders() 
+            });
         }
+        
         const clientMessages = jsonBody?.messages;
-        if (!Array.isArray(clientMessages) || clientMessages.length === 0) {
-            return NextResponse.json({ message: 'Missing or invalid messages array.' }, { status: 400 });
+        if (!clientMessages) {
+            secureLog('error', 'Missing messages field', { ip: clientIp });
+            return NextResponse.json({ message: 'Missing messages field in request body.' }, { 
+                status: 400, 
+                headers: getSecurityHeaders() 
+            });
         }
-        for (const m of clientMessages) {
-            if (!m || typeof m !== 'object' || typeof m.content !== 'string' || !m.content.trim() || typeof m.role !== 'string') {
-                return NextResponse.json({ message: 'Each message must be an object with non-empty string content and role.' }, { status: 400 });
-            }
+        
+        try {
+            validateAndSanitizeInput(clientMessages);
+        } catch (validationError) {
+            secureLog('error', 'Input validation failed', { ip: clientIp, error: validationError.message });
+            return NextResponse.json({ message: validationError.message }, { 
+                status: 400, 
+                headers: getSecurityHeaders() 
+            });
         }
 
         // --- Refined Message Processing ---
@@ -136,11 +270,18 @@ export async function POST(req) {
 
 
         if (!GEMINI_API_KEY) {
-            console.error('GEMINI_API_KEY is not set');
-            return NextResponse.json({ message: 'API key is not configured' }, { status: 500 });
+            secureLog('error', 'API key not configured', { ip: clientIp });
+            return NextResponse.json({ message: 'Service temporarily unavailable' }, { 
+                status: 503, 
+                headers: getSecurityHeaders() 
+            });
         }
 
-        console.log('Sending to API:', JSON.stringify(body, null, 2)); // Log the request body
+        secureLog('info', 'Processing chat request', { 
+            ip: clientIp, 
+            messageCount: clientMessages.length,
+            totalLength: clientMessages.reduce((sum, m) => sum + m.content.length, 0)
+        });
 
         const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
             method: 'POST',
@@ -148,42 +289,85 @@ export async function POST(req) {
             body: JSON.stringify(body)
         });
 
-        // ... (rest of your error handling and response processing)
-        // ... make sure to handle potential errors within the response `data` itself too
         const data = await response.json();
 
         if (!response.ok) {
-            console.error('API Error Response:', data);
-            const errorMessage = data?.error?.message || 'Error from Gemini API';
-            return NextResponse.json({ message: errorMessage, error: data?.error }, { status: response.status });
+            secureLog('error', 'Gemini API error', { 
+                ip: clientIp, 
+                status: response.status,
+                error: data?.error?.message || 'Unknown API error'
+            });
+            return NextResponse.json({ 
+                message: 'Service temporarily unavailable. Please try again later.' 
+            }, { 
+                status: 503, 
+                headers: getSecurityHeaders() 
+            });
         }
 
          if (data.promptFeedback) {
-           // Handle content filtering or other feedback issues
-           console.warn('API Prompt Feedback:', data.promptFeedback);
+            secureLog('warn', 'Content filtering triggered', { 
+                ip: clientIp, 
+                blockReason: data.promptFeedback.blockReason 
+            });
             if (data.promptFeedback.blockReason) {
-                 return NextResponse.json({ message: `Request blocked due to: ${data.promptFeedback.blockReason}` }, { status: 400 });
+                return NextResponse.json({ 
+                    message: 'Request blocked due to content policy violation' 
+                }, { 
+                    status: 400, 
+                    headers: getSecurityHeaders() 
+                });
             }
         }
 
         const message = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
         if (!message) {
-            console.error('Unexpected API response structure or empty message:', data);
-             // Check if it was blocked via candidate feedback
              const finishReason = data.candidates?.[0]?.finishReason;
+            secureLog('error', 'Empty response from API', { 
+                ip: clientIp, 
+                finishReason: finishReason || 'unknown'
+            });
+            
              if (finishReason && finishReason !== 'STOP') {
-                 return NextResponse.json({ message: `API request failed: ${finishReason}` }, { status: 500 });
-             }
-            return NextResponse.json({ message: 'No response text received from API' }, { status: 500 });
+                return NextResponse.json({ 
+                    message: 'Service temporarily unavailable. Please try again later.' 
+                }, { 
+                    status: 503, 
+                    headers: getSecurityHeaders() 
+                });
+            }
+            return NextResponse.json({ 
+                message: 'No response received. Please try again.' 
+            }, { 
+                status: 503, 
+                headers: getSecurityHeaders() 
+            });
         }
 
+        const processingTime = Date.now() - startTime;
+        secureLog('info', 'Chat request completed successfully', { 
+            ip: clientIp, 
+            processingTime: `${processingTime}ms`,
+            responseLength: message.length
+        });
 
-        return NextResponse.json({ message });
+        return NextResponse.json({ message }, { 
+            headers: getSecurityHeaders() 
+        });
 
     } catch (error) {
-        console.error('Error in POST route:', error);
-        return NextResponse.json({ message: 'Internal server error', error: error.message }, { status: 500 });
+        secureLog('error', 'Unexpected error in POST route', { 
+            ip: clientIp, 
+            error: error.message,
+            stack: error.stack?.substring(0, 200) // Limit stack trace length
+        });
+        return NextResponse.json({ 
+            message: 'An unexpected error occurred. Please try again later.' 
+        }, { 
+            status: 500, 
+            headers: getSecurityHeaders() 
+        });
     }
 }
 
