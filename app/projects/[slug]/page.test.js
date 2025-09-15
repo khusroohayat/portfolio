@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import ProjectDetailPage from './page';
@@ -24,10 +23,13 @@ describe('ProjectDetailPage', () => {
     expect(screen.getByText('React')).toBeInTheDocument();
     expect(screen.getByText('Jest')).toBeInTheDocument();
     // Demo button
-    expect(screen.getByRole('link', { name: /live demo/i })).toHaveAttribute('href', 'https://demo.example.com');
-  // GitHub icon link (link name is from image alt)
-  const githubLink = screen.getByRole('link', { name: /github/i });
-  expect(githubLink).toHaveAttribute('href', 'https://github.com/example/project-a');
+    expect(screen.getByRole('link', { name: /live demo/i })).toHaveAttribute(
+      'href',
+      'https://demo.example.com'
+    );
+    // GitHub icon link (link name is from image alt)
+    const githubLink = screen.getByRole('link', { name: /github/i });
+    expect(githubLink).toHaveAttribute('href', 'https://github.com/example/project-a');
     // Back to Projects link at bottom
     expect(screen.getByRole('link', { name: /back to projects/i })).toBeInTheDocument();
   });

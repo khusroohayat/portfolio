@@ -18,7 +18,10 @@ describe('RootLayout', () => {
     expect(screen.getByRole('link', { name: 'Home' })).toHaveAttribute('href', '/');
     expect(screen.getByRole('link', { name: 'Skills' })).toHaveAttribute('href', '/#skills');
     expect(screen.getByRole('link', { name: 'Projects' })).toHaveAttribute('href', '/projects');
-    expect(screen.getByRole('link', { name: 'Contact Me' })).toHaveAttribute('href', 'mailto:khusroo.hayat@gmail.com');
+    expect(screen.getByRole('link', { name: 'Contact Me' })).toHaveAttribute(
+      'href',
+      'mailto:khusroo.hayat@gmail.com'
+    );
   });
 
   it('renders children content', () => {

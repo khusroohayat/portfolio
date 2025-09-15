@@ -6,7 +6,15 @@
     "image": "/imgs/prj-image-1.png",
     "demoUrl": "https://kind-glacier-02d030503.azurestaticapps.net/",
     "repoUrl": null,
-    "tech": ["ASP.NET Core (Web API)", "Vuejs", "Azure", "Git", "Azure DevOps", "Bootstrap", "SQL Server"]
+    "tech": [
+      "ASP.NET Core (Web API)",
+      "Vue.js",
+      "Azure",
+      "Git",
+      "Azure DevOps",
+      "Bootstrap",
+      "SQL Server"
+    ]
   },
   {
     "slug": "commerce-genie",
@@ -15,7 +23,7 @@
     "image": "/imgs/prj-image-2.png",
     "demoUrl": "https://ai.commercegenie.com/",
     "repoUrl": null,
-    "tech": ["Open AI", "Asp.net", "Azure","Vue.js", "Chatbot"]
+    "tech": ["Open AI", "Asp.net", "Azure", "Vue.js", "Chatbot"]
   },
   {
     "slug": "northern-crescent",
@@ -24,7 +32,7 @@
     "image": "/imgs/prj-image-5.png",
     "demoUrl": "https://www.northerncrescent.ca/",
     "repoUrl": null,
-    "tech": ["ERP", "Azure", "MongoDb", "Blazor", "Entra ID"]
+    "tech": ["Azure", "MongoDb", "Blazor", "Entra ID"]
   },
   {
     "slug": "pixel-progress",
@@ -42,7 +50,7 @@
     "image": "/imgs/prj-image-6.png",
     "demoUrl": "https://github.com/khusroohayat",
     "repoUrl": "https://github.com/khusroohayat",
-    "tech": ["ASP.NET Core (Web API)", "Vue.js", "Microsoft SQL Server", "Azure"]
+    "tech": ["ASP.NET Core (Web API)", "Vue.js", "SQL Server", "Azure"]
   },
   {
     "slug": "paw-ai",
@@ -53,5 +61,4 @@
     "repoUrl": null,
     "tech": ["AI", "Next.js", "Netlify", "Strapi"]
   }
-  
 ]
