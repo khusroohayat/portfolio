@@ -30,7 +30,7 @@ export async function GET(req, res) {
   });
   const data = await response.json();
   const message = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response';
-  return NextResponse.json({ message });
+  return NextResponse.json({ message }, { headers: getSecurityHeaders() });
 }
 
 // Simple in-memory rate limiter (per IP)
@@ -172,7 +172,7 @@ export async function POST(req) {
     if (isRateLimited(ip)) {
       return NextResponse.json(
         { message: 'Rate limit exceeded. Please try again later.' },
-        { status: 429 }
+        { status: 429, headers: getSecurityHeaders() }
       );
     }
 
@@ -181,25 +181,26 @@ export async function POST(req) {
     try {
       jsonBody = await req.json();
     } catch (e) {
-      return NextResponse.json({ message: 'Invalid JSON in request body.' }, { status: 400 });
+      return NextResponse.json(
+        { message: 'Invalid JSON in request body.' },
+        { status: 400, headers: getSecurityHeaders() }
+      );
     }
     const clientMessages = jsonBody?.messages;
-    if (!Array.isArray(clientMessages) || clientMessages.length === 0) {
-      return NextResponse.json({ message: 'Missing or invalid messages array.' }, { status: 400 });
+    if (!clientMessages) {
+      return NextResponse.json(
+        { message: 'Missing messages field in request body.' },
+        { status: 400, headers: getSecurityHeaders() }
+      );
     }
-    for (const m of clientMessages) {
-      if (
-        !m ||
-        typeof m !== 'object' ||
-        typeof m.content !== 'string' ||
-        !m.content.trim() ||
-        typeof m.role !== 'string'
-      ) {
-        return NextResponse.json(
-          { message: 'Each message must be an object with non-empty string content and role.' },
-          { status: 400 }
-        );
-      }
+
+    try {
+      validateAndSanitizeInput(clientMessages);
+    } catch (validationError) {
+      return NextResponse.json(
+        { message: validationError.message },
+        { status: 400, headers: getSecurityHeaders() }
+      );
     }
 
     // --- Refined Message Processing ---
@@ -254,10 +255,11 @@ export async function POST(req) {
 
     if (!GEMINI_API_KEY) {
       console.error('GEMINI_API_KEY is not set');
-      return NextResponse.json({ message: 'API key is not configured' }, { status: 500 });
+      return NextResponse.json(
+        { message: 'Service temporarily unavailable' },
+        { status: 503, headers: getSecurityHeaders() }
+      );
     }
-
-    console.log('Sending to API:', JSON.stringify(body, null, 2)); // Log the request body
 
     const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
       method: 'POST',
@@ -271,10 +273,9 @@ export async function POST(req) {
 
     if (!response.ok) {
       console.error('API Error Response:', data);
-      const errorMessage = data?.error?.message || 'Error from Gemini API';
       return NextResponse.json(
-        { message: errorMessage, error: data?.error },
-        { status: response.status }
+        { message: 'Service temporarily unavailable. Please try again later.' },
+        { status: 503, headers: getSecurityHeaders() }
       );
     }
 
@@ -283,8 +284,8 @@ export async function POST(req) {
       console.warn('API Prompt Feedback:', data.promptFeedback);
       if (data.promptFeedback.blockReason) {
         return NextResponse.json(
-          { message: `Request blocked due to: ${data.promptFeedback.blockReason}` },
-          { status: 400 }
+          { message: 'Request blocked due to content policy violation' },
+          { status: 400, headers: getSecurityHeaders() }
         );
       }
     }
@@ -297,19 +298,22 @@ export async function POST(req) {
       const finishReason = data.candidates?.[0]?.finishReason;
       if (finishReason && finishReason !== 'STOP') {
         return NextResponse.json(
-          { message: `API request failed: ${finishReason}` },
-          { status: 500 }
+          { message: 'Service temporarily unavailable. Please try again later.' },
+          { status: 503, headers: getSecurityHeaders() }
         );
       }
-      return NextResponse.json({ message: 'No response text received from API' }, { status: 500 });
+      return NextResponse.json(
+        { message: 'No response received. Please try again.' },
+        { status: 503, headers: getSecurityHeaders() }
+      );
     }
 
-    return NextResponse.json({ message });
+    return NextResponse.json({ message }, { headers: getSecurityHeaders() });
   } catch (error) {
     console.error('Error in POST route:', error);
     return NextResponse.json(
-      { message: 'Internal server error', error: error.message },
-      { status: 500 }
+      { message: 'An unexpected error occurred. Please try again later.' },
+      { status: 500, headers: getSecurityHeaders() }
     );
   }
 }
