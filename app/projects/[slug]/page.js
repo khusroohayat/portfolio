@@ -18,7 +18,7 @@ export default function ProjectDetailPage({ params }) {
   }
 
   return (
-    <section className="container" style={{ marginTop: '10rem' }}>
+    <section className={`${styles.projectDetailSection} container`}>
       <div className={styles.projectDetailWrapper}>
         <div className={styles.projectImageSection}>
           <Image

@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import './globals.css';
+import Header from './Header';
 
 export const metadata = {
   title: 'Top-Rated Full Stack Web Developer | Custom Web Solutions & Professional Services',
@@ -36,30 +37,7 @@ export default function RootLayout({ children }) {
       </Head>
       <body>
         {/* Global Header/Nav for all pages */}
-        <header>
-          <a href="/" className="logo-holder">
-            <div className="logo">K</div>
-            <div className="logo-text">Portfolio Website</div>
-          </a>
-          <nav>
-            <ul id="menu">
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="/#skills">Skills</a>
-              </li>
-              <li>
-                <a href="/projects">Projects</a>
-              </li>
-              <li>
-                <a href="mailto:khusroo.hayat@gmail.com" className="button">
-                  Contact Me
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </header>
+        <Header />
         {children}
       </body>
     </html>
