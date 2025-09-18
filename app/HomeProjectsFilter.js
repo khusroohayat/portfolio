@@ -2,7 +2,7 @@
 import projects from '../data/projects.json';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function HomeProjectsFilter() {
@@ -10,6 +10,7 @@ export default function HomeProjectsFilter() {
   const searchParams = useSearchParams();
   const [techFilter, setTechFilter] = useState('');
   const allTechs = [...new Set(projects.flatMap((project) => project.tech))].sort();
+  const scrollRef = useRef(null);
 
   // Initialize tech filter from URL query string on component mount
   useEffect(() => {
@@ -41,50 +42,92 @@ export default function HomeProjectsFilter() {
 
   return (
     <>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.7rem', marginBottom: '2.2rem' }}>
+      <div className="filter-container">
         <button
           type="button"
-          onClick={() => handleTechFilterChange('')}
-          aria-pressed={techFilter === ''}
-          style={{
-            background: techFilter === '' ? '#1565c0' : '#e3f2fd',
-            color: techFilter === '' ? '#fff' : '#1565c0',
-            border: 'none',
-            borderRadius: 999,
-            padding: '0.45em 1.3em',
-            fontWeight: 700,
-            fontSize: '1rem',
-            cursor: 'pointer',
-            boxShadow: techFilter === '' ? '0 2px 8px 0 rgba(30,136,229,.10)' : 'none',
-            outline: techFilter === '' ? '2px solid #1976d2' : 'none',
-            transition: 'all 0.15s',
+          className="scroll-button left"
+          aria-label="Scroll left"
+          onClick={() =>
+            scrollRef.current && scrollRef.current.scrollBy({ left: -160, behavior: 'smooth' })
+          }
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              scrollRef.current && scrollRef.current.scrollBy({ left: -160, behavior: 'smooth' });
+            }
           }}
         >
-          All
+          ‹
         </button>
-        {allTechs.map((tech) => (
+        <div
+          className="filter-row"
+          data-testid="tech-filter-row"
+          ref={scrollRef}
+          role="group"
+          aria-label="Technology filters"
+        >
           <button
-            key={tech}
             type="button"
-            onClick={() => handleTechFilterChange(tech)}
-            aria-pressed={techFilter === tech}
+            onClick={() => handleTechFilterChange('')}
+            aria-pressed={techFilter === ''}
             style={{
-              background: techFilter === tech ? '#1565c0' : '#e3f2fd',
-              color: techFilter === tech ? '#fff' : '#1565c0',
+              background: techFilter === '' ? '#1565c0' : '#e3f2fd',
+              color: techFilter === '' ? '#fff' : '#1565c0',
               border: 'none',
               borderRadius: 999,
               padding: '0.45em 1.3em',
               fontWeight: 700,
               fontSize: '1rem',
               cursor: 'pointer',
-              boxShadow: techFilter === tech ? '0 2px 8px 0 rgba(30,136,229,.10)' : 'none',
-              outline: techFilter === tech ? '2px solid #1976d2' : 'none',
+              boxShadow: techFilter === '' ? '0 2px 8px 0 rgba(30,136,229,.10)' : 'none',
+              outline: techFilter === '' ? '2px solid #1976d2' : 'none',
               transition: 'all 0.15s',
             }}
           >
-            {tech}
+            All
           </button>
-        ))}
+          {allTechs.map((tech) => (
+            <button
+              key={tech}
+              type="button"
+              onClick={() => handleTechFilterChange(tech)}
+              aria-pressed={techFilter === tech}
+              style={{
+                background: techFilter === tech ? '#1565c0' : '#e3f2fd',
+                color: techFilter === tech ? '#fff' : '#1565c0',
+                border: 'none',
+                borderRadius: 999,
+                padding: '0.45em 1.3em',
+                fontWeight: 700,
+                fontSize: '1rem',
+                cursor: 'pointer',
+                boxShadow: techFilter === tech ? '0 2px 8px 0 rgba(30,136,229,.10)' : 'none',
+                outline: techFilter === tech ? '2px solid #1976d2' : 'none',
+                transition: 'all 0.15s',
+              }}
+            >
+              {tech}
+            </button>
+          ))}
+        </div>
+        <button
+          type="button"
+          className="scroll-button right"
+          aria-label="Scroll right"
+          onClick={() =>
+            scrollRef.current && scrollRef.current.scrollBy({ left: 160, behavior: 'smooth' })
+          }
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              scrollRef.current && scrollRef.current.scrollBy({ left: 160, behavior: 'smooth' });
+            }
+          }}
+        >
+          ›
+        </button>
       </div>
       <div className="bento-grid">
         {filteredProjects.length === 0 && (
