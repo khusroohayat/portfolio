@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Home from '../page';
+import RootLayout from '../layout';
 
 // Mock next/image to render a normal img
 jest.mock('next/image', () => ({ __esModule: true, default: (props) => <img {...props} /> }));
@@ -89,7 +90,11 @@ describe('Home page', () => {
   });
 
   it('toggles mobile menu', () => {
-    render(<Home />);
+    render(
+      <RootLayout>
+        <Home />
+      </RootLayout>
+    );
     // Find the mobile menu toggle by class
     const toggles = screen.getAllByRole('link');
     const mobileToggle = toggles.find((a) => a.className.includes('mobile-toggle'));

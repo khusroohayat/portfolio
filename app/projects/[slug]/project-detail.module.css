@@ -1,3 +1,13 @@
+/* Section margin for project detail page */
+.projectDetailSection {
+  margin-top: 10rem;
+}
+
+@media (max-width: 767px) {
+  .projectDetailSection {
+    margin-top: 0px;
+  }
+}
 .projectDetailWrapper {
   display: flex;
   flex-direction: column;
