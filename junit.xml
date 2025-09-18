@@ -3,7 +3,7 @@
   <testsuite name="projectUtils" errors="0" failures="0" skipped="0" timestamp="2025-09-18T11:20:02" time="1.49" tests="23">
     <testcase classname="projectUtils › extractUniqueTechnologies" name="should extract unique technologies from projects array" time="0.012">
     </testcase>
-    <testcase classname="projectUtils › extractUniqueTechnologies" name="should return empty array for invalid input" time="0.002">
+    <testcase classname="projectUtils › extractUniqueTechnologies" name="should return empty array for invalid input" time="0.001">
     </testcase>
     <testcase classname="projectUtils › extractUniqueTechnologies" name="should handle projects with missing tech arrays" time="0.001">
     </testcase>
@@ -14,18 +14,19 @@
     <testcase classname="projectUtils › filterProjectsByTech" name="should return all projects when technology is empty" time="0.001">
     </testcase>
     <testcase classname="projectUtils › filterProjectsByTech" name="should return all projects when technology is null or undefined" time="0.001">
+    <testcase classname="projectUtils › filterProjectsByTech" name="should return all projects when technology is null or undefined" time="0.001">
     </testcase>
     <testcase classname="projectUtils › filterProjectsByTech" name="should return empty array for invalid projects input" time="0.001">
     </testcase>
-    <testcase classname="projectUtils › filterProjectsByTech" name="should handle case-sensitive filtering" time="0.001">
+    <testcase classname="projectUtils › filterProjectsByTech" name="should handle case-sensitive filtering" time="0.022">
     </testcase>
     <testcase classname="projectUtils › filterProjectsByTech" name="should return empty array when no projects match technology" time="0.001">
     </testcase>
-    <testcase classname="projectUtils › validateProjectData" name="should validate correct project data" time="0.001">
+    <testcase classname="projectUtils › validateProjectData" name="should validate correct project data" time="0.002">
     </testcase>
     <testcase classname="projectUtils › validateProjectData" name="should reject project with missing required fields" time="0.003">
     </testcase>
-    <testcase classname="projectUtils › validateProjectData" name="should reject project with empty string fields" time="0.001">
+    <testcase classname="projectUtils › validateProjectData" name="should reject project with empty string fields" time="0">
     </testcase>
     <testcase classname="projectUtils › validateProjectData" name="should reject project with whitespace-only fields" time="0.001">
     </testcase>
@@ -33,7 +34,7 @@
     </testcase>
     <testcase classname="projectUtils › formatProjectTitle" name="should format normal project title" time="0.001">
     </testcase>
-    <testcase classname="projectUtils › formatProjectTitle" name="should trim whitespace from title" time="0.001">
+    <testcase classname="projectUtils › formatProjectTitle" name="should trim whitespace from title" time="0">
     </testcase>
     <testcase classname="projectUtils › formatProjectTitle" name="should collapse multiple spaces into single space" time="0">
     </testcase>
@@ -41,8 +42,9 @@
     </testcase>
     <testcase classname="projectUtils › getProjectStats" name="should calculate correct project statistics" time="0.001">
     </testcase>
-    <testcase classname="projectUtils › getProjectStats" name="should handle empty projects array" time="0">
+    <testcase classname="projectUtils › getProjectStats" name="should handle empty projects array" time="0.001">
     </testcase>
+    <testcase classname="projectUtils › getProjectStats" name="should handle invalid input" time="0">
     <testcase classname="projectUtils › getProjectStats" name="should handle invalid input" time="0">
     </testcase>
     <testcase classname="projectUtils › getProjectStats" name="should handle projects with missing tech arrays" time="0.002">
