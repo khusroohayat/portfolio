@@ -799,3 +799,10 @@ main {
     padding-top: 0px;
   }
 }
+
+/* Hide project descriptions on mobile */
+@media (max-width: 767px) {
+  .project-description {
+    display: none;
+  }
+}

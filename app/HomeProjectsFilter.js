@@ -42,20 +42,28 @@ export default function HomeProjectsFilter() {
 
   return (
     <>
-      <div className="filter-container">
+      <div
+        className="filter-container"
+        style={{ position: 'relative', display: 'flex', alignItems: 'center' }}
+      >
         <button
           type="button"
-          className="scroll-button left"
           aria-label="Scroll left"
           onClick={() =>
             scrollRef.current && scrollRef.current.scrollBy({ left: -160, behavior: 'smooth' })
           }
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              scrollRef.current && scrollRef.current.scrollBy({ left: -160, behavior: 'smooth' });
-            }
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            width: 32,
+            height: 32,
+            borderRadius: 999,
+            border: 'none',
+            background: 'rgba(0,0,0,0.4)',
+            color: '#fff',
+            cursor: 'pointer',
           }}
         >
           ‹
@@ -66,6 +74,16 @@ export default function HomeProjectsFilter() {
           ref={scrollRef}
           role="group"
           aria-label="Technology filters"
+          style={{
+            display: 'flex',
+            flexWrap: 'nowrap',
+            overflowX: 'auto',
+            gap: '0.7rem',
+            marginBottom: '2.2rem',
+            whiteSpace: 'nowrap',
+            marginLeft: 40,
+            marginRight: 40,
+          }}
         >
           <button
             type="button"
@@ -113,17 +131,22 @@ export default function HomeProjectsFilter() {
         </div>
         <button
           type="button"
-          className="scroll-button right"
           aria-label="Scroll right"
           onClick={() =>
             scrollRef.current && scrollRef.current.scrollBy({ left: 160, behavior: 'smooth' })
           }
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              scrollRef.current && scrollRef.current.scrollBy({ left: 160, behavior: 'smooth' });
-            }
+          style={{
+            position: 'absolute',
+            right: 0,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            width: 32,
+            height: 32,
+            borderRadius: 999,
+            border: 'none',
+            background: 'rgba(0,0,0,0.4)',
+            color: '#fff',
+            cursor: 'pointer',
           }}
         >
           ›
@@ -162,7 +185,10 @@ export default function HomeProjectsFilter() {
                 >
                   {project.title}
                 </h3>
-                <p style={{ margin: '0.3rem 0 0.7rem 0.7rem', color: '#fff', fontSize: '1rem' }}>
+                <p
+                  className="project-description"
+                  style={{ margin: '0.3rem 0 0.7rem 0.7rem', color: '#fff', fontSize: '1rem' }}
+                >
                   {project.description}
                 </p>
                 <div
