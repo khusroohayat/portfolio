@@ -97,4 +97,30 @@ describe('HomeProjectsFilter', () => {
     expect(screen.getByText('Project A')).toBeInTheDocument();
     expect(screen.getByText('Project B')).toBeInTheDocument();
   });
+
+  it('renders filter row and scroll buttons', () => {
+    render(<HomeProjectsFilter />);
+
+    const row = screen.getByTestId('tech-filter-row');
+    expect(row).toBeInTheDocument();
+
+    const leftBtn = screen.getByRole('button', { name: /scroll left/i });
+    const rightBtn = screen.getByRole('button', { name: /scroll right/i });
+    expect(leftBtn).toBeInTheDocument();
+    expect(rightBtn).toBeInTheDocument();
+  });
+
+  it('clicking scroll buttons calls scrollBy on the row', () => {
+    render(<HomeProjectsFilter />);
+
+    const row = screen.getByTestId('tech-filter-row');
+    // JSDOM doesn't implement scrollBy on elements by default
+    row.scrollBy = jest.fn();
+
+    fireEvent.click(screen.getByRole('button', { name: /scroll right/i }));
+    expect(row.scrollBy).toHaveBeenCalledWith({ left: 160, behavior: 'smooth' });
+
+    fireEvent.click(screen.getByRole('button', { name: /scroll left/i }));
+    expect(row.scrollBy).toHaveBeenCalledWith({ left: -160, behavior: 'smooth' });
+  });
 });

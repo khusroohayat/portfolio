@@ -2,7 +2,7 @@
 import projects from '../data/projects.json';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function HomeProjectsFilter() {
@@ -10,6 +10,7 @@ export default function HomeProjectsFilter() {
   const searchParams = useSearchParams();
   const [techFilter, setTechFilter] = useState('');
   const allTechs = [...new Set(projects.flatMap((project) => project.tech))].sort();
+  const scrollRef = useRef(null);
 
   // Initialize tech filter from URL query string on component mount
   useEffect(() => {
@@ -41,50 +42,115 @@ export default function HomeProjectsFilter() {
 
   return (
     <>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.7rem', marginBottom: '2.2rem' }}>
+      <div
+        className="filter-container"
+        style={{ position: 'relative', display: 'flex', alignItems: 'center' }}
+      >
         <button
           type="button"
-          onClick={() => handleTechFilterChange('')}
-          aria-pressed={techFilter === ''}
+          aria-label="Scroll left"
+          onClick={() =>
+            scrollRef.current && scrollRef.current.scrollBy({ left: -160, behavior: 'smooth' })
+          }
           style={{
-            background: techFilter === '' ? '#1565c0' : '#e3f2fd',
-            color: techFilter === '' ? '#fff' : '#1565c0',
-            border: 'none',
+            position: 'absolute',
+            left: 0,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            width: 32,
+            height: 32,
             borderRadius: 999,
-            padding: '0.45em 1.3em',
-            fontWeight: 700,
-            fontSize: '1rem',
+            border: 'none',
+            background: 'rgba(0,0,0,0.4)',
+            color: '#fff',
             cursor: 'pointer',
-            boxShadow: techFilter === '' ? '0 2px 8px 0 rgba(30,136,229,.10)' : 'none',
-            outline: techFilter === '' ? '2px solid #1976d2' : 'none',
-            transition: 'all 0.15s',
           }}
         >
-          All
+          ‹
         </button>
-        {allTechs.map((tech) => (
+        <div
+          className="filter-row"
+          data-testid="tech-filter-row"
+          ref={scrollRef}
+          role="group"
+          aria-label="Technology filters"
+          style={{
+            display: 'flex',
+            flexWrap: 'nowrap',
+            overflowX: 'auto',
+            gap: '0.7rem',
+            marginBottom: '2.2rem',
+            whiteSpace: 'nowrap',
+            marginLeft: 40,
+            marginRight: 40,
+          }}
+        >
           <button
-            key={tech}
             type="button"
-            onClick={() => handleTechFilterChange(tech)}
-            aria-pressed={techFilter === tech}
+            onClick={() => handleTechFilterChange('')}
+            aria-pressed={techFilter === ''}
             style={{
-              background: techFilter === tech ? '#1565c0' : '#e3f2fd',
-              color: techFilter === tech ? '#fff' : '#1565c0',
+              background: techFilter === '' ? '#1565c0' : '#e3f2fd',
+              color: techFilter === '' ? '#fff' : '#1565c0',
               border: 'none',
               borderRadius: 999,
               padding: '0.45em 1.3em',
               fontWeight: 700,
               fontSize: '1rem',
               cursor: 'pointer',
-              boxShadow: techFilter === tech ? '0 2px 8px 0 rgba(30,136,229,.10)' : 'none',
-              outline: techFilter === tech ? '2px solid #1976d2' : 'none',
+              boxShadow: techFilter === '' ? '0 2px 8px 0 rgba(30,136,229,.10)' : 'none',
+              outline: techFilter === '' ? '2px solid #1976d2' : 'none',
               transition: 'all 0.15s',
             }}
           >
-            {tech}
+            All
           </button>
-        ))}
+          {allTechs.map((tech) => (
+            <button
+              key={tech}
+              type="button"
+              onClick={() => handleTechFilterChange(tech)}
+              aria-pressed={techFilter === tech}
+              style={{
+                background: techFilter === tech ? '#1565c0' : '#e3f2fd',
+                color: techFilter === tech ? '#fff' : '#1565c0',
+                border: 'none',
+                borderRadius: 999,
+                padding: '0.45em 1.3em',
+                fontWeight: 700,
+                fontSize: '1rem',
+                cursor: 'pointer',
+                boxShadow: techFilter === tech ? '0 2px 8px 0 rgba(30,136,229,.10)' : 'none',
+                outline: techFilter === tech ? '2px solid #1976d2' : 'none',
+                transition: 'all 0.15s',
+              }}
+            >
+              {tech}
+            </button>
+          ))}
+        </div>
+        <button
+          type="button"
+          aria-label="Scroll right"
+          onClick={() =>
+            scrollRef.current && scrollRef.current.scrollBy({ left: 160, behavior: 'smooth' })
+          }
+          style={{
+            position: 'absolute',
+            right: 0,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            width: 32,
+            height: 32,
+            borderRadius: 999,
+            border: 'none',
+            background: 'rgba(0,0,0,0.4)',
+            color: '#fff',
+            cursor: 'pointer',
+          }}
+        >
+          ›
+        </button>
       </div>
       <div className="bento-grid">
         {filteredProjects.length === 0 && (
@@ -119,7 +185,10 @@ export default function HomeProjectsFilter() {
                 >
                   {project.title}
                 </h3>
-                <p style={{ margin: '0.3rem 0 0.7rem 0.7rem', color: '#fff', fontSize: '1rem' }}>
+                <p
+                  className="project-description"
+                  style={{ margin: '0.3rem 0 0.7rem 0.7rem', color: '#fff', fontSize: '1rem' }}
+                >
                   {project.description}
                 </p>
                 <div
