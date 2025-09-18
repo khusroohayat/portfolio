@@ -384,6 +384,18 @@ h2 {
         margin-bottom: 20px; /* Space between columns in mobile view */
       }
     }
+
+    @media (max-width: 767px) {
+      text-align: center;
+      .left-column,
+      .right-column,
+      .additional-content {
+        text-align: center;
+      }
+      ul {
+        justify-content: center;
+      }
+    }
   }
 }
 
