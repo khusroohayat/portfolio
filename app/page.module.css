@@ -1,3 +1,26 @@
+/* Chat send button icon/text responsive styles */
+.chat-send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+}
+.chat-send-btn .send-icon {
+  font-size: 1.2em;
+  line-height: 1;
+}
+.chat-send-btn .send-text {
+  display: inline;
+}
+
+@media (max-width: 700px) {
+  .chat-send-btn .send-text {
+    display: none;
+  }
+  .chat-send-btn .send-icon {
+    margin: 0 auto;
+  }
+}
 .main {
   display: flex;
   flex-direction: column;
@@ -447,36 +470,51 @@
 /* Chatbot message form responsive styles */
 .chat-message {
   display: flex;
+  align-items: stretch;
   gap: 0.5rem;
   margin-top: 1rem;
+  width: 100%;
 }
 .chat-message input[type='text'] {
   flex: 1 1 auto;
   min-width: 0;
   padding: 0.75rem 1rem;
-  border-radius: 20px;
+  border-radius: 20px 0 0 20px;
   border: 1px solid #ccc;
   font-size: 1rem;
+  border-right: none;
 }
 .chat-message button {
   flex-shrink: 0;
-  padding: 0.75rem 1.5rem;
-  border-radius: 20px;
+  padding: 10px 10px !important;
+  border-radius: 0 20px 20px 0;
   font-size: 1rem;
+  border: 1px solid #ccc;
+  border-left: none;
+  background: var(--blue);
+  color: var(--base-100);
+  transition: background 0.2s;
+}
+.chat-message button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 @media (max-width: 700px) {
   .chat-message {
     flex-direction: column;
     gap: 0.5rem;
+    width: 100%;
   }
-  .chat-message input[type='text'],
+  .chat-message input[type='text'] {
+    border-radius: 16px;
+    border-right: 1px solid #ccc;
+    margin-bottom: 0.5rem;
+  }
   .chat-message button {
     width: 100%;
-    border-radius: 16px;
-    font-size: 1rem;
-  }
-  .chat-message button {
+    border-radius: 999px;
+    border-left: 1px solid #ccc;
     margin-left: 0;
   }
 }
