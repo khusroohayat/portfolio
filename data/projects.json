@@ -6,15 +6,7 @@
     "image": "/imgs/prj-image-1.png",
     "demoUrl": "https://kind-glacier-02d030503.azurestaticapps.net/",
     "repoUrl": null,
-    "tech": [
-      "ASP.NET Core (Web API)",
-      "Vue.js",
-      "Azure",
-      "Git",
-      "Azure DevOps",
-      "Bootstrap",
-      "SQL Server"
-    ]
+    "tech": ["ASP.NET", "Vue.js", "Azure", "Node.js", "Typescript", "SQL Server"]
   },
   {
     "slug": "commerce-genie",
