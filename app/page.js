@@ -1,326 +1,287 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
-// ...existing code...
-
-import ServicesSection from './ServicesSection';
-import { Suspense } from 'react';
-import HomeProjectsFilter from './HomeProjectsFilter';
+import { useState } from 'react';
+import styles from './page.module.css';
 
 export default function Home() {
-  const [messageInput, setMessageInput] = useState('');
-  const chatLogRef = useRef(null);
+  const [activeProject, setActiveProject] = useState(0);
+  const [activeArticle, setActiveArticle] = useState(0);
 
-  const [messages, setMessages] = useState([
+  const projects = [
     {
-      role: 'assistant',
-      content: 'How can I help you learn more about Khusroo and his Resume?',
+      title: 'Gostat',
+      tech: ['GoLang', 'TypeScript', 'Bot'],
+      description: 'Gostat is an app (specialist) designed for helping financial and dashboard tool. It\'s created from you statistics and analytics.',
+      image: '/imgs/prj-image-1.png',
     },
-  ]);
+    {
+      title: 'Kana Master',
+      tech: ['TypeScript', 'SvelteReact', 'React Toolkit'],
+      description: 'Japanese in our app (specialist) designed for learning Japanese Kana characters with interactive lessons and quizzes.',
+      image: '/imgs/prj-image-2.png',
+    },
+    {
+      title: 'DevApp',
+      tech: ['React / Expo11', 'Docker / (.1,X)11', 'Dev / Node'],
+      description: 'A comprehensive developer tool suite for modern web development.',
+      image: '/imgs/prj-image-3.png',
+    },
+    {
+      title: 'Anime Sensay',
+      tech: ['React11', 'Node', 'TypeScript', 'LESS'],
+      description: 'Anime Based (Inspired) in both Arts developer and Personel used through API, allows users to connect and share their favorite anime.',
+      image: '/imgs/prj-image-5.png',
+    },
+  ];
 
-  useEffect(() => {
-    if (chatLogRef.current) {
-      chatLogRef.current.scrollTop = chatLogRef.current.scrollHeight;
-    }
-  }, [messages]);
+  const workExperience = [
+    {
+      date: 'Jan 2021',
+      company: 'ShinerSoft',
+      role: 'Frontend developer',
+      location: 'Ankara',
+    },
+    {
+      date: 'Jul 2019',
+      company: 'TenPearls',
+      role: 'Frontend developer',
+      location: 'Istanbul',
+    },
+    {
+      date: 'Oct 2018',
+      company: 'Northern Crescent',
+      role: 'Fullstack developer',
+      location: 'Toronto',
+    },
+    {
+      date: 'Oct 2017',
+      company: 'RedCastle Tech',
+      role: 'Full-stack developer',
+      location: 'Dubai',
+    },
+  ];
 
-  const submitForm = async (e) => {
-    e.preventDefault();
-    let newMessages = [...messages, { role: 'user', content: messageInput }];
-    setMessages(newMessages);
-    setMessageInput('');
-    const apiMessage = await fetch('/api', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ messages: newMessages }),
-    });
-    const data = await apiMessage.json();
-    setMessages([...newMessages, { role: 'assistant', content: data.message }]);
+  const articles = [
+    {
+      title: 'The simplest example in kafka + golang',
+      description: 'This article explores a simple way to implement Kafka with Golang and Kubernetes.',
+      readTime: '5 min read',
+    },
+    {
+      title: 'The simplest example in kafka + golang',
+      description: 'Advanced a microservice architecture with Kafka streaming and real-time updates.',
+      readTime: '8 min read',
+    },
+    {
+      title: 'The simplest example in kafka + golang',
+      description: 'Build a photo/video/doc async uploading tool with event-driven architecture.',
+      readTime: '6 min read',
+    },
+  ];
+
+  const skills = {
+    languages: ['JavaScript', 'React', 'Vue', 'Java', 'Kotlin', 'Swift', 'Node.js', 'Docker', 'Python', 'Rust', 'GitHub', 'Web', 'Editor', 'Docker'],
+    styles: ['Bootstrap', 'Ant.d', 'Material.ui', 'Tailwind', 'Chakra.ui', 'Radix'],
+    backend: ['Golang', 'C / C++', 'PHP / Bitrix24', 'Rust', 'TypeScript', 'Redis', 'Kafka', 'Docker / Node', 'TypeScript', 'Microservices'],
+    devops: ['Docker', 'Kubernetes', 'Node / Expo11', 'Docker / (.1,X)11', 'Dev / Node'],
   };
 
   return (
-    <>
-      <main>
-        <section className="hero container">
-          <div className="hero-blue">
-            <div>
-              <h1>
-                <small>Hi I&apos;m </small>
-                Syed Khusroo Hayat
-              </h1>
-              <p>
-                <span>
-                  a full stack developer specializing in cloud-native applications with AI
-                  integration. I leverage LLMs, modern frameworks, and vibe coding practices to
-                  build scalable solutions that solve real business problems across multiple
-                  industries
-                </span>
-              </p>
-              <div className="call-to-action">
-                <a href="./Khusroo-Hayat-CV.pdf" className="button black">
-                  View Resume
-                </a>
-                <a href="mailto:khusroo.hayat@gmail.com" className="button white">
-                  Contact Me
-                </a>
-              </div>
-              <div className="social-links">
-                <a href="https://github.com/khusroohayat/">
-                  <img src="./imgs/github.png" alt="GitHub" width="48" title="GitHub" />
-                </a>
-                <a href="https://www.linkedin.com/in/khusroosyed/">
-                  <img src="./imgs/linkedin.png" alt="LinkedIn" width="48" title="LinkedIn" />
-                </a>
-                {/* Add your call-to-action buttons or content here if needed */}
-              </div>
-            </div>
-          </div>
-          <div className="hero-yellow">
-            <img
-              src="./imgs/khusroo-hero-image.png"
-              alt="Khusroo Hayat"
-              width="100%"
-              title="Khusroo Hayat"
-            />
-          </div>
-        </section>
-        <section className="logos container">
-          <div className="marquee">
-            <div className="track">
-              <img src="./imgs/html.png" alt="HTML" width="128" title="HTML" />
-              <img src="./imgs/css.png" alt="CSS" width="128" title="CSS" />
-              <img src="./imgs/javascript.png" alt="JS" width="128" title="JavaScript" />
-              <img src="./imgs/sass.png" width="128" alt="Sass" title="Sass" />
-              <img src="./imgs/react.png" width="128" alt="React" title="React" />
-              <img src="./imgs/nextjs.png" width="128" alt="Next JS" title="Next.js" />
-              <img src="./imgs/azure.png" width="128" alt="Azure" title="Azure" />
-              <img src="./imgs/vscode.png" width="128" alt="VS Code" title="VS Code" />
-              <img src="./imgs/python.png" width="128" alt="Python" title="Python" />
-              <img src="./imgs/html.png" alt="HTML" width="128" title="HTML" />
-              <img src="./imgs/css.png" alt="CSS" width="128" title="CSS" />
-              <img src="./imgs/javascript.png" alt="JS" width="128" title="JavaScript" />
-              <img src="./imgs/sass.png" width="128" alt="Sass" title="Sass" />
-              <img src="./imgs/react.png" width="128" alt="React" title="React" />
-              <img src="./imgs/nextjs.png" width="128" alt="Next JS" title="Next.js" />
-              <img src="./imgs/azure.png" width="128" alt="Azure" title="Azure" />
-              <img src="./imgs/vscode.png" width="128" alt="VS Code" title="VS Code" />
-              <img src="./imgs/python.png" width="128" alt="Python" title="Python" />
-            </div>
-          </div>
-        </section>
-        <section id="skills" className="skills container">
-          <h2>
-            <small>About Me</small>
-            Skills
-          </h2>
-          <div className="holder-blue">
-            <div className="left-column">
-              <h3>Frontend Excellence</h3>
-              <ul>
-                <li>React (Next.js)</li> {/* Highlighted Next.js */}
-                <li>Blazor (Fluent UI)</li> {/* Added Fluent UI */}
-                <li>Vue.js</li>
-                <li>React Native</li> {/* New key skill */}
-                <li>Tailwind UI</li> {/* New key skill */}
-                <li>JavaScript</li>
-                <li>CSS</li> {/* Simplified from CSS/Bootstrap */}
-                {/* Removed: Angular.js, WordPress (unless it's a major focus for you now) */}
-              </ul>
+    <div className={styles.portfolio}>
+      <header className={styles.header}>
+        <div className={styles.logo}>nik.khvat</div>
+        <button className={styles.menuButton}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
 
-              <h3>Backend & Cloud Services</h3>
-              <ul>
-                <li>C#</li>
-                <li>ASP.NET Core (MVC, Web API, Razor Pages)</li>
-                <li>Node.js</li>
-                <li>PHP</li> {/* Keep if still relevant to projects */}
-                <li>Microsoft Azure</li> {/* Moved to its own logical grouping */}
-                <li>Vercel</li> {/* New key skill */}
-                <li>Firebase (Auth, Studio)</li> {/* Grouped Firebase services */}
-                <li>Supabase</li> {/* New key skill */}
-                <li>Appwrite</li> {/* New key skill */}
-                <li>Entra ID (for Blazor)</li> {/* Specific integration skill */}
-                {/* Removed: IIS (less relevant for modern cloud deployment emphasis) */}
-              </ul>
-            </div>
-
-            <div className="right-column">
-              <h3>AI Tools</h3> {/* New dedicated category */}
-              <ul>
-                <li>Vibe Coding</li>
-                <li>Firebase Studio</li>
-                <li>Cursor</li>
-                <li>Lovable</li>
-                <li>OpenAI</li>
-                <li>Generative AI (Gen AI)</li> {/* Explicitly add this if you use it */}
-                <li>LLMs</li> {/* Key new keyword */}
-                {/* Placeholder for future AI tech if needed */}
-              </ul>
-              <h3>Databases & Integration</h3> {/* Streamlined and focused */}
-              <ul>
-                <li>MongoDB</li> {/* Highlighted Bookstore App */}
-                <li>Microsoft SQL Server</li>
-                <li>Dataverse</li> {/* New key skill */}
-                <li>Microsoft Dynamics CRM</li>
-                {/* Removed: MySQL (unless it's a major focus, keep if so) */}
-              </ul>
-              <h3>Developer Tools & Methodologies</h3> {/* Combined and focused */}
-              <ul>
-                <li>Git</li>
-                <li>Azure DevOps</li>
-                <li>Docker</li>
-                <li>Entity Framework</li>
-                <li>SCRUM</li>
-                <li>Agile Methodologies</li>
-              </ul>
-            </div>
-
-            <div className="additional-content">
-              {/* Replaced "A bit about me" with a more dynamic intro,
-        tying into your UVP and newer skills */}
-              <h3>Your Partner in AI Development</h3>
-              <p>
-                Hi, I&apos;m Syed Khusroo Hayat, an AI-Augmented Cloud-Native Full Stack Architect
-                with over a decade of experience. I specialize in building innovative web and mobile
-                applications using modern technologies like React (Next.js), Blazor, and React
-                Native, seamlessly integrating AI, LLMs, and Cloud services (Azure, Firebase,
-                Supabase, Appwrite).
-              </p>
-              <p>
-                My &apos;Vibe Coding&apos; approach ensures clean, efficient, and scalable solutions
-                that drive tangible business results. Let&apos;s build something intelligent
-                together.
-              </p>
-            </div>
+      <main className={styles.main}>
+        <section className={styles.hero}>
+          <h1 className={styles.title}>
+            Full-stack<br />Developer
+          </h1>
+          <p className={styles.subtitle}>
+            My goal is to write memorable, clean and understandable code
+          </p>
+          <div className={styles.projectsButton}>
+            <button>Projects</button>
+            <span className={styles.arrow}>→</span>
+          </div>
+          <div className={styles.socialLinks}>
+            <a href="#"><img src="/imgs/github.png" alt="GitHub" /></a>
+            <a href="#"><img src="/imgs/linkedin.png" alt="LinkedIn" /></a>
+            <a href="#" className={styles.telegram}>Telegram</a>
+            <a href="#" className={styles.telegram}>Instagram</a>
           </div>
         </section>
-        <section className="work-experience container">
-          <h2>
-            <small>Recent</small>
-            Work Experience
-          </h2>
-          <div className="jobs">
-            <article>
-              <figure>
-                <div>
-                  <img
-                    src="./imgs/consultant.jpg"
-                    alt="Workplace 1 - YouTube Creator"
-                    width="100%"
-                    title="Consultant"
-                  />
-                  <figcaption>Consultant</figcaption>
-                </div>
-              </figure>
-              <h3>Consultant</h3>
-              <div>2017-current</div>
-              <p>
-                Developing innovative solutions to automate eCommerce tasks, designing project
-                management apps, and leading development in technologies like Blazor, React, and
-                Azure for various clients.
-              </p>
-            </article>
-            <article>
-              <figure>
-                <div>
-                  <img
-                    src="./imgs/tenpearls.png"
-                    alt="Workplace 2 - Moshi Moshi Marketing"
-                    width="100%"
-                    title="10Pearls"
-                  />
-                  <figcaption>10Pearls</figcaption>
-                </div>
-              </figure>
-              <h3>Software Developer</h3>
-              <div>2015-2017</div>
-              <p>
-                Worked on Microsoft Dynamics CRM, developed APIs, and contributed to telehealth and
-                internal systems, implementing innovative backend and automation solutions.
-              </p>
-            </article>
-            <article>
-              <figure>
-                <div>
-                  <img
-                    src="./imgs/shinersoft.png"
-                    alt="Workplace 3 - Chamber of Commerce"
-                    width="100%"
-                    title="Shiner Soft"
-                  />
-                  <figcaption>Shiner Soft</figcaption>
-                </div>
-              </figure>
-              <h3>Software Engineer</h3>
-              <div>2013-2014</div>
-              <p>
-                Developed healthcare portals and Android applications using Xamarin and ASP.NET,
-                managing both technical and client-facing aspects of the project.
-              </p>
-            </article>
-          </div>
-        </section>
-        <section id="projects" className="bento container">
-          <h2>
-            <small>Previous</small>
-            Completed Projects
-          </h2>
-          <Suspense>
-            <HomeProjectsFilter />
-          </Suspense>
-        </section>
-        {/* --- Services Section --- */}
-        <ServicesSection />
-        {/* --- End Services Section --- */}
-        <section className="chatbot container">
-          <h2>
-            <small>Talk to me</small>
-            Chatbot
-          </h2>
-          <div className="chatbot-blue">
-            <div className="chat-info">
-              <h3>AI Chatbot</h3>
-              <p>
-                I&apos;ve put together a chatbot here which knows all my skills, work experience and
-                has a copy of my CV/Resume. You can use it to ask questions about me to get a better
-                idea of who I am and what I&apos;ve done.
-              </p>
-              <p>
-                You can also download my resume here if you want to take a look at it. I&apos;m
-                currently looking for new opportunities so if you have a project you think I&apos;d
-                be a good fit for, please get in touch!
-              </p>
-              <a href="./Sample_Resume_Template.pdf" className="button black">
-                Download Resume
-              </a>
-            </div>
-            <div className="chat-box">
-              <div className="scroll-area" ref={chatLogRef}>
-                <ul id="chat-log">
-                  {messages.map((message, index) => (
-                    <li key={index} className={`${message.role}`}>
-                      <span className={`avatar`}>{message.role === 'user' ? 'You' : 'AI'}</span>
-                      <div className="message">{message.content}</div>
-                    </li>
-                  ))}
-                </ul>
+
+        <section className={styles.projectShowcase}>
+          <div className={styles.projectCard}>
+            <img src={projects[activeProject].image} alt={projects[activeProject].title} />
+            <div className={styles.projectInfo}>
+              <h3>{projects[activeProject].title}</h3>
+              <p>{projects[activeProject].description}</p>
+              <div className={styles.projectActions}>
+                <button>Read more</button>
+                <span className={styles.arrow}>→</span>
               </div>
-              <form onSubmit={submitForm} className="chat-message">
-                <input
-                  type="text"
-                  placeholder="Hey Khusroo, what skills are you best at?"
-                  value={messageInput}
-                  onChange={(e) => setMessageInput(e.target.value)}
-                  required
-                />
-                <button className="button black" type="submit" disabled={!messageInput.trim()}>
-                  Send
-                </button>
-              </form>
             </div>
+          </div>
+          <div className={styles.projectNav}>
+            <button onClick={() => setActiveProject((prev) => (prev > 0 ? prev - 1 : projects.length - 1))}>
+              ←
+            </button>
+            <div className={styles.dots}>
+              {projects.map((_, index) => (
+                <span
+                  key={index}
+                  className={index === activeProject ? styles.activeDot : ''}
+                  onClick={() => setActiveProject(index)}
+                ></span>
+              ))}
+            </div>
+            <button onClick={() => setActiveProject((prev) => (prev < projects.length - 1 ? prev + 1 : 0))}>
+              →
+            </button>
+          </div>
+        </section>
+
+        <section className={styles.about}>
+          <h2>About me</h2>
+          <p className={styles.aboutText}>
+            I am skilled in <strong>Full-stack Development</strong>. More than <strong>2 years</strong> I develop beautiful web applications.
+          </p>
+          <div className={styles.aboutImage}>
+            <img src="/imgs/khusroo-hero-image.png" alt="Profile" />
+          </div>
+        </section>
+
+        <section className={styles.skills}>
+          <h3>Languages</h3>
+          <div className={styles.skillTags}>
+            {skills.languages.map((skill, index) => (
+              <span key={index} className={styles.tag}>
+                {skill}
+              </span>
+            ))}
+          </div>
+
+          <h3>Styles</h3>
+          <div className={styles.skillTags}>
+            {skills.styles.map((skill, index) => (
+              <span key={index} className={styles.tag}>
+                {skill}
+              </span>
+            ))}
+          </div>
+
+          <h3>Back-end</h3>
+          <div className={styles.skillTags}>
+            {skills.backend.map((skill, index) => (
+              <span key={index} className={styles.tag}>
+                {skill}
+              </span>
+            ))}
+          </div>
+
+          <h3>DevOps</h3>
+          <div className={styles.skillTags}>
+            {skills.devops.map((skill, index) => (
+              <span key={index} className={styles.tag}>
+                {skill}
+              </span>
+            ))}
           </div>
         </section>
       </main>
-    </>
+
+      <aside className={styles.workPanel}>
+        <h2>Work</h2>
+        <div className={styles.workList}>
+          {workExperience.map((work, index) => (
+            <div key={index} className={styles.workItem}>
+              <span className={styles.date}>{work.date}</span>
+              <div className={styles.workDetails}>
+                <h4>{work.company}</h4>
+                <p>{work.role} | {work.location}</p>
+              </div>
+            </div>
+          ))}
+          <p className={styles.workFooter}>
+            Work experience<br />
+            <strong>4 years 7 months</strong>
+          </p>
+        </div>
+        <h2 className={styles.projectsTitle}>... Projects ...</h2>
+        <div className={styles.projectGrid}>
+          {projects.map((project, index) => (
+            <div key={index} className={styles.projectThumb}>
+              <img src={project.image} alt={project.title} />
+            </div>
+          ))}
+        </div>
+      </aside>
+
+      <aside className={styles.articlesPanel}>
+        <h2>Articles</h2>
+        <div className={styles.articlesList}>
+          {articles.map((article, index) => (
+            <div key={index} className={styles.articleCard}>
+              <h3>{article.title}</h3>
+              <p>{article.description}</p>
+              <div className={styles.articleActions}>
+                <button>Read more</button>
+                <span className={styles.arrow}>→</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className={styles.articleNav}>
+          <div className={styles.navDots}>
+            {articles.map((_, index) => (
+              <span
+                key={index}
+                className={index === activeArticle ? styles.activeDot : ''}
+                onClick={() => setActiveArticle(index)}
+              ></span>
+            ))}
+          </div>
+          <button onClick={() => setActiveArticle((prev) => (prev > 0 ? prev - 1 : articles.length - 1))}>
+            ←
+          </button>
+          <button onClick={() => setActiveArticle((prev) => (prev < articles.length - 1 ? prev + 1 : 0))}>
+            →
+          </button>
+        </div>
+
+        <section className={styles.contact}>
+          <h2>... Contacts ...</h2>
+          <div className={styles.contactTags}>
+            <span>Email</span>
+            <span>About</span>
+            <span>Projects</span>
+            <span>Activity</span>
+          </div>
+          <div className={styles.location}>
+            <p>Motivated to be //<br />Resident / Dubai /<br />Remote to NAFTA</p>
+          </div>
+        </section>
+
+        <section className={styles.footer}>
+          <h2>Nikita<br />Khvatov</h2>
+          <p className={styles.role}>Full-stack<br />developer</p>
+          <div className={styles.footerLinks}>
+            <a href="#">Website</a>
+            <a href="#">Email</a>
+            <a href="#">Telegram</a>
+          </div>
+          <div className={styles.footerSocial}>
+            <a href="#">Facebook</a>
+            <a href="#">LinkedIn</a>
+          </div>
+        </section>
+      </aside>
+    </div>
   );
 }

@@ -1,11 +1,10 @@
 import Head from 'next/head';
 import './globals.css';
-import Header from './Header';
 
 export const metadata = {
-  title: 'Top-Rated Full Stack Web Developer | Custom Web Solutions & Professional Services',
+  title: 'Khusroo Hayat | Full-Stack Developer Portfolio',
   description:
-    'Expert full stack web developer offering custom web solutions. Build scalable apps with React, Node.js, and more. Competitive rates, fast turnaround. Let’s create your next project!',
+    'Expert full stack web developer offering custom web solutions. Build scalable apps with React, Node.js, and more. Competitive rates, fast turnaround.',
   icons: {
     icon: '/imgs/favicon.jpg',
   },
@@ -28,16 +27,13 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap"
           rel="stylesheet"
         />
-        <link rel="stylesheet" href="styles.css" />
         <link rel="icon" type="image/jpeg" href="./imgs/favicon.jpg" />
         <link rel="canonical" href="https://khusroohayat-portfolio.netlify.app/" />
       </Head>
       <body>
-        {/* Global Header/Nav for all pages */}
-        <Header />
         {children}
       </body>
     </html>
