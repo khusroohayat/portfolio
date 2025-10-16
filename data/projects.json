@@ -2,7 +2,7 @@
   {
     "slug": "workforce-kit",
     "title": "WorkForce Kit",
-    "description": "I led the end-to-end development of a mission-critical SaaS application designed to eliminate HR administrative chaos and empower businesses to manage their workforce with clarity and efficiency.",
+    "description": "I built a mission-critical HR platform to streamline scheduling, leave tracking, and onboarding into a single dashboard.",
     "image": "/imgs/prj-image-1.png",
     "demoUrl": "https://kind-glacier-02d030503.azurestaticapps.net/",
     "repoUrl": null,
@@ -11,7 +11,7 @@
   {
     "slug": "commerce-genie",
     "title": "Commerce Genie",
-    "description": "I architected and developed the core AI functionality for a SaaS platform that empowers eCommerce merchants to automate their entire content marketing strategy, turning a major business bottleneck into a competitive advantage.",
+    "description": "An AI-powered SaaS platform I developed to automate content marketing for eCommerce merchants, saving them dozens of hours weekly.",
     "image": "/imgs/prj-image-2.png",
     "demoUrl": "https://ai.commercegenie.com/",
     "repoUrl": null,
@@ -19,8 +19,8 @@
   },
   {
     "slug": "northern-crescent",
-    "title": "Northern Crescent",
-    "description": "I engineered the core infrastructure for a custom ERP system, breaking down data silos between critical business units to create a single, unified operational backbone for the entire company.",
+    "title": "Northern Crescent (NCAPP)",
+    "description": "I engineered the core API infrastructure for a custom ERP system, breaking down data silos to unify company-wide operations.",
     "image": "/imgs/prj-image-5.png",
     "demoUrl": "https://www.northerncrescent.ca/",
     "repoUrl": null,
@@ -29,28 +29,46 @@
   {
     "slug": "pixel-progress",
     "title": "Pixel Progress",
-    "description": "A gamified habit-tracker that turns daily productivity into a game.",
+    "description": "A creative, gamified habit-tracker I built that uses a competitive AI rival to drive user engagement and motivation.",
     "image": "/imgs/prj-image-7.png",
     "demoUrl": "https://studio-gray-ten.vercel.app/",
     "repoUrl": null,
-    "tech": ["Next.js", "Vercel", "Firebase Studio"]
+    "tech": ["Next.js", "Vercel", "Firebase Studio", "AI"]
   },
   {
     "slug": "avertly",
     "title": "Avertly",
-    "description": "I led the full-stack development of a sophisticated CMMS platform that empowers businesses to move from expensive, reactive repairs to a cost-effective, predictive maintenance model, maximizing asset lifespan and operational uptime.",
+    "description": "A predictive maintenance platform (CMMS) I developed to help businesses eliminate costly downtime and extend asset lifespan.",
     "image": "/imgs/prj-image-6.png",
     "demoUrl": "https://github.com/khusroohayat",
     "repoUrl": "https://github.com/khusroohayat",
-    "tech": ["ASP.NET Core (Web API)", "Vue.js", "SQL Server", "Azure"]
+    "tech": ["ASP.NET Core", "Vue.js", "SQL Server", "Azure"]
   },
   {
     "slug": "paw-ai",
     "title": "PAW.AI",
-    "description": "I developed a dynamic web application that leverages multiple AI APIs to create, manage, and showcase a world of entirely virtual pet influencers, demonstrating a modern approach to automated content creation and user engagement.",
+    "description": "A dynamic web app I built using multiple AI APIs to generate a world of virtual pet influencers and automated social content.",
     "image": "/imgs/prj-image-3.png",
     "demoUrl": "https://rad-muffin-a7f6a7.netlify.app/",
     "repoUrl": null,
     "tech": ["AI", "Next.js", "Netlify", "Strapi"]
+  },
+  {
+    "slug": "map-my-tree",
+    "title": "MapMyTree",
+    "description": "A geo-enabled web platform I built for an NGO to manage, monitor, and visualize their large-scale tree plantation initiatives.",
+    "image": "/imgs/prj-image-8.png",
+    "demoUrl": "https://treetogether.netlify.app/",
+    "repoUrl": null,
+    "tech": ["React", "TypeScript", "Supabase", "Tailwind CSS", "shadcn-ui"]
+  },
+  {
+    "slug": "second-book",
+    "title": "SecondBook",
+    "description": "A full-stack e-commerce marketplace I developed from the ground up to connect buyers and sellers of used books.",
+    "image": "/imgs/prj-image-9.png",
+    "demoUrl": null,
+    "repoUrl": "https://github.com/khusroohayat/book-store",
+    "tech": ["Express.js", "Node.js", "Angular", "MongoDB", "Docker"]
   }
 ]
