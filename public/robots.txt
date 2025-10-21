@@ -1,0 +1,6 @@
+# robots.txt for Khusroo Hayat Portfolio
+
+User-agent: *
+Allow: /
+
+Sitemap: https://khusroohayat-portfolio.netlify.app/sitemap.xml

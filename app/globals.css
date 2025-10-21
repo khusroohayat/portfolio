@@ -565,8 +565,8 @@ h2 {
     display: grid;
     grid-gap: 30px;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    height: 960px;
+    grid-template-rows: repeat(8, 1fr);
+    height: 1444px;
     @media (max-width: 1024px) {
       grid-template-rows: repeat(8, 1fr);
     }
@@ -666,6 +666,7 @@ h2 {
           grid-row: 3 / 5;
         }
       }
+
       &:nth-child(5) {
         grid-column: 1 / 4;
         grid-row: 5 / 7;
@@ -680,6 +681,22 @@ h2 {
         @media (max-width: 1024px) {
           grid-column: 4 / 6;
           grid-row: 5 / 7;
+        }
+      }
+      &:nth-child(7) {
+        grid-column: 1 / 4;
+        grid-row: 7 / 9;
+        @media (max-width: 1024px) {
+          grid-column: 1 / 4;
+          grid-row: 7 / 9;
+        }
+      }
+      &:nth-child(8) {
+        grid-column: 4 / 6;
+        grid-row: 7 / 9;
+        @media (max-width: 1024px) {
+          grid-column: 4 / 6;
+          grid-row: 7 / 9;
         }
       }
     }

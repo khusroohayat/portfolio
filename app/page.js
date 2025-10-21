@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import ServicesSection from './ServicesSection';
 import { Suspense } from 'react';
 import HomeProjectsFilter from './HomeProjectsFilter';
+import TechLogosMarquee from './TechLogosMarquee';
 
 export default function Home() {
   const [messageInput, setMessageInput] = useState('');
@@ -85,30 +86,7 @@ export default function Home() {
             />
           </div>
         </section>
-        <section className="logos container">
-          <div className="marquee">
-            <div className="track">
-              <img src="./imgs/html.png" alt="HTML" width="128" title="HTML" />
-              <img src="./imgs/css.png" alt="CSS" width="128" title="CSS" />
-              <img src="./imgs/javascript.png" alt="JS" width="128" title="JavaScript" />
-              <img src="./imgs/sass.png" width="128" alt="Sass" title="Sass" />
-              <img src="./imgs/react.png" width="128" alt="React" title="React" />
-              <img src="./imgs/nextjs.png" width="128" alt="Next JS" title="Next.js" />
-              <img src="./imgs/azure.png" width="128" alt="Azure" title="Azure" />
-              <img src="./imgs/vscode.png" width="128" alt="VS Code" title="VS Code" />
-              <img src="./imgs/python.png" width="128" alt="Python" title="Python" />
-              <img src="./imgs/html.png" alt="HTML" width="128" title="HTML" />
-              <img src="./imgs/css.png" alt="CSS" width="128" title="CSS" />
-              <img src="./imgs/javascript.png" alt="JS" width="128" title="JavaScript" />
-              <img src="./imgs/sass.png" width="128" alt="Sass" title="Sass" />
-              <img src="./imgs/react.png" width="128" alt="React" title="React" />
-              <img src="./imgs/nextjs.png" width="128" alt="Next JS" title="Next.js" />
-              <img src="./imgs/azure.png" width="128" alt="Azure" title="Azure" />
-              <img src="./imgs/vscode.png" width="128" alt="VS Code" title="VS Code" />
-              <img src="./imgs/python.png" width="128" alt="Python" title="Python" />
-            </div>
-          </div>
-        </section>
+        <TechLogosMarquee />
         <section id="skills" className="skills container">
           <h2>
             <small>About Me</small>
