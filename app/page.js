@@ -291,8 +291,36 @@ export default function Home() {
                   onChange={(e) => setMessageInput(e.target.value)}
                   required
                 />
-                <button className="button black" type="submit" disabled={!messageInput.trim()}>
-                  Send
+                <button
+                  className="button black chat-send-btn"
+                  type="submit"
+                  disabled={!messageInput.trim()}
+                  aria-label="Send"
+                >
+                  <span
+                    className="send-icon"
+                    aria-hidden="true"
+                    style={{ display: 'inline-block', verticalAlign: 'middle' }}
+                  >
+                    {/* SVG paper plane icon */}
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 22 22"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2 11L20 2L11 20L10 13L2 11Z"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <span className="send-text" style={{ marginLeft: '0.5em' }}>
+                    Send
+                  </span>
                 </button>
               </form>
             </div>
