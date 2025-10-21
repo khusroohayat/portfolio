@@ -6,7 +6,7 @@
     "image": "/imgs/prj-image-1.png",
     "demoUrl": "https://kind-glacier-02d030503.azurestaticapps.net/",
     "repoUrl": null,
-    "tech": ["ASP.NET", "Vue.js", "Azure", "Node.js", "Typescript", "SQL Server"]
+    "tech": ["Asp.net", "Vue.js", "Azure", "Node.js", "Typescript", "SQL Server"]
   },
   {
     "slug": "commerce-genie",
@@ -15,7 +15,7 @@
     "image": "/imgs/prj-image-2.png",
     "demoUrl": "https://ai.commercegenie.com/",
     "repoUrl": null,
-    "tech": ["Open AI", "Asp.net", "Azure", "Vue.js", "Chatbot"]
+    "tech": ["Open AI", "Asp.net", "Azure", "Vue.js", "SQL Server"]
   },
   {
     "slug": "northern-crescent",
@@ -24,7 +24,7 @@
     "image": "/imgs/prj-image-5.png",
     "demoUrl": "https://www.northerncrescent.ca/",
     "repoUrl": null,
-    "tech": ["Azure", "MongoDb", "Blazor", "Entra ID"]
+    "tech": ["Azure", "MongoDb", "Blazor"]
   },
   {
     "slug": "pixel-progress",
@@ -33,7 +33,7 @@
     "image": "/imgs/prj-image-7.png",
     "demoUrl": "https://studio-gray-ten.vercel.app/",
     "repoUrl": null,
-    "tech": ["Next.js", "Vercel", "Firebase Studio", "AI"]
+    "tech": ["Next.js", "Vercel", "Firebase Studio"]
   },
   {
     "slug": "avertly",
@@ -42,7 +42,7 @@
     "image": "/imgs/prj-image-6.png",
     "demoUrl": "https://github.com/khusroohayat",
     "repoUrl": "https://github.com/khusroohayat",
-    "tech": ["ASP.NET Core", "Vue.js", "SQL Server", "Azure"]
+    "tech": ["Asp.net", "Vue.js", "SQL Server", "Azure"]
   },
   {
     "slug": "paw-ai",
@@ -51,7 +51,7 @@
     "image": "/imgs/prj-image-3.png",
     "demoUrl": "https://rad-muffin-a7f6a7.netlify.app/",
     "repoUrl": null,
-    "tech": ["AI", "Next.js", "Netlify", "Strapi"]
+    "tech": ["v0", "Next.js", "Netlify", "Strapi"]
   },
   {
     "slug": "map-my-tree",
@@ -60,7 +60,7 @@
     "image": "/imgs/prj-image-8.png",
     "demoUrl": "https://treetogether.netlify.app/",
     "repoUrl": null,
-    "tech": ["React", "TypeScript", "Supabase", "Tailwind CSS", "shadcn-ui"]
+    "tech": ["Lovable", "React", "TypeScript", "Supabase", "Tailwind CSS", "shadcn-ui"]
   },
   {
     "slug": "second-book",
@@ -69,6 +69,6 @@
     "image": "/imgs/prj-image-9.png",
     "demoUrl": null,
     "repoUrl": "https://github.com/khusroohayat/book-store",
-    "tech": ["Express.js", "Node.js", "Angular", "MongoDB", "Docker"]
+    "tech": ["Bolt.new", "Express.js", "Node.js", "Angular", "MongoDB", "Docker"]
   }
 ]
