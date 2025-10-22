@@ -32,6 +32,28 @@ jest.mock('../data/projects.json', () => [
 ]);
 
 describe('Home page', () => {
+  it('navigation links are accessible and focusable', () => {
+    render(<Home />);
+    // Check that all main nav links are present and have href
+    const navLinks = screen.getAllByRole('link');
+    navLinks.forEach((link) => {
+      expect(link).toHaveAttribute('href');
+      // Should be focusable
+      link.focus();
+      expect(document.activeElement).toBe(link);
+    });
+  });
+
+  it('hero and project images have alt text', () => {
+    render(<Home />);
+    // All images should have alt attribute
+    const images = screen.getAllByRole('img');
+    images.forEach((img) => {
+      expect(img).toHaveAttribute('alt');
+      // Alt text should not be empty
+      expect(img.getAttribute('alt')).not.toBe('');
+    });
+  });
   it('renders hero section', () => {
     render(<Home />);
     // Use heading role for h1
