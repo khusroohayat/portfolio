@@ -137,4 +137,18 @@ No explicit license file detected in the repository. If you intend this to be op
 
 ---
 
+## CDN & Image Optimization
+
+For best performance and optimal Largest Contentful Paint (LCP) scores, it is recommended to:
+
+- Deploy this site on a platform that provides a global Content Delivery Network (CDN), such as Vercel or Netlify.
+- Ensure all images are served from the `/public/imgs/` directory and use Next.js `<Image>` for automatic optimization and lazy loading.
+- For further improvements, consider compressing images before adding them to the repo (e.g., using TinyPNG or Squoosh).
+
+---
+
+**Note:** The codebase is already configured to use Next.js `<Image>` for all main images. No further code changes are needed for CDN setup; this is handled by your deployment platform.
+
+---
+
 If you'd like, I can open a PR with this README or make additional edits (add badges, more examples, or expand the contributing section).
