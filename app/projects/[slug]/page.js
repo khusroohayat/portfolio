@@ -66,11 +66,11 @@ export default function ProjectDetailPage({ params }) {
                     className="button white"
                     style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
                   >
-                    <img
+                    <Image
                       src="/imgs/github.png"
                       alt="GitHub"
-                      width="28"
-                      height="28"
+                      width={28}
+                      height={28}
                       title="GitHub Repo"
                       style={{ display: 'inline-block', verticalAlign: 'middle' }}
                     />

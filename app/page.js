@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 // ...existing code...
 
 import ServicesSection from './ServicesSection';
@@ -68,21 +69,36 @@ export default function Home() {
               </div>
               <div className="social-links">
                 <a href="https://github.com/khusroohayat/">
-                  <img src="./imgs/github.png" alt="GitHub" width="48" title="GitHub" />
+                  <Image
+                    src="/imgs/github.png"
+                    alt="GitHub"
+                    width={48}
+                    height={48}
+                    title="GitHub"
+                  />
                 </a>
                 <a href="https://www.linkedin.com/in/khusroosyed/">
-                  <img src="./imgs/linkedin.png" alt="LinkedIn" width="48" title="LinkedIn" />
+                  <Image
+                    src="/imgs/linkedin.png"
+                    alt="LinkedIn"
+                    width={48}
+                    height={48}
+                    title="LinkedIn"
+                  />
                 </a>
                 {/* Add your call-to-action buttons or content here if needed */}
               </div>
             </div>
           </div>
           <div className="hero-yellow">
-            <img
-              src="./imgs/khusroo-hero-image.png"
+            <Image
+              src="/imgs/khusroo-hero-image.png"
               alt="Khusroo Hayat"
-              width="100%"
+              width={500}
+              height={500}
               title="Khusroo Hayat"
+              priority
+              style={{ width: '100%', height: 'auto' }}
             />
           </div>
         </section>
@@ -181,11 +197,13 @@ export default function Home() {
             <article>
               <figure>
                 <div>
-                  <img
-                    src="./imgs/consultant.jpg"
+                  <Image
+                    src="/imgs/consultant.jpg"
                     alt="Workplace 1 - YouTube Creator"
-                    width="100%"
+                    width={400}
+                    height={250}
                     title="Consultant"
+                    style={{ width: '100%', height: 'auto' }}
                   />
                   <figcaption>Consultant</figcaption>
                 </div>
@@ -201,11 +219,13 @@ export default function Home() {
             <article>
               <figure>
                 <div>
-                  <img
-                    src="./imgs/tenpearls.png"
+                  <Image
+                    src="/imgs/tenpearls.png"
                     alt="Workplace 2 - Moshi Moshi Marketing"
-                    width="100%"
+                    width={400}
+                    height={250}
                     title="10Pearls"
+                    style={{ width: '100%', height: 'auto' }}
                   />
                   <figcaption>10Pearls</figcaption>
                 </div>
@@ -220,11 +240,13 @@ export default function Home() {
             <article>
               <figure>
                 <div>
-                  <img
-                    src="./imgs/shinersoft.png"
+                  <Image
+                    src="/imgs/shinersoft.png"
                     alt="Workplace 3 - Chamber of Commerce"
-                    width="100%"
+                    width={400}
+                    height={250}
                     title="Shiner Soft"
+                    style={{ width: '100%', height: 'auto' }}
                   />
                   <figcaption>Shiner Soft</figcaption>
                 </div>
