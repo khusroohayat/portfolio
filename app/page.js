@@ -3,10 +3,21 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 // ...existing code...
 
-import ServicesSection from './ServicesSection';
+import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
-import HomeProjectsFilter from './HomeProjectsFilter';
-import TechLogosMarquee from './TechLogosMarquee';
+
+const TechLogosMarquee = dynamic(() => import('./TechLogosMarquee'), {
+  ssr: false,
+  loading: () => <div style={{ height: 64 }} />,
+});
+const ServicesSection = dynamic(() => import('./ServicesSection'), {
+  ssr: false,
+  loading: () => <div style={{ height: 200 }} />,
+});
+const HomeProjectsFilter = dynamic(() => import('./HomeProjectsFilter'), {
+  ssr: false,
+  loading: () => <div>Loading projects…</div>,
+});
 
 export default function Home() {
   const [messageInput, setMessageInput] = useState('');
