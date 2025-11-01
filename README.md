@@ -31,6 +31,33 @@ Key files
 - `/app/api/route.js` — Chatbot serverless endpoint (resume-aware)
 - `/data/projects.json` — Project manifest (source of truth)
 
+
+## Continuous Integration & Deployment (Netlify)
+
+This project uses Netlify for automated CI/CD. Every push to the `main` branch triggers the following pipeline:
+
+- **Linting:** Runs ESLint checks (`npm run lint`)
+- **Formatting:** Checks code formatting with Prettier (`npm run format:check`)
+- **Testing:** Runs all Jest unit/integration tests (`npm run test:ci`)
+- **Accessibility:** Runs accessibility tests (`npm run a11y:ci`)
+- **Build:** Builds the Next.js app (`npm run build`)
+- **Lighthouse Audit:** Runs a Lighthouse audit (`npm run audit:lighthouse`)
+- **Deployment:** Publishes the site to Netlify if all checks pass
+
+### Netlify Setup
+
+1. **Connect your repository to Netlify** and select the `main` branch for production deploys.
+2. **Set environment variables** in the Netlify dashboard:
+  - `GOOGLE_GEMINI_API_KEY` (required for the AI Chatbot API route)
+3. **Build settings:** Netlify uses the `netlify.toml` file for build configuration and plugins. No further changes are needed unless customizing the build.
+
+**Note:** Do not commit secrets. Use the Netlify UI to manage environment variables securely.
+
+#### Optional: GitHub Actions
+For additional pre-deploy checks on pull requests, consider adding a GitHub Actions workflow to run `npm run ci`.
+
+---
+
 ## Getting started
 
 Prerequisites
