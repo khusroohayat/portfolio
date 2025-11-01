@@ -31,7 +31,7 @@
     "title": "Pixel Progress",
     "description": "A creative, gamified habit-tracker I built that uses a competitive AI rival to drive user engagement and motivation.",
     "image": "/imgs/prj-image-7.png",
-    "demoUrl": "https://studio-gray-ten.vercel.app/",
+    "demoUrl": "https://pixxelprogress.vercel.app/",
     "repoUrl": null,
     "tech": ["Next.js", "Vercel", "Firebase Studio"]
   },
