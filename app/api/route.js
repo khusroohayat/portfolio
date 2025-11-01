@@ -243,23 +243,6 @@ export async function POST(req) {
 
     // Add system instruction if the model/API supports it (check Gemini API docs)
     // Note: The basic generateContent might not have a dedicated systemInstruction field.
-    // Often, you prepend the system instructions to the *first* user message.
-    // Let's try prepending if a system instruction exists:
-    if (systemInstructionContent && body.contents.length > 0 && body.contents[0].role === 'user') {
-      body.contents[0].parts[0].text = `${systemInstructionContent}\n\n${body.contents[0].parts[0].text}`;
-    } else if (systemInstructionContent && body.contents.length === 0) {
-      // If the only message is the system prompt, send it as the first user message
-      body.contents.push({ role: 'user', parts: [{ text: systemInstructionContent }] });
-    }
-    // --- End Refined Message Processing ---
-
-    if (!GEMINI_API_KEY) {
-      console.error('GEMINI_API_KEY is not set');
-      return NextResponse.json(
-        { message: 'Service temporarily unavailable' },
-        { status: 503, headers: getSecurityHeaders() }
-      );
-    }
 
     const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
       method: 'POST',

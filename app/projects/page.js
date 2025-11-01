@@ -1,6 +1,10 @@
 'use client';
 import { Suspense } from 'react';
-import HomeProjectsFilter from '../HomeProjectsFilter';
+import dynamic from 'next/dynamic';
+const HomeProjectsFilter = dynamic(() => import('../HomeProjectsFilter'), {
+  ssr: false,
+  loading: () => <div>Loading projects…</div>,
+});
 
 export default function ProjectsPage() {
   return (
