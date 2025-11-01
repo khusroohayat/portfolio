@@ -53,7 +53,7 @@ describe('Chatbot API Security Tests', () => {
     mockConsoleLog.mockClear();
 
     // Clear rate limit map between tests
-    const { POST } = require('../route');
+    // const { POST } = require('../route');
     // Access the rate limit map and clear it
     if (global.rateLimitMap) {
       global.rateLimitMap.clear();

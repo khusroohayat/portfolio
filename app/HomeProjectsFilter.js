@@ -1,8 +1,8 @@
 'use client';
+import React, { useState, useEffect, useRef } from 'react';
 import projects from '../data/projects.json';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function HomeProjectsFilter() {

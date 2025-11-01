@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 // ...existing code...
 
@@ -86,6 +86,7 @@ export default function Home() {
                     width={48}
                     height={48}
                     title="GitHub"
+                    loading="lazy"
                   />
                 </a>
                 <a href="https://www.linkedin.com/in/khusroosyed/">
@@ -95,6 +96,7 @@ export default function Home() {
                     width={48}
                     height={48}
                     title="LinkedIn"
+                    loading="lazy"
                   />
                 </a>
                 {/* Add your call-to-action buttons or content here if needed */}
@@ -102,6 +104,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-yellow">
+            {/* TODO: Replace with compressed WebP for best LCP. */}
             <Image
               src="/imgs/khusroo-hero-image.png"
               alt="Khusroo Hayat"
@@ -109,6 +112,7 @@ export default function Home() {
               height={500}
               title="Khusroo Hayat"
               priority
+              sizes="(max-width: 600px) 100vw, 500px"
               style={{ width: '100%', height: 'auto' }}
             />
           </div>
@@ -215,6 +219,7 @@ export default function Home() {
                     height={250}
                     title="Consultant"
                     style={{ width: '100%', height: 'auto' }}
+                    loading="lazy"
                   />
                   <figcaption>Consultant</figcaption>
                 </div>
@@ -237,6 +242,7 @@ export default function Home() {
                     height={250}
                     title="10Pearls"
                     style={{ width: '100%', height: 'auto' }}
+                    loading="lazy"
                   />
                   <figcaption>10Pearls</figcaption>
                 </div>
@@ -258,6 +264,7 @@ export default function Home() {
                     height={250}
                     title="Shiner Soft"
                     style={{ width: '100%', height: 'auto' }}
+                    loading="lazy"
                   />
                   <figcaption>Shiner Soft</figcaption>
                 </div>
