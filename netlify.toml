@@ -1,6 +1,6 @@
 [build]
-  command   = "npm run build"
-  publish   = ".next"
+  command   = "npm run build" # Runs all checks and builds the Next.js app
+  publish   = ".next"         # Output directory for Next.js on Netlify
 
 [[plugins]]
-  package = "@netlify/plugin-nextjs"
+  package = "@netlify/plugin-nextjs" # Ensures Next.js works optimally on Netlify

@@ -1,35 +1,31 @@
-# Khusroo Hayat — Personal Portfolio
+## Continuous Integration & Deployment (Netlify)
 
-> A professional portfolio website built with Next.js (App Router) to showcase Khusroo Hayat's projects, skills, and contact options — including an AI-powered resume-aware chatbot.
+This project uses Netlify for automated CI/CD. Every push to the `main` branch triggers the following pipeline:
+
+- **Linting:** Runs ESLint checks (`npm run lint`)
+- **Formatting:** Checks code formatting with Prettier (`npm run format:check`)
+- **Testing:** Runs all Jest unit/integration tests (`npm run test:ci`)
+- **Accessibility:** Runs accessibility tests (`npm run a11y:ci`)
+- **Build:** Builds the Next.js app (`npm run build`)
+- **Lighthouse Audit:** Runs a Lighthouse audit (`npm run audit:lighthouse`)
+- **Deployment:** Publishes the site to Netlify if all checks pass
+
+### Netlify Setup
+
+1. **Connect your repository to Netlify** and select the `main` branch for production deploys.
+2. **Set environment variables** in the Netlify dashboard:
+
+- `GOOGLE_GEMINI_API_KEY` (required for the AI Chatbot API route)
+
+3. **Build settings:** Netlify uses the `netlify.toml` file for build configuration and plugins. No further changes are needed unless customizing the build.
+
+**Note:** Do not commit secrets. Use the Netlify UI to manage environment variables securely.
+
+#### Optional: GitHub Actions
+
+For additional pre-deploy checks on pull requests, consider adding a GitHub Actions workflow to run `npm run ci`.
 
 ---
-
-## Technology stack
-
-- Next.js (App Router) — v14.x (project uses Next 14.2.5)
-- React 18
-- JavaScript / TypeScript (project primarily JS; TypeScript optional)
-- CSS Modules for styling
-- Serverless API routes (Next.js) for the AI Chatbot
-- AI integration: Google Gemini (via serverless proxy) and Azure/OpenAI packages referenced in package.json
-- Deployment targets: Vercel or Netlify
-
-See `package.json` for exact dependency versions and scripts.
-
-## Project architecture (high level)
-
-- File-based Next.js App Router with colocated pages/components under `/app`.
-- Project data manifest in `/data/projects.json` used for the projects gallery and dynamic project pages at `/projects/[slug]`.
-- Serverless route at `app/api/route.js` implements a secure proxy to a generative AI model (Google Gemini) that serves a resume-aware chatbot.
-- Static assets live under `/public/imgs` and optimized via `next/image` where used.
-
-Key files
-
-- `/app/page.js` — Home page (hero, skills, featured projects)
-- `/app/projects/page.js` — Projects gallery
-- `/app/projects/[slug]/page.js` — Project detail pages (dynamic)
-- `/app/api/route.js` — Chatbot serverless endpoint (resume-aware)
-- `/data/projects.json` — Project manifest (source of truth)
 
 ## Getting started
 
