@@ -1,4 +1,3 @@
-
 ## Continuous Integration & Deployment (Netlify)
 
 This project uses Netlify for automated CI/CD. Every push to the `main` branch triggers the following pipeline:
@@ -15,12 +14,15 @@ This project uses Netlify for automated CI/CD. Every push to the `main` branch t
 
 1. **Connect your repository to Netlify** and select the `main` branch for production deploys.
 2. **Set environment variables** in the Netlify dashboard:
-  - `GOOGLE_GEMINI_API_KEY` (required for the AI Chatbot API route)
+
+- `GOOGLE_GEMINI_API_KEY` (required for the AI Chatbot API route)
+
 3. **Build settings:** Netlify uses the `netlify.toml` file for build configuration and plugins. No further changes are needed unless customizing the build.
 
 **Note:** Do not commit secrets. Use the Netlify UI to manage environment variables securely.
 
 #### Optional: GitHub Actions
+
 For additional pre-deploy checks on pull requests, consider adding a GitHub Actions workflow to run `npm run ci`.
 
 ---
