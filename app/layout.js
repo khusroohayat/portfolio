@@ -1,3 +1,4 @@
+import React from 'react';
 import Head from 'next/head';
 import './globals.css';
 import Header from './Header';
