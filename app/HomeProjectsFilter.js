@@ -168,11 +168,48 @@ export default function HomeProjectsFilter() {
             style={{ textDecoration: 'none', color: 'inherit' }}
           >
             <div>
+              {/* Use actual image dimensions for project images */}
               <Image
                 src={project.image}
                 alt={project.title}
-                width={600}
-                height={340}
+                width={
+                  project.image === '/imgs/prj-image-1.png'
+                    ? 1157
+                    : project.image === '/imgs/prj-image-2.png'
+                      ? 1054
+                      : project.image === '/imgs/prj-image-3.png'
+                        ? 1533
+                        : project.image === '/imgs/prj-image-5.png'
+                          ? 1258
+                          : project.image === '/imgs/prj-image-6.png'
+                            ? 1119
+                            : project.image === '/imgs/prj-image-7.png'
+                              ? 1206
+                              : project.image === '/imgs/prj-image-8.png'
+                                ? 1349
+                                : project.image === '/imgs/prj-image-9.png'
+                                  ? 775
+                                  : 600
+                }
+                height={
+                  project.image === '/imgs/prj-image-1.png'
+                    ? 558
+                    : project.image === '/imgs/prj-image-2.png'
+                      ? 511
+                      : project.image === '/imgs/prj-image-3.png'
+                        ? 766
+                        : project.image === '/imgs/prj-image-5.png'
+                          ? 619
+                          : project.image === '/imgs/prj-image-6.png'
+                            ? 451
+                            : project.image === '/imgs/prj-image-7.png'
+                              ? 763
+                              : project.image === '/imgs/prj-image-8.png'
+                                ? 505
+                                : project.image === '/imgs/prj-image-9.png'
+                                  ? 529
+                                  : 340
+                }
                 style={{ width: '100%', height: 'auto', borderRadius: 12, objectFit: 'cover' }}
               />
               <div className="project-info" style={{ padding: '1.1rem 0 0.5rem 0' }}>
