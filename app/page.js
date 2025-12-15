@@ -108,11 +108,11 @@ export default function Home() {
             <Image
               src="/imgs/khusroo-hero-image.png"
               alt="Khusroo Hayat"
-              width={500}
-              height={500}
+              width={928}
+              height={1120}
               title="Khusroo Hayat"
               priority
-              sizes="(max-width: 600px) 100vw, 500px"
+              sizes="(max-width: 600px) 100vw, 928px"
               style={{ width: '100%', height: 'auto' }}
             />
           </div>
@@ -215,8 +215,8 @@ export default function Home() {
                   <Image
                     src="/imgs/consultant.jpg"
                     alt="Workplace 1 - YouTube Creator"
-                    width={400}
-                    height={250}
+                    width={4241}
+                    height={2829}
                     title="Consultant"
                     style={{ width: '100%', height: 'auto' }}
                     loading="lazy"
@@ -238,8 +238,8 @@ export default function Home() {
                   <Image
                     src="/imgs/tenpearls.png"
                     alt="Workplace 2 - Moshi Moshi Marketing"
-                    width={400}
-                    height={250}
+                    width={884}
+                    height={335}
                     title="10Pearls"
                     style={{ width: '100%', height: 'auto' }}
                     loading="lazy"
@@ -260,8 +260,8 @@ export default function Home() {
                   <Image
                     src="/imgs/shinersoft.png"
                     alt="Workplace 3 - Chamber of Commerce"
-                    width={400}
-                    height={250}
+                    width={180}
+                    height={180}
                     title="Shiner Soft"
                     style={{ width: '100%', height: 'auto' }}
                     loading="lazy"
