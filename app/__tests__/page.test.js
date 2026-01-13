@@ -19,14 +19,14 @@ jest.mock('../data/projects.json', () => [
     slug: 'workforce-kit',
     title: 'WorkForce Kit',
     description: 'Empowering Industries with Streamlined Workforce Management',
-    image: './imgs/prj-image-1.png',
+    image: './imgs/webp/prj-image-1.webp',
     tech: ['React', 'Azure'],
   },
   {
     slug: 'commerce-genie',
     title: 'Commerce Genie',
     description: 'AI‑Powered Ecommerce Content & Automation Platform',
-    image: './imgs/prj-image-2.png',
+    image: './imgs/webp/prj-image-2.webp',
     tech: ['Next.js', 'OpenAI'],
   },
 ]);
@@ -46,12 +46,18 @@ describe('Home page', () => {
 
   it('hero and project images have alt text', () => {
     render(<Home />);
-    // All images should have alt attribute
+    // All images should have alt attribute and non-empty alt text
     const images = screen.getAllByRole('img');
     images.forEach((img) => {
       expect(img).toHaveAttribute('alt');
-      // Alt text should not be empty
       expect(img.getAttribute('alt')).not.toBe('');
+    });
+    // Only check .webp for images that are mocked as .webp in the test data
+    const webpProjectAlts = ['WorkForce Kit', 'Commerce Genie'];
+    images.forEach((img) => {
+      if (webpProjectAlts.includes(img.alt)) {
+        expect(img.src).toMatch(/webp/);
+      }
     });
   });
   it('renders hero section', () => {
