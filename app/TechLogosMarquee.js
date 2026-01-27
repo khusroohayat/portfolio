@@ -21,7 +21,7 @@ export default function TechLogosMarquee() {
     { src: '/imgs/blazor.png', alt: 'Blazor', title: 'Blazor' },
     { src: '/imgs/nextjs.png', alt: 'Next JS', title: 'Next.js' },
     { src: '/imgs/vercel.png', alt: 'Vercel', title: 'Vercel' },
-    { src: '/imgs/netlify.png', alt: 'Netlify', title: 'Netlify' },
+    { src: '/imgs/Netlify.png', alt: 'Netlify', title: 'Netlify' },
     { src: '/imgs/strapi.png', alt: 'Strapi', title: 'Strapi' },
     { src: '/imgs/react.png', alt: 'React', title: 'React' },
     { src: '/imgs/supabase.png', alt: 'Supabase', title: 'Supabase' },

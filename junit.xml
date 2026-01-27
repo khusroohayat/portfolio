@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Portfolio Tests" tests="11" failures="0" errors="0" time="1.749">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2025-12-15T11:55:02" time="1.122" tests="11">
-    <testcase classname="" name="renders project images with correct width, height, and alt" time="0.06">
+<testsuites name="Portfolio Tests" tests="10" failures="0" errors="0" time="3.232">
+  <testsuite name="Accessibility Tests" errors="0" failures="0" skipped="0" timestamp="2026-01-27T13:02:27" time="2.186" tests="10">
+    <testcase classname="Accessibility Tests › Home Page" name="should not have accessibility violations" time="0.678">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="renders all projects by default" time="0.032">
+    <testcase classname="Accessibility Tests › Home Page" name="should have proper heading hierarchy" time="0.034">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="filters projects by tech" time="0.071">
+    <testcase classname="Accessibility Tests › Home Page" name="should have proper form labels and accessibility attributes" time="0.031">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="shows all projects when All is clicked" time="0.033">
+    <testcase classname="Accessibility Tests › Layout Component" name="should not have accessibility violations in header and navigation" time="0.092">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="links to project detail pages" time="0.017">
+    <testcase classname="Accessibility Tests › Layout Component" name="should have proper navigation structure" time="0.007">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="initializes filter from URL query string" time="0.009">
+    <testcase classname="Accessibility Tests › Layout Component" name="should have proper landmark roles" time="0.005">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="updates URL when tech filter changes" time="0.016">
+    <testcase classname="Accessibility Tests › General Accessibility Checks" name="should have proper alt text for images" time="0.035">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="removes tech parameter when All is clicked" time="0.019">
+    <testcase classname="Accessibility Tests › General Accessibility Checks" name="should have proper button accessibility" time="0.047">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="ignores invalid tech parameter from URL" time="0.007">
+    <testcase classname="Accessibility Tests › General Accessibility Checks" name="should have proper focus management" time="0.034">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="renders filter row and scroll buttons" time="0.016">
-    </testcase>
-    <testcase classname="HomeProjectsFilter" name="clicking scroll buttons calls scrollBy on the row" time="0.017">
+    <testcase classname="Accessibility Tests › General Accessibility Checks" name="should have proper color contrast considerations" time="0.04">
     </testcase>
   </testsuite>
 </testsuites>

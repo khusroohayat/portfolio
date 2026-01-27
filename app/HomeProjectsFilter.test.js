@@ -2,14 +2,14 @@ it('renders project images with correct width, height, and alt', () => {
   // Ensure useSearchParams returns a URLSearchParams instance
   useSearchParams.mockReturnValue(new URLSearchParams());
   render(<HomeProjectsFilter />);
-  // Project A: /imgs/prj-image-1.png (should be 1157x558)
+  // Project A: /imgs/prj-image-1.png (should be 600x340)
   const imgA = screen.getByAltText('Project A');
-  expect(imgA).toHaveAttribute('width', '1157');
-  expect(imgA).toHaveAttribute('height', '558');
-  // Project B: /imgs/prj-image-2.png (should be 1054x511)
+  expect(imgA).toHaveAttribute('width', '600');
+  expect(imgA).toHaveAttribute('height', '340');
+  // Project B: /imgs/prj-image-2.png (should be 600x340)
   const imgB = screen.getByAltText('Project B');
-  expect(imgB).toHaveAttribute('width', '1054');
-  expect(imgB).toHaveAttribute('height', '511');
+  expect(imgB).toHaveAttribute('width', '600');
+  expect(imgB).toHaveAttribute('height', '340');
 });
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
