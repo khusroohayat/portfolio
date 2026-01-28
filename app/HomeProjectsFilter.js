@@ -170,16 +170,18 @@ export default function HomeProjectsFilter() {
             <div>
               {/* Use actual image dimensions for project images */}
               <Image
-                src={project.image}
+                src={project.image
+                  .replace('/imgs/prj-image-3.png', '/imgs/webp/prj-image-3.webp')
+                  .replace('/imgs/prj-image-5.png', '/imgs/webp/prj-image-5.webp')}
                 alt={project.title}
                 width={
                   project.image === '/imgs/prj-image-1.png'
                     ? 1157
                     : project.image === '/imgs/prj-image-2.png'
                       ? 1054
-                      : project.image === '/imgs/prj-image-3.png'
+                      : project.image === '/imgs/webp/prj-image-3.webp'
                         ? 1533
-                        : project.image === '/imgs/prj-image-5.png'
+                        : project.image === '/imgs/webp/prj-image-5.webp'
                           ? 1258
                           : project.image === '/imgs/prj-image-6.png'
                             ? 1119
@@ -196,9 +198,9 @@ export default function HomeProjectsFilter() {
                     ? 558
                     : project.image === '/imgs/prj-image-2.png'
                       ? 511
-                      : project.image === '/imgs/prj-image-3.png'
+                      : project.image === '/imgs/webp/prj-image-3.webp'
                         ? 766
-                        : project.image === '/imgs/prj-image-5.png'
+                        : project.image === '/imgs/webp/prj-image-5.webp'
                           ? 619
                           : project.image === '/imgs/prj-image-6.png'
                             ? 451

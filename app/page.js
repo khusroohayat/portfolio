@@ -104,9 +104,9 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-yellow">
-            {/* TODO: Replace with compressed WebP for best LCP. */}
+            {/* Optimized WebP for best LCP. */}
             <Image
-              src="/imgs/khusroo-hero-image.png"
+              src="/imgs/webp/khusroo-hero-image.webp"
               alt="Khusroo Hayat"
               width={928}
               height={1120}
@@ -213,7 +213,7 @@ export default function Home() {
               <figure>
                 <div>
                   <Image
-                    src="/imgs/consultant.jpg"
+                    src="/imgs/webp/consultant.webp"
                     alt="Workplace 1 - YouTube Creator"
                     width={4241}
                     height={2829}

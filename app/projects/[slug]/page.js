@@ -31,9 +31,9 @@ export default function ProjectDetailPage({ params }) {
                 ? 1157
                 : project.image === '/imgs/prj-image-2.png'
                   ? 1054
-                  : project.image === '/imgs/prj-image-3.png'
+                  : project.image === '/imgs/webp/prj-image-3.webp'
                     ? 1533
-                    : project.image === '/imgs/prj-image-5.png'
+                    : project.image === '/imgs/webp/prj-image-5.webp'
                       ? 1258
                       : project.image === '/imgs/prj-image-6.png'
                         ? 1119
@@ -50,9 +50,9 @@ export default function ProjectDetailPage({ params }) {
                 ? 558
                 : project.image === '/imgs/prj-image-2.png'
                   ? 511
-                  : project.image === '/imgs/prj-image-3.png'
+                  : project.image === '/imgs/webp/prj-image-3.webp'
                     ? 766
-                    : project.image === '/imgs/prj-image-5.png'
+                    : project.image === '/imgs/webp/prj-image-5.webp'
                       ? 619
                       : project.image === '/imgs/prj-image-6.png'
                         ? 451
