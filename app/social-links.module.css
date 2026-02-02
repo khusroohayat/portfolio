@@ -1,0 +1,36 @@
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.iconLink {
+  color: #222;
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  border-radius: 50%;
+  transition:
+    background 0.2s,
+    color 0.2s;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconLink:focus,
+.iconLink:hover {
+  background: #e5e7eb;
+  color: #0072b1;
+}
+
+@media (max-width: 600px) {
+  .socialLinks {
+    gap: 0.5rem;
+  }
+  .iconLink svg {
+    width: 20px;
+    height: 20px;
+  }
+}

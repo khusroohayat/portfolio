@@ -1,5 +1,7 @@
 'use client';
+
 import React, { useState } from 'react';
+import SocialLinks from './social-links';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,7 +12,7 @@ export default function Header() {
         <div className="logo">K</div>
         <div className="logo-text">Portfolio Website</div>
       </a>
-      <nav>
+      <nav style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
         <ul id="menu" className={menuOpen ? 'active' : ''}>
           <li>
             <a href="/">Home</a>
@@ -27,6 +29,7 @@ export default function Header() {
             </a>
           </li>
         </ul>
+        <SocialLinks />
         <a
           href="#"
           className="mobile-toggle"

@@ -9,6 +9,7 @@ const withBundleAnalyzer = createBundleAnalyzer({
 const nextConfig = {
     //output: "export",
     trailingSlash: true,
+    productionBrowserSourceMaps: true,
 };
 
 export default withBundleAnalyzer(nextConfig);

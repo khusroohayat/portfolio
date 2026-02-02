@@ -1,19 +1,41 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
-import projects from '../data/projects.json';
+// Dynamic import for projects.json
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function HomeProjectsFilter() {
+export default function HomeProjectsFilter({ projects: projectsProp }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [techFilter, setTechFilter] = useState('');
-  const allTechs = [...new Set(projects.flatMap((project) => project.tech))].sort();
+  const [projects, setProjects] = useState(projectsProp || []);
+  const [allTechs, setAllTechs] = useState([]);
   const scrollRef = useRef(null);
+
+  // Dynamically import projects.json on mount if not provided
+  useEffect(() => {
+    if (projectsProp) {
+      setProjects(projectsProp);
+      setAllTechs([...new Set(projectsProp.flatMap((project) => project.tech))].sort());
+      return;
+    }
+    let isMounted = true;
+    import('../data/projects.json').then((mod) => {
+      if (isMounted) {
+        const loaded = mod.default || mod;
+        setProjects(loaded);
+        setAllTechs([...new Set(loaded.flatMap((project) => project.tech))].sort());
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, [projectsProp]);
 
   // Initialize tech filter from URL query string on component mount
   useEffect(() => {
+    if (allTechs.length === 0) return;
     const techParam = searchParams.get('tech');
     if (techParam && allTechs.includes(techParam)) {
       setTechFilter(techParam);
@@ -44,6 +66,7 @@ export default function HomeProjectsFilter() {
     <>
       <div
         className="filter-container"
+        data-testid="home-projects-filter"
         style={{ position: 'relative', display: 'flex', alignItems: 'center' }}
       >
         <button
@@ -174,45 +197,12 @@ export default function HomeProjectsFilter() {
                   .replace('/imgs/prj-image-3.png', '/imgs/webp/prj-image-3.webp')
                   .replace('/imgs/prj-image-5.png', '/imgs/webp/prj-image-5.webp')}
                 alt={project.title}
-                width={
-                  project.image === '/imgs/prj-image-1.png'
-                    ? 1157
-                    : project.image === '/imgs/prj-image-2.png'
-                      ? 1054
-                      : project.image === '/imgs/webp/prj-image-3.webp'
-                        ? 1533
-                        : project.image === '/imgs/webp/prj-image-5.webp'
-                          ? 1258
-                          : project.image === '/imgs/prj-image-6.png'
-                            ? 1119
-                            : project.image === '/imgs/prj-image-7.png'
-                              ? 1206
-                              : project.image === '/imgs/prj-image-8.png'
-                                ? 1349
-                                : project.image === '/imgs/prj-image-9.png'
-                                  ? 775
-                                  : 600
-                }
-                height={
-                  project.image === '/imgs/prj-image-1.png'
-                    ? 558
-                    : project.image === '/imgs/prj-image-2.png'
-                      ? 511
-                      : project.image === '/imgs/webp/prj-image-3.webp'
-                        ? 766
-                        : project.image === '/imgs/webp/prj-image-5.webp'
-                          ? 619
-                          : project.image === '/imgs/prj-image-6.png'
-                            ? 451
-                            : project.image === '/imgs/prj-image-7.png'
-                              ? 763
-                              : project.image === '/imgs/prj-image-8.png'
-                                ? 505
-                                : project.image === '/imgs/prj-image-9.png'
-                                  ? 529
-                                  : 340
-                }
+                width={600}
+                height={340}
                 style={{ width: '100%', height: 'auto', borderRadius: 12, objectFit: 'cover' }}
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL="/imgs/placeholder.png"
               />
               <div className="project-info" style={{ padding: '1.1rem 0 0.5rem 0' }}>
                 <h3

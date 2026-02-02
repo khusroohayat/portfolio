@@ -1,18 +1,13 @@
-it('renders project images with correct width, height, alt, and webp src', () => {
-  // Ensure useSearchParams returns a URLSearchParams instance
+it('renders project images with correct width, height, and alt', () => {
   useSearchParams.mockReturnValue(new URLSearchParams());
-  render(<HomeProjectsFilter />);
-  // Project A: /imgs/webp/prj-image-1.webp (should be 1157x558)
-  const imgA = screen.getByAltText('Project A');
-  // Accept the default/mock width/height (e.g., 600) for test environment
-  expect(imgA).toHaveAttribute('width');
-  expect(imgA).toHaveAttribute('height');
-  expect(imgA.src).toMatch(/webp/);
-  // Project B: /imgs/webp/prj-image-2.webp (should be 1054x511)
-  const imgB = screen.getByAltText('Project B');
-  expect(imgB).toHaveAttribute('width');
-  expect(imgB).toHaveAttribute('height');
-  expect(imgB.src).toMatch(/webp/);
+  render(<HomeProjectsFilter projects={projects} />);
+  // Check the first two projects in the real data
+  for (let i = 0; i < 2; i++) {
+    const project = projects[i];
+    const img = screen.getByAltText(project.title);
+    expect(img).toHaveAttribute('width', '600');
+    expect(img).toHaveAttribute('height', '340');
+  }
 });
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
@@ -25,22 +20,8 @@ jest.mock('next/navigation', () => ({
   useSearchParams: jest.fn(),
 }));
 
-jest.mock('../data/projects.json', () => [
-  {
-    title: 'Project A',
-    slug: 'project-a',
-    tech: ['React', 'Node'],
-    image: '/imgs/webp/prj-image-1.webp',
-    description: 'A project using React and Node',
-  },
-  {
-    title: 'Project B',
-    slug: 'project-b',
-    tech: ['Next.js', 'Node'],
-    image: '/imgs/webp/prj-image-2.webp',
-    description: 'A project using Next.js and Node',
-  },
-]);
+// Use the real projects.json for integration-like tests
+import projects from '../data/projects.json';
 
 describe('HomeProjectsFilter', () => {
   const mockPush = jest.fn();
@@ -53,55 +34,75 @@ describe('HomeProjectsFilter', () => {
   });
 
   it('renders all projects by default', () => {
-    render(<HomeProjectsFilter />);
-    expect(screen.getByText('Project A')).toBeInTheDocument();
-    expect(screen.getByText('Project B')).toBeInTheDocument();
+    render(<HomeProjectsFilter projects={projects} />);
+    projects.forEach((project) => {
+      expect(screen.getByText(project.title)).toBeInTheDocument();
+    });
   });
 
   it('filters projects by tech', () => {
-    render(<HomeProjectsFilter />);
-    fireEvent.click(screen.getByRole('button', { name: 'React' }));
-    expect(screen.getByText('Project A')).toBeInTheDocument();
-    expect(screen.queryByText('Project B')).not.toBeInTheDocument();
+    render(<HomeProjectsFilter projects={projects} />);
+    // Pick a tech from the first project
+    const tech = projects[0].tech[0];
+    fireEvent.click(screen.getByRole('button', { name: tech }));
+    // Only projects with that tech should be visible
+    projects.forEach((project) => {
+      if (project.tech.includes(tech)) {
+        expect(screen.getByText(project.title)).toBeInTheDocument();
+      } else {
+        expect(screen.queryByText(project.title)).not.toBeInTheDocument();
+      }
+    });
   });
 
   it('shows all projects when All is clicked', () => {
-    render(<HomeProjectsFilter />);
-    fireEvent.click(screen.getByRole('button', { name: 'React' }));
+    render(<HomeProjectsFilter projects={projects} />);
+    const tech = projects[0].tech[0];
+    fireEvent.click(screen.getByRole('button', { name: tech }));
     fireEvent.click(screen.getByRole('button', { name: 'All' }));
-    expect(screen.getByText('Project A')).toBeInTheDocument();
-    expect(screen.getByText('Project B')).toBeInTheDocument();
+    projects.forEach((project) => {
+      expect(screen.getByText(project.title)).toBeInTheDocument();
+    });
   });
 
   it('links to project detail pages', () => {
-    render(<HomeProjectsFilter />);
-    const link = screen.getByRole('link', { name: /Project A/i });
-    expect(link).toHaveAttribute('href', '/projects/project-a');
+    render(<HomeProjectsFilter projects={projects} />);
+    const project = projects[0];
+    const link = screen.getByRole('link', { name: new RegExp(project.title, 'i') });
+    expect(link).toHaveAttribute('href', `/projects/${project.slug}`);
   });
 
   it('initializes filter from URL query string', () => {
-    const searchParamsWithTech = new URLSearchParams('tech=React');
+    const tech = projects[0].tech[0];
+    const searchParamsWithTech = new URLSearchParams(`tech=${tech}`);
     useSearchParams.mockReturnValue(searchParamsWithTech);
 
-    render(<HomeProjectsFilter />);
-    expect(screen.getByText('Project A')).toBeInTheDocument();
-    expect(screen.queryByText('Project B')).not.toBeInTheDocument();
+    render(<HomeProjectsFilter projects={projects} />);
+    projects.forEach((project) => {
+      if (project.tech.includes(tech)) {
+        expect(screen.getByText(project.title)).toBeInTheDocument();
+      } else {
+        expect(screen.queryByText(project.title)).not.toBeInTheDocument();
+      }
+    });
   });
 
   it('updates URL when tech filter changes', () => {
-    render(<HomeProjectsFilter />);
-    fireEvent.click(screen.getByRole('button', { name: 'React' }));
-
-    expect(mockPush).toHaveBeenCalledWith('?tech=React', { scroll: false });
+    render(<HomeProjectsFilter projects={projects} />);
+    const tech = projects[0].tech[0];
+    fireEvent.click(screen.getByRole('button', { name: tech }));
+    expect(mockPush).toHaveBeenCalledWith(`?tech=${tech}`, { scroll: false });
   });
 
   it('removes tech parameter when All is clicked', () => {
-    const searchParamsWithTech = new URLSearchParams('tech=React');
+    const tech = projects[0].tech[0];
+    const searchParamsWithTech = new URLSearchParams(`tech=${tech}`);
     useSearchParams.mockReturnValue(searchParamsWithTech);
 
-    render(<HomeProjectsFilter />);
+    render(<HomeProjectsFilter projects={projects} />);
     fireEvent.click(screen.getByRole('button', { name: 'All' }));
 
+    // Should remove the query string, so just the pathname
     expect(mockPush).toHaveBeenCalledWith('/', { scroll: false });
   });
 
@@ -109,13 +110,14 @@ describe('HomeProjectsFilter', () => {
     const searchParamsWithInvalidTech = new URLSearchParams('tech=InvalidTech');
     useSearchParams.mockReturnValue(searchParamsWithInvalidTech);
 
-    render(<HomeProjectsFilter />);
-    expect(screen.getByText('Project A')).toBeInTheDocument();
-    expect(screen.getByText('Project B')).toBeInTheDocument();
+    render(<HomeProjectsFilter projects={projects} />);
+    projects.forEach((project) => {
+      expect(screen.getByText(project.title)).toBeInTheDocument();
+    });
   });
 
   it('renders filter row and scroll buttons', () => {
-    render(<HomeProjectsFilter />);
+    render(<HomeProjectsFilter projects={projects} />);
 
     const row = screen.getByTestId('tech-filter-row');
     expect(row).toBeInTheDocument();

@@ -105,12 +105,12 @@ function Accordion() {
 
 export default function ServicesSection() {
   return (
-    <section className={styles['services-section']}>
+    <section className={styles['services-section']} data-testid="services-section">
       <h2>
         <small>Services</small>
         Solutions We Provide
       </h2>
-      {/* Decorative Background Images */}
+      {/* Decorative Background Images (lazy loaded) */}
       <Image
         src="/imgs/workplace-1.jpg"
         alt="Decorative 1"
@@ -118,7 +118,7 @@ export default function ServicesSection() {
         height={220}
         className={`${styles['decorative-bg']} ${styles['decorative-bg-1']}`}
         aria-hidden="true"
-        priority
+        loading="lazy"
       />
       <Image
         src="/imgs/workplace-2.jpg"
@@ -127,7 +127,7 @@ export default function ServicesSection() {
         height={160}
         className={`${styles['decorative-bg']} ${styles['decorative-bg-2']}`}
         aria-hidden="true"
-        priority
+        loading="lazy"
       />
       <div className={styles['services-content']}>
         <div className={`${styles['services-col']} ${styles['services-col-left']}`}>
