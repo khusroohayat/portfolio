@@ -21,7 +21,7 @@
     "slug": "northern-crescent",
     "title": "Northern Crescent (NCAPP)",
     "description": "I engineered the core API infrastructure for a custom ERP system, breaking down data silos to unify company-wide operations.",
-    "image": "/imgs/prj-image-5.png",
+    "image": "/imgs/webp/prj-image-5.webp",
     "demoUrl": "https://www.northerncrescent.ca/",
     "repoUrl": null,
     "tech": ["Azure", "MongoDb", "Blazor"]
@@ -48,7 +48,7 @@
     "slug": "paw-ai",
     "title": "PAW.AI",
     "description": "A dynamic web app I built using multiple AI APIs to generate a world of virtual pet influencers and automated social content.",
-    "image": "/imgs/prj-image-3.png",
+    "image": "/imgs/webp/prj-image-3.webp",
     "demoUrl": "https://rad-muffin-a7f6a7.netlify.app/",
     "repoUrl": null,
     "tech": ["v0", "Next.js", "Netlify", "Strapi"]

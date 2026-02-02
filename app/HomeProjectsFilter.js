@@ -193,7 +193,9 @@ export default function HomeProjectsFilter({ projects: projectsProp }) {
             <div>
               {/* Use actual image dimensions for project images */}
               <Image
-                src={project.image}
+                src={project.image
+                  .replace('/imgs/prj-image-3.png', '/imgs/webp/prj-image-3.webp')
+                  .replace('/imgs/prj-image-5.png', '/imgs/webp/prj-image-5.webp')}
                 alt={project.title}
                 width={600}
                 height={340}

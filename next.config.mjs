@@ -1,3 +1,10 @@
+
+import createBundleAnalyzer from '@next/bundle-analyzer';
+
+const withBundleAnalyzer = createBundleAnalyzer({
+    enabled: process.env.ANALYZE === 'true',
+});
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     //output: "export",
@@ -5,4 +12,4 @@ const nextConfig = {
     productionBrowserSourceMaps: true,
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

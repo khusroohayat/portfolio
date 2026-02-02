@@ -7,7 +7,7 @@ jest.mock('../../../data/projects.json', () => [
     title: 'Project A',
     slug: 'project-a',
     tech: ['React', 'Jest'],
-    image: '/imgs/prj-image-1.png',
+    image: '/imgs/webp/prj-image-1.webp',
     description: 'A project using React',
     demoUrl: 'https://demo.example.com',
     repoUrl: 'https://github.com/example/project-a',
