@@ -5,27 +5,33 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function HomeProjectsFilter() {
+export default function HomeProjectsFilter({ projects: projectsProp }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [techFilter, setTechFilter] = useState('');
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState(projectsProp || []);
   const [allTechs, setAllTechs] = useState([]);
   const scrollRef = useRef(null);
 
-  // Dynamically import projects.json on mount
+  // Dynamically import projects.json on mount if not provided
   useEffect(() => {
+    if (projectsProp) {
+      setProjects(projectsProp);
+      setAllTechs([...new Set(projectsProp.flatMap((project) => project.tech))].sort());
+      return;
+    }
     let isMounted = true;
     import('../data/projects.json').then((mod) => {
       if (isMounted) {
-        setProjects(mod.default || mod);
-        setAllTechs([...new Set((mod.default || mod).flatMap((project) => project.tech))].sort());
+        const loaded = mod.default || mod;
+        setProjects(loaded);
+        setAllTechs([...new Set(loaded.flatMap((project) => project.tech))].sort());
       }
     });
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [projectsProp]);
 
   // Initialize tech filter from URL query string on component mount
   useEffect(() => {
