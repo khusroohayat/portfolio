@@ -19,7 +19,15 @@ function isString(value) {
 
 export async function POST(req) {
   try {
-    const body = await req.json();
+    let body;
+    try {
+      body = await req.json();
+    } catch {
+      return NextResponse.json(
+        { message: 'Invalid JSON payload. Please provide valid JSON in the request body.' },
+        { status: 400 }
+      );
+    }
 
     if (!body || typeof body !== 'object' || Array.isArray(body)) {
       return NextResponse.json(

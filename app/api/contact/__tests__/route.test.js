@@ -40,6 +40,22 @@ describe('/api/contact POST', () => {
     expect(data.message).toContain('Invalid request payload');
   });
 
+  it('returns 400 for malformed JSON payloads', async () => {
+    const { POST } = require('../route');
+
+    const req = {
+      json: async () => {
+        throw new SyntaxError('Unexpected end of JSON input');
+      },
+    };
+
+    const response = await POST(req);
+    const data = await response.json();
+
+    expect(response.status).toBe(400);
+    expect(data.message).toContain('Invalid JSON payload');
+  });
+
   it('accepts valid string values and sends email', async () => {
     jest.resetModules();
     const { POST } = await import('../route');
