@@ -6,9 +6,12 @@ import RootLayout from '../layout';
 // Mock next/image to render a normal img
 jest.mock('next/image', () => ({ __esModule: true, default: (props) => <img {...props} /> }));
 // Mock HomeProjectsFilter if needed
-jest.mock('../HomeProjectsFilter', () => () => (
-  <div data-testid="home-projects-filter">[Project Filter]</div>
-));
+jest.mock('../HomeProjectsFilter', () => {
+  // Pure functional mock to avoid useEffect/state updates
+  return function HomeProjectsFilterMock() {
+    return <div data-testid="home-projects-filter">[Project Filter]</div>;
+  };
+});
 // Mock ServicesSection
 jest.mock('../ServicesSection', () => () => (
   <div data-testid="services-section">[Services Section]</div>
@@ -110,7 +113,12 @@ describe('Home page', () => {
     expect(screen.getByText(/AI Chatbot/i)).toBeInTheDocument();
     const input = screen.getByPlaceholderText(/what skills are you best at/i);
     fireEvent.change(input, { target: { value: 'What is your best skill?' } });
-    fireEvent.click(screen.getByRole('button', { name: /Send/i }));
+    // Find all Send buttons and click the one with chat-send-btn class (chatbot)
+    const allSendBtns = screen.getAllByRole('button', { name: /Send/i });
+    const chatBtn = allSendBtns.find(
+      (btn) => btn.className && btn.className.includes('chat-send-btn')
+    );
+    fireEvent.click(chatBtn || allSendBtns[0]);
     await waitFor(() => {
       expect(screen.getAllByText(/My best skill is React/i).length).toBeGreaterThan(0);
     });
