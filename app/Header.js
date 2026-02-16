@@ -24,7 +24,7 @@ export default function Header() {
             <a href="/projects">Projects</a>
           </li>
           <li>
-            <a href="mailto:khusroo.hayat@gmail.com" className="button">
+            <a href="/#contact" className="button">
               Contact Me
             </a>
           </li>

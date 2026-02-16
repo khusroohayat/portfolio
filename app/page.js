@@ -21,6 +21,13 @@ const HomeProjectsFilter = dynamic(() => import('./HomeProjectsFilter'), {
 
 export default function Home() {
   const [messageInput, setMessageInput] = useState('');
+  const [contactForm, setContactForm] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [contactStatus, setContactStatus] = useState({ type: '', message: '' });
+  const [isSendingContact, setIsSendingContact] = useState(false);
   const chatLogRef = useRef(null);
 
   const [messages, setMessages] = useState([
@@ -52,6 +59,46 @@ export default function Home() {
     setMessages([...newMessages, { role: 'assistant', content: data.message }]);
   };
 
+  const handleContactInputChange = (e) => {
+    const { name, value } = e.target;
+    setContactForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+    setContactStatus({ type: '', message: '' });
+    setIsSendingContact(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contactForm),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong. Please try again.');
+      }
+
+      setContactStatus({
+        type: 'success',
+        message: data.message || 'Thanks! Your message was sent successfully.',
+      });
+      setContactForm({ name: '', email: '', message: '' });
+    } catch (error) {
+      setContactStatus({
+        type: 'error',
+        message: error.message || 'Unable to send your message right now. Please try again.',
+      });
+    } finally {
+      setIsSendingContact(false);
+    }
+  };
+
   return (
     <>
       <main>
@@ -74,7 +121,7 @@ export default function Home() {
                 <a href="./Khusroo-Hayat-CV.pdf" className="button black">
                   View Resume
                 </a>
-                <a href="mailto:khusroo.hayat@gmail.com" className="button white">
+                <a href="#contact" className="button white">
                   Contact Me
                 </a>
               </div>
@@ -290,6 +337,63 @@ export default function Home() {
         {/* --- Services Section --- */}
         <ServicesSection />
         {/* --- End Services Section --- */}
+        <section id="contact" className="contact container">
+          <h2>
+            <small>Get in touch</small>
+            Contact
+          </h2>
+          <div className="contact-card">
+            <p>
+              Have a project in mind or want to collaborate? Send me a message and I&apos;ll get
+              back to you soon.
+            </p>
+            <form className="contact-form" onSubmit={handleContactSubmit}>
+              <label htmlFor="contact-name">Name</label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                value={contactForm.name}
+                onChange={handleContactInputChange}
+                required
+              />
+
+              <label htmlFor="contact-email">Email</label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                value={contactForm.email}
+                onChange={handleContactInputChange}
+                required
+              />
+
+              <label htmlFor="contact-message">Message</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                value={contactForm.message}
+                onChange={handleContactInputChange}
+                rows={5}
+                required
+              />
+
+              <button className="button black" type="submit" disabled={isSendingContact}>
+                {isSendingContact ? 'Sending...' : 'Send Message'}
+              </button>
+            </form>
+
+            {contactStatus.message ? (
+              <p
+                className={`contact-feedback ${contactStatus.type}`}
+                role="status"
+                aria-live="polite"
+              >
+                {contactStatus.message}
+              </p>
+            ) : null}
+          </div>
+        </section>
         <section className="chatbot container">
           <h2>
             <small>Talk to me</small>

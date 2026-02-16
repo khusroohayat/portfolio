@@ -1,3 +1,35 @@
+## Contact Form Email (SMTP Setup)
+
+To enable email delivery for the contact form, configure SMTP credentials in your environment:
+
+1. Copy `.env.example` to `.env.local` and fill in your SMTP provider details:
+
+- `SMTP_HOST` — SMTP server hostname (e.g., smtp.gmail.com, smtp.mailtrap.io)
+- `SMTP_PORT` — SMTP port (usually 587 for TLS, 465 for SSL)
+- `SMTP_USER` — SMTP username
+- `SMTP_PASS` — SMTP password
+- `CONTACT_TO_EMAIL` — Destination email address for contact form submissions
+- `CONTACT_FROM_EMAIL` — (Optional) Sender address for outgoing emails (defaults to SMTP_USER)
+
+2. Do not commit `.env.local` or any secrets to version control.
+
+3. For local testing, you can use [Ethereal Email](https://ethereal.email/) or [Mailtrap](https://mailtrap.io/) to receive test emails safely.
+
+4. The contact API route will send an email after successful validation. If sending fails, the user will see an error message.
+
+**Example .env.local:**
+
+```
+SMTP_HOST=smtp.mailtrap.io
+SMTP_PORT=587
+SMTP_USER=your_mailtrap_user
+SMTP_PASS=your_mailtrap_pass
+CONTACT_TO_EMAIL=your@email.com
+CONTACT_FROM_EMAIL=portfolio-contact@email.com
+```
+
+**Note:** For production, use a real SMTP provider (e.g., Gmail, SendGrid, Fastmail, etc.) and set environment variables securely in your deployment platform.
+
 ## Continuous Integration & Deployment (Netlify)
 
 This project uses Netlify for automated CI/CD. Every push to the `main` branch triggers the following pipeline:

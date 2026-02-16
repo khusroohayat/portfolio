@@ -67,7 +67,9 @@ describe('Accessibility Tests', () => {
     it('should have proper form labels and accessibility attributes', () => {
       render(<Home />);
       const input = document.querySelector('input[type="text"]');
-      expect(input).toHaveAttribute('placeholder');
+      // Instead of placeholder, check for label association
+      const label = document.querySelector('label[for="contact-name"]');
+      expect(label).toBeInTheDocument();
       expect(input).toHaveAttribute('required');
 
       const button = document.querySelector('button[type="submit"]');
