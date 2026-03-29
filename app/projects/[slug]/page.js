@@ -81,6 +81,15 @@ export default function ProjectDetailPage({ params }) {
                     />
                   </a>
                 )}
+                <a
+                  href="/Khusroo-Hayat-CV.pdf"
+                  className="button black"
+                  aria-label="Download Khusroo Hayat's PDF Resume"
+                  download
+                  style={{ fontWeight: 600 }}
+                >
+                  Download Resume
+                </a>
               </div>
               <div className={styles.techSection} style={{ marginBottom: '1rem' }}>
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>
