@@ -412,7 +412,7 @@ export default function Home() {
                 currently looking for new opportunities so if you have a project you think I&apos;d
                 be a good fit for, please get in touch!
               </p>
-              <a href="./Sample_Resume_Template.pdf" className="button black">
+              <a href="./khusroo-hayat-CV.pdf" className="button black" download>
                 Download Resume
               </a>
             </div>
