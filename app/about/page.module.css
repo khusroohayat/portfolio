@@ -1,0 +1,11 @@
+.aboutContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4.5rem 2rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
