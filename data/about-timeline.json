@@ -1,0 +1,18 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "year": "2017 - Present",
+      "title": "Senior Software Engineer",
+      "company": "RadixTech",
+      "description": "Designed and delivered AI-powered enterprise solutions integrating Generative AI and NLP-based workflows into production systems"
+    },
+    {
+      "id": 2,
+      "year": "2015 - 2017",
+      "title": "Software Engineer",
+      "company": "10 Pearls",
+      "description": "Developed and maintained high-traffic frontend applications, implementing responsive designs and complex state management solutions."
+    }
+  ]
+}
