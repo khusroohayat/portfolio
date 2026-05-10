@@ -3,7 +3,7 @@ import React from 'react';
 export default function AboutBiography() {
   return (
     <section>
-      <h2>About Me</h2>
+      <h1>About Me</h1>
       <p>
         I am a passionate software engineer with a strong focus on building high-performance,
         accessible, and aesthetically pleasing web experiences. With a background in enterprise

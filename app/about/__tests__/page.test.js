@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 describe('AboutPage', () => {
   it('renders the about page heading', () => {
     render(<AboutPage />);
-    const heading = screen.getByRole('heading', { level: 2, name: /about me/i });
+    const heading = screen.getByRole('heading', { level: 1, name: /about me/i });
     expect(heading).toBeInTheDocument();
   });
 
