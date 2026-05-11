@@ -16,6 +16,8 @@ jest.mock('../HomeProjectsFilter', () => {
 jest.mock('../ServicesSection', () => () => (
   <div data-testid="services-section">[Services Section]</div>
 ));
+// Mock SkillsSection
+jest.mock('../SkillsSection', () => () => <div data-testid="skills-section">[Skills Section]</div>);
 // Mock projects.json
 jest.mock('../data/projects.json', () => [
   {
@@ -77,11 +79,7 @@ describe('Home page', () => {
 
   it('renders skills section', () => {
     render(<Home />);
-    expect(screen.getByText(/Frontend Excellence/i)).toBeInTheDocument();
-    expect(screen.getByText(/Backend & Cloud Services/i)).toBeInTheDocument();
-    expect(screen.getByText(/AI Tools/i)).toBeInTheDocument();
-    expect(screen.getByText(/Databases & Integration/i)).toBeInTheDocument();
-    expect(screen.getByText(/Developer Tools & Methodologies/i)).toBeInTheDocument();
+    expect(screen.getByTestId('skills-section')).toBeInTheDocument();
   });
 
   it('renders work experience section', () => {
@@ -142,8 +140,7 @@ describe('Home page', () => {
 
   it('renders all main sections', () => {
     render(<Home />);
-    // Use heading role for section headings to avoid nav link collisions
-    expect(screen.getByRole('heading', { name: /Skills/i })).toBeInTheDocument();
+    expect(screen.getByTestId('skills-section')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /Work Experience/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /Completed Projects/i })).toBeInTheDocument();
     // There are multiple Chatbot headings (h2 and h3)
