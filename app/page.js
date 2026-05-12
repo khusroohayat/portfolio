@@ -18,9 +18,10 @@ const HomeProjectsFilter = dynamic(() => import('./HomeProjectsFilter'), {
   ssr: false,
   loading: () => <div>Loading projects…</div>,
 });
+
+// SSR enabled for SkillsSection to ensure #skills anchor is present in initial HTML
 const SkillsSection = dynamic(() => import('./SkillsSection'), {
-  ssr: false,
-  loading: () => <div style={{ height: 220 }} />,
+  loading: () => <div id="skills" style={{ height: 220 }} />, // SSR placeholder with id
 });
 
 export default function Home() {
@@ -169,7 +170,10 @@ export default function Home() {
           </div>
         </section>
         <TechLogosMarquee />
-        <SkillsSection />
+        {/* SSR: Ensure #skills anchor is present for fragment navigation */}
+        <section id="skills">
+          <SkillsSection />
+        </section>
         <section className="work-experience container">
           <h2>
             <small>Recent</small>
