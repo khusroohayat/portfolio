@@ -166,6 +166,14 @@ function getSecurityHeaders() {
 }
 
 export async function POST(req) {
+  // Read API key at request time to allow dynamic env changes (for tests)
+  const GEMINI_API_KEY = process.env.GOOGLE_GEMINI_API_KEY;
+  if (!GEMINI_API_KEY) {
+    return NextResponse.json(
+      { message: 'Service temporarily unavailable. Please try again later.' },
+      { status: 503, headers: getSecurityHeaders() }
+    );
+  }
   try {
     // Rate limiting
     const ip = getClientIp(req);

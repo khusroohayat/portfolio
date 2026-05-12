@@ -1,0 +1,67 @@
+{
+  "eyebrow": "Capability Map",
+  "title": "Skills",
+  "description": "A categorized view of my technical, product, and collaboration strengths. Each group reflects skills I actively use to design, build, and ship production-ready solutions.",
+  "categories": [
+    {
+      "id": "frontend",
+      "title": "Frontend Engineering",
+      "summary": "Building fast, responsive interfaces with strong UX patterns and maintainable component architecture.",
+      "skills": [
+        "React",
+        "Next.js",
+        "JavaScript",
+        "TypeScript",
+        "CSS Modules",
+        "Vue.js",
+        "React Native",
+        "Blazor"
+      ]
+    },
+    {
+      "id": "backend-cloud",
+      "title": "Backend & Cloud",
+      "summary": "Designing scalable APIs, secure services, and cloud-native deployments for business-critical workloads.",
+      "skills": [
+        "Node.js",
+        "ASP.NET Core",
+        "C#",
+        "REST APIs",
+        "Azure",
+        "Vercel",
+        "Netlify",
+        "Firebase"
+      ]
+    },
+    {
+      "id": "ai-automation",
+      "title": "AI & Automation",
+      "summary": "Integrating LLM workflows and automation layers to accelerate product delivery and decision-making.",
+      "skills": [
+        "OpenAI",
+        "Gemini",
+        "LLM Integration",
+        "Prompt Design",
+        "AI Chatbots",
+        "Workflow Automation",
+        "Cursor",
+        "Vibe Coding"
+      ]
+    },
+    {
+      "id": "data-delivery",
+      "title": "Data & Delivery",
+      "summary": "Working across data systems, DevOps, and team processes to keep products reliable and delivery predictable.",
+      "skills": [
+        "MongoDB",
+        "SQL Server",
+        "Supabase",
+        "Docker",
+        "Git",
+        "Azure DevOps",
+        "Agile",
+        "Scrum"
+      ]
+    }
+  ]
+}

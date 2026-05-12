@@ -28,6 +28,7 @@ jest.mock('../HomeProjectsFilter', () => () => (
 jest.mock('../ServicesSection', () => () => (
   <div data-testid="services-section">[Services Section]</div>
 ));
+jest.mock('../SkillsSection', () => () => <div data-testid="skills-section">[Skills Section]</div>);
 
 // Mock projects.json
 jest.mock('../../data/projects.json', () => [
