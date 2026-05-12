@@ -25,7 +25,7 @@
 .header {
   position: relative;
   z-index: 1;
-  max-width: 72ch;
+  max-width: 92ch;
   padding: clamp(1rem, 1.8vw, 1.35rem);
   border-radius: 20px;
   border: 1px solid rgba(10, 97, 174, 0.14);

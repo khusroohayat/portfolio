@@ -36,9 +36,17 @@ const mockConsoleLog = jest.spyOn(console, 'log').mockImplementation(() => {});
 
 // Mock environment variables
 const originalEnv = process.env;
+
 beforeEach(() => {
   process.env = { ...originalEnv };
   process.env.GOOGLE_GEMINI_API_KEY = 'test-api-key';
+  // Default fetch mock to prevent unmocked fetch errors
+  fetch.mockResolvedValue({
+    ok: true,
+    json: async () => ({
+      candidates: [{ content: { parts: [{ text: 'Default mock response' }] } }],
+    }),
+  });
 });
 
 afterEach(() => {
@@ -215,7 +223,9 @@ describe('Chatbot API Security Tests', () => {
       const response = await POST(request);
       const data = await response.json();
 
-      // The API key check happens after validation, so it might return 500 for unexpected error
+      // Debug: log the status value and type
+      console.log('DEBUG response.status:', response.status, typeof response.status);
+      // The API key check happens after validation, so it might return 500 or 503 for unexpected error
       expect([503, 500]).toContain(response.status);
       expect(data.message).toMatch(/Service temporarily unavailable|unexpected error/);
     });

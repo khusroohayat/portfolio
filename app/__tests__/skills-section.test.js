@@ -19,8 +19,18 @@ describe('SkillsSection', () => {
     fireEvent.click(backendTab);
 
     expect(backendTab).toHaveAttribute('aria-selected', 'true');
-    expect(screen.getByRole('heading', { name: /Backend & Cloud/i })).toBeInTheDocument();
-    expect(screen.getByText(/Designing scalable APIs/i)).toBeInTheDocument();
+
+    // Find the visible tabpanel for Backend & Cloud
+    const tabpanels = screen.getAllByRole('tabpanel', { hidden: true });
+    const visiblePanel = tabpanels.find(
+      (panel) =>
+        !panel.hasAttribute('hidden') && panel.getAttribute('aria-labelledby') === backendTab.id
+    );
+    expect(visiblePanel).toBeTruthy();
+    // Use within to scope queries to the visible panel
+    const { getByRole, getByText } = require('@testing-library/react').within(visiblePanel);
+    expect(getByRole('heading', { name: /Backend & Cloud/i })).toBeInTheDocument();
+    expect(getByText(/Designing scalable APIs/i)).toBeInTheDocument();
   });
 
   it('supports keyboard navigation for category tabs', () => {

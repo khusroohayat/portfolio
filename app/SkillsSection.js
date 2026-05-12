@@ -10,9 +10,6 @@ export default function SkillsSection() {
   const [activeCategory, setActiveCategory] = useState(categories[0].id);
   const tabRefs = useRef([]);
 
-  const activeIndex = categories.findIndex((category) => category.id === activeCategory);
-  const activeCategoryData = categories[activeIndex];
-
   const handleCategoryKeyDown = (event, index) => {
     let targetIndex = index;
 
@@ -73,24 +70,59 @@ export default function SkillsSection() {
             </button>
           );
         })}
+        {categories.map((category) => {
+          const isActive = category.id === activeCategory;
+          return (
+            <article
+              key={category.id}
+              className={styles.panel}
+              role="tabpanel"
+              id={`skills-panel-${category.id}`}
+              aria-labelledby={`skills-tab-${category.id}`}
+              hidden={!isActive}
+              aria-hidden={!isActive}
+              tabIndex={isActive ? 0 : -1}
+            >
+              <h3 className={styles.panelTitle}>{category.title}</h3>
+              <p className={styles.panelSummary}>{category.summary}</p>
+              <ul className={styles.skillList}>
+                {category.skills.map((skill) => (
+                  <li key={skill} className={styles.skillItem}>
+                    <span>{skill}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          );
+        })}
       </div>
 
-      <article
-        className={styles.panel}
-        role="tabpanel"
-        id={`skills-panel-${activeCategoryData.id}`}
-        aria-labelledby={`skills-tab-${activeCategoryData.id}`}
-      >
-        <h3 className={styles.panelTitle}>{activeCategoryData.title}</h3>
-        <p className={styles.panelSummary}>{activeCategoryData.summary}</p>
-        <ul className={styles.skillList}>
-          {activeCategoryData.skills.map((skill) => (
-            <li key={skill} className={styles.skillItem}>
-              <span>{skill}</span>
-            </li>
-          ))}
-        </ul>
-      </article>
+      {/* Render all tabpanels for accessibility; only the active one is visible */}
+      {categories.map((category) => {
+        const isActive = category.id === activeCategory;
+        return (
+          <article
+            key={category.id}
+            className={styles.panel}
+            role="tabpanel"
+            id={`skills-panel-${category.id}`}
+            aria-labelledby={`skills-tab-${category.id}`}
+            hidden={!isActive}
+            aria-hidden={!isActive}
+            tabIndex={isActive ? 0 : -1}
+          >
+            <h3 className={styles.panelTitle}>{category.title}</h3>
+            <p className={styles.panelSummary}>{category.summary}</p>
+            <ul className={styles.skillList}>
+              {category.skills.map((skill) => (
+                <li key={skill} className={styles.skillItem}>
+                  <span>{skill}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        );
+      })}
     </section>
   );
 }
