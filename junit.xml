@@ -1,95 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Portfolio Tests" tests="84" failures="0" errors="0" time="7.553">
-  <testsuite name="Chatbot API Security Tests" errors="0" failures="0" skipped="0" timestamp="2026-05-12T09:45:21" time="2.58" tests="10">
-    <testcase classname="Chatbot API Security Tests › Input Validation" name="should validate message structure" time="0.022">
+<testsuites name="Portfolio Tests" tests="84" failures="0" errors="0" time="92.801">
+  <testsuite name="Chatbot API Security Tests" errors="0" failures="0" skipped="0" timestamp="2026-05-13T09:21:46" time="37.945" tests="10">
+    <testcase classname="Chatbot API Security Tests › Input Validation" name="should validate message structure" time="1.135">
     </testcase>
-    <testcase classname="Chatbot API Security Tests › Input Validation" name="should validate message count limits" time="0.002">
+    <testcase classname="Chatbot API Security Tests › Input Validation" name="should validate message count limits" time="0.011">
     </testcase>
-    <testcase classname="Chatbot API Security Tests › Input Validation" name="should validate content length" time="0.003">
+    <testcase classname="Chatbot API Security Tests › Input Validation" name="should validate content length" time="0.011">
     </testcase>
-    <testcase classname="Chatbot API Security Tests › Input Validation" name="should validate message roles" time="0.002">
+    <testcase classname="Chatbot API Security Tests › Input Validation" name="should validate message roles" time="0.007">
     </testcase>
-    <testcase classname="Chatbot API Security Tests › Rate Limiting" name="should enforce rate limits" time="0.005">
+    <testcase classname="Chatbot API Security Tests › Rate Limiting" name="should enforce rate limits" time="0.013">
     </testcase>
-    <testcase classname="Chatbot API Security Tests › Security Headers" name="should include security headers in responses" time="0.004">
+    <testcase classname="Chatbot API Security Tests › Security Headers" name="should include security headers in responses" time="0.003">
     </testcase>
-    <testcase classname="Chatbot API Security Tests › Error Handling" name="should handle missing API key gracefully" time="0.019">
+    <testcase classname="Chatbot API Security Tests › Error Handling" name="should handle missing API key gracefully" time="0.004">
     </testcase>
-    <testcase classname="Chatbot API Security Tests › Error Handling" name="should handle API errors without exposing details" time="0.02">
+    <testcase classname="Chatbot API Security Tests › Error Handling" name="should handle API errors without exposing details" time="0.023">
     </testcase>
-    <testcase classname="Chatbot API Security Tests › Content Sanitization" name="should sanitize dangerous characters" time="0.002">
+    <testcase classname="Chatbot API Security Tests › Content Sanitization" name="should sanitize dangerous characters" time="0.004">
     </testcase>
-    <testcase classname="Chatbot API Security Tests › Successful Requests" name="should process valid requests successfully" time="0.002">
-    </testcase>
-  </testsuite>
-  <testsuite name="SkillsSection" errors="0" failures="0" skipped="0" timestamp="2026-05-12T09:45:21" time="3.224" tests="3">
-    <testcase classname="SkillsSection" name="renders heading and category tabs" time="0.42">
-    </testcase>
-    <testcase classname="SkillsSection" name="switches active panel when a tab is selected" time="0.209">
-    </testcase>
-    <testcase classname="SkillsSection" name="supports keyboard navigation for category tabs" time="0.144">
+    <testcase classname="Chatbot API Security Tests › Successful Requests" name="should process valid requests successfully" time="0.003">
     </testcase>
   </testsuite>
-  <testsuite name="RootLayout" errors="0" failures="0" skipped="0" timestamp="2026-05-12T09:45:21" time="3.292" tests="5">
-    <testcase classname="RootLayout" name="renders the global header and nav" time="0.4">
+  <testsuite name="AboutPage" errors="0" failures="0" skipped="0" timestamp="2026-05-13T09:22:24" time="2.289" tests="3">
+    <testcase classname="AboutPage" name="renders the about page heading" time="0.623">
     </testcase>
-    <testcase classname="RootLayout" name="renders navigation links" time="0.215">
+    <testcase classname="AboutPage" name="renders the professional biography" time="0.088">
     </testcase>
-    <testcase classname="RootLayout" name="renders children content" time="0.057">
-    </testcase>
-    <testcase classname="RootLayout" name="renders the logo" time="0.019">
-    </testcase>
-    <testcase classname="RootLayout" name="renders the contact button" time="0.136">
+    <testcase classname="AboutPage" name="renders the professional timeline" time="0.118">
     </testcase>
   </testsuite>
-  <testsuite name="AboutPage" errors="0" failures="0" skipped="0" timestamp="2026-05-12T09:45:24" time="0.925" tests="3">
-    <testcase classname="AboutPage" name="renders the about page heading" time="0.295">
+  <testsuite name="SkillsSection" errors="0" failures="0" skipped="0" timestamp="2026-05-13T09:21:46" time="41.586" tests="3">
+    <testcase classname="SkillsSection" name="renders heading and category tabs" time="1.035">
     </testcase>
-    <testcase classname="AboutPage" name="renders the professional biography" time="0.028">
+    <testcase classname="SkillsSection" name="switches active panel when a tab is selected" time="0.245">
     </testcase>
-    <testcase classname="AboutPage" name="renders the professional timeline" time="0.036">
-    </testcase>
-  </testsuite>
-  <testsuite name="ProjectDetailPage" errors="0" failures="0" skipped="0" timestamp="2026-05-12T09:45:25" time="0.736" tests="2">
-    <testcase classname="ProjectDetailPage" name="renders project details for a valid slug" time="0.201">
-    </testcase>
-    <testcase classname="ProjectDetailPage" name="renders not found for an invalid slug" time="0.004">
+    <testcase classname="SkillsSection" name="supports keyboard navigation for category tabs" time="0.26">
     </testcase>
   </testsuite>
-  <testsuite name="/api/contact POST" errors="0" failures="0" skipped="0" timestamp="2026-05-12T09:45:25" time="0.406" tests="4">
-    <testcase classname="/api/contact POST" name="returns 400 for non-string field values instead of throwing" time="0.015">
+  <testsuite name="RootLayout" errors="0" failures="0" skipped="0" timestamp="2026-05-13T09:21:46" time="41.878" tests="5">
+    <testcase classname="RootLayout" name="renders the global header and nav" time="0.824">
     </testcase>
-    <testcase classname="/api/contact POST" name="returns 400 for malformed JSON payloads" time="0.002">
+    <testcase classname="RootLayout" name="renders navigation links" time="0.322">
     </testcase>
-    <testcase classname="/api/contact POST" name="accepts valid string values and sends email" time="0.006">
+    <testcase classname="RootLayout" name="renders children content" time="0.045">
     </testcase>
-    <testcase classname="/api/contact POST" name="returns 500 if email sending fails" time="0.033">
+    <testcase classname="RootLayout" name="renders the logo" time="0.078">
     </testcase>
-  </testsuite>
-  <testsuite name="Performance/TTI optimizations" errors="0" failures="0" skipped="0" timestamp="2026-05-12T09:45:21" time="3.918" tests="3">
-    <testcase classname="Performance/TTI optimizations" name="Home page uses dynamic imports for non-critical components" time="0.862">
-    </testcase>
-    <testcase classname="Performance/TTI optimizations" name="Project images use lazy loading and blur placeholder" time="0.274">
-    </testcase>
-    <testcase classname="Performance/TTI optimizations" name="Project detail image uses blur placeholder" time="0.03">
+    <testcase classname="RootLayout" name="renders the contact button" time="0.141">
     </testcase>
   </testsuite>
-  <testsuite name="projectUtils" errors="0" failures="0" skipped="0" timestamp="2026-05-12T09:45:25" time="0.254" tests="23">
-    <testcase classname="projectUtils › extractUniqueTechnologies" name="should extract unique technologies from projects array" time="0.004">
+  <testsuite name="ProjectDetailPage" errors="0" failures="0" skipped="0" timestamp="2026-05-13T09:22:27" time="2.126" tests="2">
+    <testcase classname="ProjectDetailPage" name="renders project details for a valid slug" time="0.364">
     </testcase>
-    <testcase classname="projectUtils › extractUniqueTechnologies" name="should return empty array for invalid input" time="0.002">
+    <testcase classname="ProjectDetailPage" name="renders not found for an invalid slug" time="0.018">
+    </testcase>
+  </testsuite>
+  <testsuite name="/api/contact POST" errors="0" failures="0" skipped="0" timestamp="2026-05-13T09:22:28" time="1.357" tests="4">
+    <testcase classname="/api/contact POST" name="returns 400 for non-string field values instead of throwing" time="0.241">
+    </testcase>
+    <testcase classname="/api/contact POST" name="returns 400 for malformed JSON payloads" time="0.004">
+    </testcase>
+    <testcase classname="/api/contact POST" name="accepts valid string values and sends email" time="0.026">
+    </testcase>
+    <testcase classname="/api/contact POST" name="returns 500 if email sending fails" time="0.202">
+    </testcase>
+  </testsuite>
+  <testsuite name="projectUtils" errors="0" failures="0" skipped="0" timestamp="2026-05-13T09:22:28" time="1.085" tests="23">
+    <testcase classname="projectUtils › extractUniqueTechnologies" name="should extract unique technologies from projects array" time="0.013">
+    </testcase>
+    <testcase classname="projectUtils › extractUniqueTechnologies" name="should return empty array for invalid input" time="0.006">
     </testcase>
     <testcase classname="projectUtils › extractUniqueTechnologies" name="should handle projects with missing tech arrays" time="0.001">
     </testcase>
-    <testcase classname="projectUtils › extractUniqueTechnologies" name="should handle empty projects array" time="0.001">
+    <testcase classname="projectUtils › extractUniqueTechnologies" name="should handle empty projects array" time="0.003">
     </testcase>
-    <testcase classname="projectUtils › filterProjectsByTech" name="should filter projects by technology" time="0.002">
+    <testcase classname="projectUtils › filterProjectsByTech" name="should filter projects by technology" time="0.004">
     </testcase>
-    <testcase classname="projectUtils › filterProjectsByTech" name="should return all projects when technology is empty" time="0.001">
+    <testcase classname="projectUtils › filterProjectsByTech" name="should return all projects when technology is empty" time="0.003">
     </testcase>
-    <testcase classname="projectUtils › filterProjectsByTech" name="should return all projects when technology is null or undefined" time="0.001">
+    <testcase classname="projectUtils › filterProjectsByTech" name="should return all projects when technology is null or undefined" time="0.004">
     </testcase>
-    <testcase classname="projectUtils › filterProjectsByTech" name="should return empty array for invalid projects input" time="0.001">
+    <testcase classname="projectUtils › filterProjectsByTech" name="should return empty array for invalid projects input" time="0.002">
     </testcase>
     <testcase classname="projectUtils › filterProjectsByTech" name="should handle case-sensitive filtering" time="0.001">
     </testcase>
@@ -101,93 +93,101 @@
     </testcase>
     <testcase classname="projectUtils › validateProjectData" name="should reject project with empty string fields" time="0.001">
     </testcase>
-    <testcase classname="projectUtils › validateProjectData" name="should reject project with whitespace-only fields" time="0">
+    <testcase classname="projectUtils › validateProjectData" name="should reject project with whitespace-only fields" time="0.001">
     </testcase>
-    <testcase classname="projectUtils › validateProjectData" name="should reject invalid input types" time="0.001">
+    <testcase classname="projectUtils › validateProjectData" name="should reject invalid input types" time="0.007">
     </testcase>
-    <testcase classname="projectUtils › formatProjectTitle" name="should format normal project title" time="0.001">
+    <testcase classname="projectUtils › formatProjectTitle" name="should format normal project title" time="0.004">
     </testcase>
     <testcase classname="projectUtils › formatProjectTitle" name="should trim whitespace from title" time="0.001">
     </testcase>
-    <testcase classname="projectUtils › formatProjectTitle" name="should collapse multiple spaces into single space" time="0">
+    <testcase classname="projectUtils › formatProjectTitle" name="should collapse multiple spaces into single space" time="0.001">
     </testcase>
-    <testcase classname="projectUtils › formatProjectTitle" name="should handle empty and invalid inputs" time="0.001">
+    <testcase classname="projectUtils › formatProjectTitle" name="should handle empty and invalid inputs" time="0.004">
     </testcase>
-    <testcase classname="projectUtils › getProjectStats" name="should calculate correct project statistics" time="0.001">
+    <testcase classname="projectUtils › getProjectStats" name="should calculate correct project statistics" time="0.002">
     </testcase>
-    <testcase classname="projectUtils › getProjectStats" name="should handle empty projects array" time="0">
+    <testcase classname="projectUtils › getProjectStats" name="should handle empty projects array" time="0.002">
     </testcase>
-    <testcase classname="projectUtils › getProjectStats" name="should handle invalid input" time="0">
+    <testcase classname="projectUtils › getProjectStats" name="should handle invalid input" time="0.003">
     </testcase>
-    <testcase classname="projectUtils › getProjectStats" name="should handle projects with missing tech arrays" time="0.001">
-    </testcase>
-  </testsuite>
-  <testsuite name="Home page" errors="0" failures="0" skipped="0" timestamp="2026-05-12T09:45:21" time="4.285" tests="10">
-    <testcase classname="Home page" name="navigation links are accessible and focusable" time="0.527">
-    </testcase>
-    <testcase classname="Home page" name="hero and project images have alt text" time="0.215">
-    </testcase>
-    <testcase classname="Home page" name="renders hero section" time="0.274">
-    </testcase>
-    <testcase classname="Home page" name="renders skills section" time="0.051">
-    </testcase>
-    <testcase classname="Home page" name="renders work experience section" time="0.071">
-    </testcase>
-    <testcase classname="Home page" name="renders project filter and grid" time="0.035">
-    </testcase>
-    <testcase classname="Home page" name="renders services section" time="0.042">
-    </testcase>
-    <testcase classname="Home page" name="renders chatbot section and sends a message" time="0.215">
-    </testcase>
-    <testcase classname="Home page" name="toggles mobile menu" time="0.076">
-    </testcase>
-    <testcase classname="Home page" name="renders all main sections" time="0.097">
+    <testcase classname="projectUtils › getProjectStats" name="should handle projects with missing tech arrays" time="0.002">
     </testcase>
   </testsuite>
-  <testsuite name="Accessibility Tests" errors="0" failures="0" skipped="0" timestamp="2026-05-12T09:45:21" time="4.315" tests="10">
-    <testcase classname="Accessibility Tests › Home Page" name="should not have accessibility violations" time="1.173">
+  <testsuite name="Home page" errors="0" failures="0" skipped="0" timestamp="2026-05-13T09:21:46" time="44.658" tests="10">
+    <testcase classname="Home page" name="navigation links are accessible and focusable" time="1.359">
     </testcase>
-    <testcase classname="Accessibility Tests › Home Page" name="should have proper heading hierarchy" time="0.058">
+    <testcase classname="Home page" name="hero and project images have alt text" time="0.421">
     </testcase>
-    <testcase classname="Accessibility Tests › Home Page" name="should have proper form labels and accessibility attributes" time="0.041">
+    <testcase classname="Home page" name="renders hero section" time="0.296">
     </testcase>
-    <testcase classname="Accessibility Tests › Layout Component" name="should not have accessibility violations in header and navigation" time="0.133">
+    <testcase classname="Home page" name="renders skills section" time="0.081">
     </testcase>
-    <testcase classname="Accessibility Tests › Layout Component" name="should have proper navigation structure" time="0.012">
+    <testcase classname="Home page" name="renders work experience section" time="0.11">
     </testcase>
-    <testcase classname="Accessibility Tests › Layout Component" name="should have proper landmark roles" time="0.014">
+    <testcase classname="Home page" name="renders project filter and grid" time="0.05">
     </testcase>
-    <testcase classname="Accessibility Tests › General Accessibility Checks" name="should have proper alt text for images" time="0.043">
+    <testcase classname="Home page" name="renders services section" time="0.04">
     </testcase>
-    <testcase classname="Accessibility Tests › General Accessibility Checks" name="should have proper button accessibility" time="0.03">
+    <testcase classname="Home page" name="renders chatbot section and sends a message" time="0.551">
     </testcase>
-    <testcase classname="Accessibility Tests › General Accessibility Checks" name="should have proper focus management" time="0.034">
+    <testcase classname="Home page" name="toggles mobile menu" time="0.257">
     </testcase>
-    <testcase classname="Accessibility Tests › General Accessibility Checks" name="should have proper color contrast considerations" time="0.024">
+    <testcase classname="Home page" name="renders all main sections" time="0.177">
     </testcase>
   </testsuite>
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2026-05-12T09:45:21" time="5.256" tests="11">
-    <testcase classname="" name="renders project images with correct width, height, and alt" time="0.52">
+  <testsuite name="Performance/TTI optimizations" errors="0" failures="0" skipped="0" timestamp="2026-05-13T09:21:46" time="44.686" tests="3">
+    <testcase classname="Performance/TTI optimizations" name="Home page uses dynamic imports for non-critical components" time="1.638">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="renders all projects by default" time="0.372">
+    <testcase classname="Performance/TTI optimizations" name="Project images use lazy loading and blur placeholder" time="0.595">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="filters projects by tech" time="0.418">
+    <testcase classname="Performance/TTI optimizations" name="Project detail image uses blur placeholder" time="0.042">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="shows all projects when All is clicked" time="0.343">
+  </testsuite>
+  <testsuite name="Accessibility Tests" errors="0" failures="0" skipped="0" timestamp="2026-05-13T09:21:46" time="46.339" tests="10">
+    <testcase classname="Accessibility Tests › Home Page" name="should not have accessibility violations" time="1.841">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="links to project detail pages" time="0.139">
+    <testcase classname="Accessibility Tests › Home Page" name="should have proper heading hierarchy" time="0.161">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="initializes filter from URL query string" time="0.056">
+    <testcase classname="Accessibility Tests › Home Page" name="should have proper form labels and accessibility attributes" time="0.116">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="updates URL when tech filter changes" time="0.096">
+    <testcase classname="Accessibility Tests › Layout Component" name="should not have accessibility violations in header and navigation" time="0.22">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="removes tech parameter when All is clicked" time="0.101">
+    <testcase classname="Accessibility Tests › Layout Component" name="should have proper navigation structure" time="0.02">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="ignores invalid tech parameter from URL" time="0.065">
+    <testcase classname="Accessibility Tests › Layout Component" name="should have proper landmark roles" time="0.012">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="renders filter row and scroll buttons" time="0.09">
+    <testcase classname="Accessibility Tests › General Accessibility Checks" name="should have proper alt text for images" time="0.165">
     </testcase>
-    <testcase classname="HomeProjectsFilter" name="clicking scroll buttons calls scrollBy on the row" time="0.03">
+    <testcase classname="Accessibility Tests › General Accessibility Checks" name="should have proper button accessibility" time="0.112">
+    </testcase>
+    <testcase classname="Accessibility Tests › General Accessibility Checks" name="should have proper focus management" time="0.065">
+    </testcase>
+    <testcase classname="Accessibility Tests › General Accessibility Checks" name="should have proper color contrast considerations" time="0.059">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2026-05-13T09:21:46" time="47.302" tests="11">
+    <testcase classname="" name="renders project images with correct width, height, and alt" time="0.863">
+    </testcase>
+    <testcase classname="HomeProjectsFilter" name="renders all projects by default" time="0.382">
+    </testcase>
+    <testcase classname="HomeProjectsFilter" name="filters projects by tech" time="0.918">
+    </testcase>
+    <testcase classname="HomeProjectsFilter" name="shows all projects when All is clicked" time="0.718">
+    </testcase>
+    <testcase classname="HomeProjectsFilter" name="links to project detail pages" time="0.484">
+    </testcase>
+    <testcase classname="HomeProjectsFilter" name="initializes filter from URL query string" time="0.218">
+    </testcase>
+    <testcase classname="HomeProjectsFilter" name="updates URL when tech filter changes" time="0.464">
+    </testcase>
+    <testcase classname="HomeProjectsFilter" name="removes tech parameter when All is clicked" time="0.33">
+    </testcase>
+    <testcase classname="HomeProjectsFilter" name="ignores invalid tech parameter from URL" time="0.161">
+    </testcase>
+    <testcase classname="HomeProjectsFilter" name="renders filter row and scroll buttons" time="0.253">
+    </testcase>
+    <testcase classname="HomeProjectsFilter" name="clicking scroll buttons calls scrollBy on the row" time="0.118">
     </testcase>
   </testsuite>
 </testsuites>
