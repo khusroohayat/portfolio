@@ -70,6 +70,7 @@ export default function SkillsSection() {
             </button>
           );
         })}
+        {/* Render all tabpanels for accessibility; only the active one is visible */}
         {categories.map((category) => {
           const isActive = category.id === activeCategory;
           return (
@@ -96,33 +97,6 @@ export default function SkillsSection() {
           );
         })}
       </div>
-
-      {/* Render all tabpanels for accessibility; only the active one is visible */}
-      {categories.map((category) => {
-        const isActive = category.id === activeCategory;
-        return (
-          <article
-            key={category.id}
-            className={styles.panel}
-            role="tabpanel"
-            id={`skills-panel-${category.id}`}
-            aria-labelledby={`skills-tab-${category.id}`}
-            hidden={!isActive}
-            aria-hidden={!isActive}
-            tabIndex={isActive ? 0 : -1}
-          >
-            <h3 className={styles.panelTitle}>{category.title}</h3>
-            <p className={styles.panelSummary}>{category.summary}</p>
-            <ul className={styles.skillList}>
-              {category.skills.map((skill) => (
-                <li key={skill} className={styles.skillItem}>
-                  <span>{skill}</span>
-                </li>
-              ))}
-            </ul>
-          </article>
-        );
-      })}
     </section>
   );
 }
