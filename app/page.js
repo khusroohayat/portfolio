@@ -158,7 +158,7 @@ export default function Home() {
           <div className="hero-yellow">
             {/* Optimized WebP for best LCP. */}
             <Image
-              src="/imgs/webp/khusroo-hero-image.webp"
+              src="/imgs/khusroo-hero-image.webp"
               alt="Khusroo Hayat"
               width={928}
               height={1120}
